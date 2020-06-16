@@ -105,9 +105,7 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                         </fieldset>
                     </div>
 
-<!--                    <div id="id-canttell2">-->
-<!--                        <a href="dashboard" data-target="modal" id="canttellBtn" class="button&#45;&#45;decline&#45;&#45;clarity" style="">I cannot answer this question</a>-->
-<!--                    </div>-->
+
 
                 </div>
 
@@ -667,49 +665,50 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                 <div class="qa-questions-group" data-complete="false">
 
-                    <div class="qa-questions-group" data-complete="false">
+                    <div class="qa-questions-question" id="pds-1" data-answered="false" data-group="decline-4a">
 
-                        <div class="qa-questions-question" id="pds-1" data-answered="false" data-group="decline-4a">
+                        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
 
-                            <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
+                            <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
+                                <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
+                                    <h3 class="nhsuk-fieldset__heading">
+                                        Do the dates of birth match?
+                                    </h3>
+                                </legend>
+                            </div>
 
-                                <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
-                                    <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
-                                        <h3 class="nhsuk-fieldset__heading">
-                                            Do the dates of birth match?
-                                        </h3>
-                                    </legend>
-                                </div>
+                            <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
-                                <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
+                                <div class="nhsuk-radios nhsuk-radios--inline">
 
-                                    <div class="nhsuk-radios nhsuk-radios--inline">
+                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="8" name="a-4" type="radio" value="yes" aria-checked="false">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="8">
+                                            Yes
+                                        </label>
+                                    </div>
 
-                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                            <input class="nhsuk-radios__input qa-questions-answer" id="8" name="a-4" type="radio" value="yes" aria-checked="false">
-                                            <label class="nhsuk-label nhsuk-radios__label" for="8">
-                                                Yes
-                                            </label>
-                                        </div>
-
-                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                            <input class="nhsuk-radios__input qa-questions-answer" id="9" name="a-4" type="radio" value="yes" aria-checked="false">
-                                            <label class="nhsuk-label nhsuk-radios__label" for="9">
-                                                No
-                                            </label>
-                                        </div>
-
+                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="9" name="a-4" type="radio" value="yes" aria-checked="false">
+                                        <label class="nhsuk-label nhsuk-radios__label" for="9">
+                                            No
+                                        </label>
                                     </div>
 
                                 </div>
 
-                            </fieldset>
+                            </div>
 
-                        </div>
+                        </fieldset>
 
                     </div>
 
-                    <div class="qa-questions-question" id="pds-2" data-answered="false" data-group="decline-4B">
+                </div>
+
+
+                <div class="qa-questions-group" data-complete="false">
+
+                    <div class="qa-questions-question" id="pds-2" data-answered="false" data-group="decline-4b">
 
                         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
 
@@ -772,10 +771,6 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                                     </div>
                                 </div>
                             </fieldset>
-
-<!--                            <div id="id-canttell6">-->
-<!--                                <a href="dashboard" data-target="modal" id="canttellBtn" class="button&#45;&#45;decline&#45;&#45;clarity" style="">There's an issue with the image and I can't answer the questions</a>-->
-<!--                            </div>-->
 
                         </div>
 
@@ -941,13 +936,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                                         </label>
                                     </div>
 
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3 u-visuallyhidden">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="16">
-                                            I cannot see what I need to answer this question
-                                        </label>
-                                    </div>
-
                                 </div>
 
                             </div>
@@ -956,14 +944,11 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                     </div>
 
-                    <div id="id-canttell7">
-                        <a href="dashboard" data-target="modal" id="canttellBtn" class="button--decline--clarity disabled" style="">I cannot answer this question</a>
-                    </div>
                 </div>
 
                 <!-- hide this question in automation -->
 
-                <div class="qa-questions-group {% if data.idv[data.prototype.count].media_video === '' %}js-hidden" data-complete="true"{% else %}" data-complete="false"{% endif %}>
+                <div class="qa-questions-group {% if data.idv[data.prototype.count].media_video === '' %}js-hidden" data-complete="true"{% else %}" data-complete="true"{% endif %}>
                     <div class="qa-questions-question" id="selfie-3" {% if data.idv[data.prototype.count].media_video === '' %}data-answered="true"{% else %}data-answered="false"{% endif %} data-group="decline-7">
 
                         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
@@ -1014,10 +999,10 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <a href="dashboard"
                            data-target="modal" id="declineBtn" class="nhsuk-button button--decline nhsuk-u-margin-top-3" style="display: none;">Reject</a>
                     </div>
-                    <div id="id-canttell">
-                        <a href="dashboard"
-                           data-target="modal" id="canttellBtn" class="nhsuk-button button--decline--clarity" style="display: none;">Reject</a>
-                    </div>
+<!--                    <div id="id-canttell">-->
+<!--                        <a href="dashboard"-->
+<!--                           data-target="modal" id="canttellBtn" class="nhsuk-button button&#45;&#45;decline&#45;&#45;clarity" style="display: none;">Reject</a>-->
+<!--                    </div>-->
                 </div>
             </div>
         </div>
@@ -1713,7 +1698,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         // If yes, then disable all the radios for the doc check section and select the
 
         if ({{ data.idv[data.prototype.count].doc_check_passes }}) {
-            console.log("lockdown first question")
+
             var inputs1 = questionGroup1.getElementsByTagName('input')
             var inputs2 = questionGroup2.getElementsByTagName('input')
             var inputs3 = questionGroup3.getElementsByTagName('input')
@@ -1726,14 +1711,32 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 inputs3[m].disabled = true;
             }
 
-            var questionGroup2 = document.getElementById('pds-1')
-            var inputs2 = questionGroup2.getElementsByTagName('input')
-            // // loop through all the inputs and uncheck them
-            for (n = 0; n < inputs.length; n++) {
-                inputs2[n].checked = false
-                inputs2[n].disabled = false
+            if ({{ data.idv[data.prototype.count].pds_matches }} === 'true') {
+                console.log("unlock date of birth question")
+                var questionGroup4 = document.getElementById('pds-1')
+                var inputs4 = questionGroup4.getElementsByTagName('input')
+                // // loop through all the inputs and uncheck them
+                for (n = 0; n < inputs4.length; n++) {
+                    inputs4[n].checked = false
+                    inputs4[n].disabled = false
+                }
+
+            } else {
+                console.log("unlock: can you find record question")
+                var questionGroup5 = document.getElementById('trace-1')
+                var inputs5 = questionGroup5.getElementsByTagName('input')
+                // // loop through all the inputs and uncheck them
+                for (n = 0; n < inputs5.length; n++) {
+                    inputs5[n].checked = false
+                    inputs5[n].disabled = false
+                }
+
             }
+
+
         }
+
+        updateSolutions()
     }
 
     function addEventListeners() {
@@ -1890,13 +1893,14 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             document.getElementById('manual-pds').style.display = 'block'
             document.getElementById('radio-inline-3').disabled = false
             document.getElementById('radio-inline-4').disabled = false
-
-        } else if (idCheck[12] === true ) {
+        }
+        else if (idCheck[10] === true ) {
             document.getElementById('manual-pds').style.display = 'none'
         }
 
-        if (idCheck[1] === true || idCheck[4] === true || idCheck[7] === true || idCheck[9] === true || idCheck[13] === true || idCheck[15] === true || idCheck[18] === true  ) {
+        if (idCheck[1] === true || idCheck[3] === true || idCheck[5] === true || idCheck[9] === true || idCheck[11] === true || idCheck[13] === true || idCheck[15] === true || idCheck[18] === true ) {
 
+            console.log('something is off')
             if (document.getElementById('radio-inline-3') !== true ) {
 
                 document.getElementById('approveBtn').style.display = 'none'
@@ -1905,16 +1909,13 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                 if (idCheck[1] === true) {
                     $("#id-decline").appendTo('#document-1')
-                } else if (idCheck[4] === true) {
+                } else if (idCheck[3] === true) {
                     $("#id-decline").appendTo('#document-2')
                 } else if (idCheck[5] === true) {
                     $("#id-decline").appendTo('#document-3')
-                } else if (idCheck[7] === true) {
-                    $("#id-decline").appendTo('#pds-1')
                 } else if (idCheck[9] === true) {
-                    $("#id-decline").appendTo('#pds-2')
-                } else if (idCheck[11] === true) {
-                    $("#id-decline").appendTo('#pds-2')
+                    $("#id-decline").appendTo('#pds-1')
+
                 } else if (idCheck[13] === true) {
                     $("#id-decline").appendTo('#selfie-1')
                 } else if (idCheck[15] === true) {
@@ -1927,25 +1928,27 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             }
         }
 
-        else if (idCheck[2] === true || idCheck[5] === true || idCheck[16] === true ) {
+        // else if (idCheck[2] === true || idCheck[5] === true || idCheck[16] === true ) {
+        //
+        //     document.getElementById('approveBtn').style.display = 'none'
+        //     document.getElementById('declineBtn').style.display = 'none'
+        //     document.getElementById('canttellBtn').style.display = 'inline-block'
+        //
+        //     console.log('sausages')
+        //     if (idCheck[2] === true) {
+        //         $("#id-canttell").appendTo('#document-1')
+        //     } else if (idCheck[5] === true) {
+        //         $("#id-canttell").appendTo('#document-2')
+        //     } else if (idCheck[16] === true) {
+        //         $("#id-canttell").appendTo('#selfie-2')
+        //     } else {
+        //         $("#id-decline").appendTo('#id-buttons')
+        //     }
+        // }
 
-            document.getElementById('approveBtn').style.display = 'none'
-            document.getElementById('declineBtn').style.display = 'none'
-            document.getElementById('canttellBtn').style.display = 'inline-block'
+        else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck[10] === true && idCheck[12] === true && idCheck[14] === true && idCheck[17] === true) {
 
-            console.log('sausages')
-            if (idCheck[2] === true) {
-                $("#id-canttell").appendTo('#document-1')
-            } else if (idCheck[5] === true) {
-                $("#id-canttell").appendTo('#document-2')
-            } else if (idCheck[16] === true) {
-                $("#id-canttell").appendTo('#selfie-2')
-            } else {
-                $("#id-decline").appendTo('#id-buttons')
-            }
-        }
-
-        else if (idCheck[0] === true && idCheck[3] === true && idCheck[6] === true && idCheck[8] === true && idCheck[10] === true && idCheck[12] === true && idCheck[14] === true && idCheck[17] === true) {
+            console.log('yay all yes')
             document.getElementById('approveBtn').style.display = 'inline-block'
             document.getElementById('declineBtn').style.display = 'none'
             // document.getElementById('canttellBtn').style.display = 'none'
