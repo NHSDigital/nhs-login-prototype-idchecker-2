@@ -1679,65 +1679,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         unlockFirstQuestion()
     }
 
-    function unlockFirstQuestion() {
-        // console.log("unlock")
 
-        // get an array of all the question groups
-        var questionGroup1 = document.getElementById('document-1')
-        var questionGroup2 = document.getElementById('document-2')
-        var questionGroup3 = document.getElementById('document-3')
-        //
-        var inputs = questionGroup1.getElementsByTagName('input')
-        // // loop through all the inputs and uncheck them
-        for (l = 0; l < inputs.length; l++) {
-            inputs[l].checked = false
-            inputs[l].disabled = false
-        }
-
-        // check to see if document check has passed
-        // If yes, then disable all the radios for the doc check section and select the
-
-        if ({{ data.idv[data.prototype.count].doc_check_passes }}) {
-
-            var inputs1 = questionGroup1.getElementsByTagName('input')
-            var inputs2 = questionGroup2.getElementsByTagName('input')
-            var inputs3 = questionGroup3.getElementsByTagName('input')
-            for (m = 0; m < inputs1.length; m++) {
-                inputs1[0].checked = true;
-                // inputs1[m].disabled = true;
-                inputs2[0].checked = true;
-                inputs2[m].disabled = true;
-                inputs3[0].checked = true;
-                inputs3[m].disabled = true;
-            }
-
-            if ({{ data.idv[data.prototype.count].pds_matches }} === 'true') {
-                console.log("unlock date of birth question")
-                var questionGroup4 = document.getElementById('pds-1')
-                var inputs4 = questionGroup4.getElementsByTagName('input')
-                // // loop through all the inputs and uncheck them
-                for (n = 0; n < inputs4.length; n++) {
-                    inputs4[n].checked = false
-                    inputs4[n].disabled = false
-                }
-
-            } else {
-                console.log("unlock: can you find record question")
-                var questionGroup5 = document.getElementById('trace-1')
-                var inputs5 = questionGroup5.getElementsByTagName('input')
-                // // loop through all the inputs and uncheck them
-                for (n = 0; n < inputs5.length; n++) {
-                    inputs5[n].checked = false
-                    inputs5[n].disabled = false
-                }
-
-            }
-
-
-        }
-
-        updateSolutions()
-    }
 
     function addEventListeners() {
         var inputs = document.getElementsByTagName('input')
@@ -1905,46 +1847,39 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                 document.getElementById('approveBtn').style.display = 'none'
                 document.getElementById('declineBtn').style.display = 'inline-block'
+
+                // var declineButton = document.getElementById('id-decline')
+                // document.getElementById('#document-1').append(declineButton)
+
                 // document.getElementById('canttellBtn').style.display = 'none'
 
                 if (idCheck[1] === true) {
-                    $("#id-decline").appendTo('#document-1')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('document-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else if (idCheck[3] === true) {
-                    $("#id-decline").appendTo('#document-2')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('document-2').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else if (idCheck[5] === true) {
-                    $("#id-decline").appendTo('#document-3')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('document-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else if (idCheck[9] === true) {
-                    $("#id-decline").appendTo('#pds-1')
-
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('pds-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else if (idCheck[13] === true) {
-                    $("#id-decline").appendTo('#selfie-1')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('selfie-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else if (idCheck[15] === true) {
-                    $("#id-decline").appendTo('#selfie-2')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('selfie-2').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else if (idCheck[18] === true) {
-                    $("#id-decline").appendTo('#selfie-3')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('selfie-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 } else {
-                    $("#id-decline").appendTo('#id-buttons')
+                    var declineButton = document.getElementById('id-decline')
+                    document.getElementById('id-buttons').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
                 }
             }
         }
-
-        // else if (idCheck[2] === true || idCheck[5] === true || idCheck[16] === true ) {
-        //
-        //     document.getElementById('approveBtn').style.display = 'none'
-        //     document.getElementById('declineBtn').style.display = 'none'
-        //     document.getElementById('canttellBtn').style.display = 'inline-block'
-        //
-        //     console.log('sausages')
-        //     if (idCheck[2] === true) {
-        //         $("#id-canttell").appendTo('#document-1')
-        //     } else if (idCheck[5] === true) {
-        //         $("#id-canttell").appendTo('#document-2')
-        //     } else if (idCheck[16] === true) {
-        //         $("#id-canttell").appendTo('#selfie-2')
-        //     } else {
-        //         $("#id-decline").appendTo('#id-buttons')
-        //     }
-        // }
 
         else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck[10] === true && idCheck[12] === true && idCheck[14] === true && idCheck[17] === true) {
 
@@ -1960,6 +1895,61 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             // document.getElementById('canttellBtn').style.display = 'none'
         }
 
+    }
+
+    function unlockFirstQuestion() {
+        // console.log("unlock")
+
+        // get an array of all the question groups
+        var questionGroup1 = document.getElementById('document-1')
+        var questionGroup2 = document.getElementById('document-2')
+        var questionGroup3 = document.getElementById('document-3')
+        //
+        var inputs = questionGroup1.getElementsByTagName('input')
+        // // loop through all the inputs and uncheck them
+        for (l = 0; l < inputs.length; l++) {
+            inputs[l].checked = false
+            inputs[l].disabled = false
+        }
+
+        // check to see if document check has passed
+        // If yes, then disable all the radios for the doc check section and select the
+
+        if ({{ data.idv[data.prototype.count].doc_check_passes }}) {
+
+            var inputs1 = questionGroup1.getElementsByTagName('input')
+            var inputs2 = questionGroup2.getElementsByTagName('input')
+            var inputs3 = questionGroup3.getElementsByTagName('input')
+            for (m = 0; m < inputs1.length; m++) {
+                inputs1[0].checked = true;
+                // inputs1[m].disabled = true;
+                inputs2[0].checked = true;
+                inputs2[m].disabled = true;
+                inputs3[0].checked = true;
+                inputs3[m].disabled = true;
+            }
+
+            if ({{ data.idv[data.prototype.count].pds_matches }} === 'true') {
+                console.log("unlock date of birth question")
+                var questionGroup4 = document.getElementById('pds-1')
+                var inputs4 = questionGroup4.getElementsByTagName('input')
+                // // loop through all the inputs and uncheck them
+                for (n = 0; n < inputs4.length; n++) {
+                    inputs4[n].checked = false
+                    inputs4[n].disabled = false
+                }
+            }else {
+                console.log("unlock: can you find record question")
+                var questionGroup5 = document.getElementById('trace-1')
+                var inputs5 = questionGroup5.getElementsByTagName('input')
+                // // loop through all the inputs and uncheck them
+                for (n = 0; n < inputs5.length; n++) {
+                    inputs5[n].checked = false
+                    inputs5[n].disabled = false
+                }
+            }
+        }
+        // updateSolutions()
     }
 
 </script>
