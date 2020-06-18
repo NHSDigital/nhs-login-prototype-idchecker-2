@@ -1,5 +1,3 @@
-"use strict";
-
 // ES6 or Vanilla JavaScript
 // helper function to place modal window as the first child
 // of the #page node
@@ -30,7 +28,7 @@ swap(); // modal window
 
   if (mOverlay !== null) {
     // Let's open the modal
-    var modalShow = function modalShow(event) {
+    function modalShow(event) {
       event.preventDefault ? event.preventDefault() : event.returnValue = false;
       lastFocus = document.activeElement;
       mOverlay.setAttribute('aria-hidden', 'false');
@@ -40,11 +38,11 @@ swap(); // modal window
       modal.focus();
       mOverlay.scrollTop(0);
       emailField.focus();
-    }; // binds to both the button click and the escape key to close the modal window
+    } // binds to both the button click and the escape key to close the modal window
     // but only if modalOpen is set to true
 
 
-    var modalClose = function modalClose(event) {
+    function modalClose(event) {
       if (modalOpen && (!event.keyCode || event.keyCode === 27)) {
         mOverlay.setAttribute('aria-hidden', 'true');
         modal.setAttribute('tabindex', '-1');
@@ -52,18 +50,18 @@ swap(); // modal window
         modalOpen = false;
         lastFocus.focus();
       }
-    }; // Restrict focus to the modal window when it's open.
+    } // Restrict focus to the modal window when it's open.
     // Tabbing will just loop through the whole modal.
     // Shift + Tab will allow backup to the top of the modal,
     // and then stop.
 
 
-    var focusRestrict = function focusRestrict(event) {
+    function focusRestrict(event) {
       if (modalOpen && !modal.contains(event.target)) {
         event.stopPropagation();
         modal.focus();
       }
-    }; // Close modal window by clicking on the overlay
+    } // Close modal window by clicking on the overlay
 
 
     mOverlay.addEventListener('click', function (e) {

@@ -235,20 +235,20 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
             <div class="nhsuk-grid-column-one-half">
 
 
-                {% if data.idv[data.prototype.count].pds_match === 'true' %}
+                {# {% if data.idv[data.prototype.count].pds_match === 'true' %} #}
                 {# hide this in the old styles #}
                 <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7">
                     <summary class="nhsuk-details__summary">
                       <span class="nhsuk-details__summary-text">
-                      Show user submitted details
+                      Show personal information sent by user
                       </span>
                     </summary>
 
                     <div class="nhsuk-details__text">
-                {% endif %}
+                {# {% endif %} #}
 
 
-                        <h3>User submitted details</h3>
+                        <h3>User entered</h3>
 
                         {# if the user knew their NHS number then show it #}
                         {% if data.idv[data.prototype.count].nhs_number !== '' %}
@@ -262,27 +262,40 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
                         {% endif %}
 
+                        {# if the user entered a first name then show it #}
+                        {% if data.idv[data.prototype.count].name_first !== '' %}
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="firstname">
                                 First name
                             </label>
                             <input class="nhsuk-input nhsuk-input--width-20" id="firstname" value="{{ data.idv[data.prototype.count].name_first}}" name="firstname" type="text" maxlength="" readonly >
                         </div>
+                        {% endif %}
 
+                        {# if the user entered a middle name then show it #}
+                        {% if data.idv[data.prototype.count].name_middle !== '' %}                        
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="middlename">
                                 Middle names
                             </label>
                             <input class="nhsuk-input nhsuk-input--width-20" id="middlename" value="{{ data.idv[data.prototype.count].name_middle}}" name="middlename" type="text" maxlength="" readonly >
                         </div>
+                        {% endif %}
 
+                        {# if the user entered a last name then show it #}
+                        {% if data.idv[data.prototype.count].name_last !== '' %}
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="lastname">
                                 Last name
                             </label>
                             <input class="nhsuk-input nhsuk-input--width-20" id="lastname" value="{{ data.idv[data.prototype.count].name_last}}" name="lastname" type="text" maxlength="" readonly >
                         </div>
+                        {% endif %}
 
+                        {# if the user entered a date of birth then show it #}
+                        {% if data.idv[data.prototype.count].date_day !== '' %}
+                        {% if data.idv[data.prototype.count].date_month !== '' %}
+                        {% if data.idv[data.prototype.count].date_year !== '' %}
                         <div class="nhsuk-form-group">
                             <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
                                 <legend class="nhsuk-fieldset__legend">
@@ -309,20 +322,26 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                                 </div>
                             </fieldset>
                         </div>
-
+                        {% endif %}
+                        {% endif %}
+                        {% endif %}
+                        
+                        {# if the user entered a postcode then show it #}
+                        {% if data.idv[data.prototype.count].postcode !== '' %}
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="postcode">
                                 Postcode
                             </label>
                             <input class="nhsuk-input nhsuk-input--width-5" id="postcode" value="{{ data.idv[data.prototype.count].postcode}}" name="postcode" type="text" maxlength="" readonly >
                         </div>
+                        {% endif %}
 
 
 
                         {# is this automated? check for an absence of video file #}
                         {% if data.idv[data.prototype.count].media_video === '' %}
 
-                        <h3>OCR results</h3>
+                        <h3>Optical character recognition (OCR) from ID</h3>
 
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="ocrfirstname">
@@ -358,10 +377,10 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
 
 
-            {% if data.idv[data.prototype.count].pds_match === 'true' %}
+            {# {% if data.idv[data.prototype.count].pds_match === 'true' %} #}
                     </div>
                 </details>
-            {% endif %}
+            {# {% endif %} #}
 
             </div>
 
@@ -486,8 +505,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                                 <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
                                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                                         <br class="nhsuk-fieldset__heading">
-                                            Can you find a single matching PDS record to re-run a trace?</br>
-                                            Search using the name and date of birth on the ID
+                                            Can you find the correct PDS record for this user?
                                         </h3>
                                     </legend>
                                 </div>
@@ -530,12 +548,12 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                             <input class="nhsuk-input nhsuk-input--width-10" id="nhs_number" value="" name="nhs_number" type="text" maxlength="" >
                         </div>
 
-                        <div class="nhsuk-form-group">
+{#                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="postcode">
                                 Current postcode (from PDS)
                             </label>
                             <input class="nhsuk-input nhsuk-input--width-5" id="postcode" value="" name="postcode" type="text" maxlength="" >
-                        </div>
+                        </div> #}
 
                         <div id="id-approve2">
                             <button id="retraceBtn" data-target="" class="nhsuk-button button--retry">Re-run trace</button>
@@ -1216,24 +1234,24 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <option value="IDC-010" data-question="">--- Select 1 option ---</option>
 
                             <option value="IDC-011" data-question="decline-text-2">Driving licence - Manual PDS search does not return a record</option>
-                            {% if data.idv[data.prototype.count].media_video !== '' %}
+                            {# {% if data.idv[data.prototype.count].media_video !== '' %} #}
                             <option value="IDC-012" data-question="decline-text-2">Driving licence - Date of birth user entered does not match PDS (re-trace failed)</option>
-                            {% endif %}
+                            {# {% endif %} #}
                             <option value="IDC-013" data-question="decline-text-2">Driving licence - Multiple matches or PDS confusion</option>
                             <option value="IDC-014" data-question="decline-text-2">Driving licence - Cannot match postcodes</option>
 
 
                             <option value="IDC-015" data-question="decline-text-2">Passport - Manual PDS search does not return a record</option>
-                            {% if data.idv[data.prototype.count].media_video !== '' %}
+                            {# {% if data.idv[data.prototype.count].media_video !== '' %} #}
                             <option value="IDC-016" data-question="decline-text-2">Passport - Date of birth user entered does not match PDS (re-trace failed)</option>
-                            {% endif %}
+                            {# {% endif %} #}
                             <option value="IDC-017" data-question="decline-text-2">Passport - Multiple matches or PDS confusion</option>
                             <option value="IDC-018" data-question="decline-text-2">Passport - Cannot match postcodes</option>
 
                             <option value="IDC-019" data-question="decline-text-2">National identity card - Manual PDS search does not return a record</option>
-                            {% if data.idv[data.prototype.count].media_video !== '' %}
+                            {# {% if data.idv[data.prototype.count].media_video !== '' %} #}
                             <option value="IDC-020" data-question="decline-text-2">National identity card - Date of birth user entered does not match PDS (re-trace failed)</option>
-                            {% endif %}
+                            {# {% endif %} #}
                             <option value="IDC-021" data-question="decline-text-2">National identity card - Multiple matches or PDS confusion</option>
                             <option value="IDC-022" data-question="decline-text-2">National identity card - Cannot match postcodes</option>
 
@@ -1320,7 +1338,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <label class="nhsuk-label" for="field3">Explain why you made this decision. <br>This information will not be sent to the user</label>
                     </div>
                     <div id="decline-text-2" style="display:none;">
-                        <label class="nhsuk-label" for="field3">Why could you not find the person's NHS Number? (required)</label>
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
                     </div>
 
                     <div id="decline-text-3" style="display:none;">
@@ -1517,7 +1535,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             if (target === 'decline-5') {
                 heading.innerText = 'Select the reason you cannot see a face'
             } else if (target === 'decline-0') {
-                heading.innerText = 'Select the reason you cannot find a single matching PDS record to re-run a trace'
+                heading.innerText = 'Select the reason you cannot find the correct PDS record for this user'
             } else if (target === 'decline-7') {
                 heading.innerText = 'Select why you cannot hear or see the 4 numbers'
             } else {
