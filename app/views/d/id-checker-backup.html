@@ -851,7 +851,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                             <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-0">
 
-                                <p style="">Check their PDS record. Do any historic last names match the last name on their photo ID?</p>
+                                <p style="">Check their PDS record. Do any historic surnames match the last name on their photo ID?</p>
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
@@ -919,9 +919,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-one-half">
                 {% if data.idv[data.prototype.count].media_video === '' %}
-                    <h3>Image from face scan</h3>
+                    <h3>Look at the image</h3>
                 {% else %}
-                    <h3>Video selfie</h3>
+                    <h3>Watch the video</h3>
                 {% endif %}
                 <div class="idcheck-media">
                     <div class="idcheck-video">
@@ -967,7 +967,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                                     <h3 class="nhsuk-fieldset__heading">
                                         {% if data.idv[data.prototype.count].media_video === '' %}
-                                            Do the faces from the face scan and the photo ID match?
+                                            Can you clearly see a face in the picture?
                                         {% else %}
                                             Can you clearly see the face in the video?
                                         {% endif %}
@@ -975,12 +975,12 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                                 </legend>
                             </div>
 
-                            <div class="qa-questions-answer-group multiple-choice__container" {% if data.idv[data.prototype.count].media_video === '' %} data-answered="true"{% else %} data-answered="false" {% endif %}>
+                            <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
 
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="14" name="a-7" type="radio" value="yes" {% if data.idv[data.prototype.count].media_video === '' %}aria-checked="true" checked="checked"{% else %} aria-checked="false" {% endif %}>
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="14" name="a-7" type="radio" value="yes" aria-checked="false">
                                         <label class="nhsuk-label nhsuk-radios__label" for="14">
                                             Yes
                                         </label>
@@ -1002,27 +1002,29 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
                 </div>
 
-                <!-- hide this question in automation -->
-
-                <div class="qa-questions-group {% if data.idv[data.prototype.count].media_video === '' %}js-hidden" data-complete="true"{% else %}" data-complete="true"{% endif %}>
-                    <div class="qa-questions-question" id="selfie-2" {% if data.idv[data.prototype.count].media_video === '' %}data-answered="true"{% else %}data-answered="false"{% endif %} data-group="decline-6">
+                <div class="qa-questions-group" data-complete="false">
+                    <div class="qa-questions-question" id="selfie-2" data-answered="false" data-group="decline-6">
 
                         <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
 
                             <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
                                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                                     <h3 class="nhsuk-fieldset__heading">
+                                        {% if data.idv[data.prototype.count].media_video === '' %}
                                             Does the face in the photo ID match the face in the video?
+                                        {% else %}
+                                            Does the face in the photo ID match the face in the video?
+                                        {% endif %}
                                     </h3>
                                 </legend>
                             </div>
 
-                            <div class="qa-questions-answer-group multiple-choice__container" {% if data.idv[data.prototype.count].media_video === '' %} data-answered="true"{% else %} data-answered="false" {% endif %}>
+                            <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
 
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes" {% if data.idv[data.prototype.count].media_video === '' %}aria-checked="true" checked="checked"{% else %} aria-checked="false" {% endif %}>
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes" aria-checked="false">
                                         <label class="nhsuk-label nhsuk-radios__label" for="16">
                                             Yes
                                         </label>
@@ -1055,7 +1057,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
                                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                                     <h3 class="nhsuk-fieldset__heading">
-                                        Are these 4 numbers clearly read out: {{data.idv[data.prototype.count].challenge }}
+                                        Can you hear or see these 4 numbers in the video: <br>{{data.idv[data.prototype.count].challenge }}
                                     </h3>
                                 </legend>
                             </div>
@@ -2004,17 +2006,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             }
         }
 
-        else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck[10] === true && idCheck[12] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
+        else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
 
             console.log('yay all yes')
-            document.getElementById('approveBtn').style.display = 'inline-block'
-            document.getElementById('declineBtn').style.display = 'none'
-            // document.getElementById('canttellBtn').style.display = 'none'
-        }
-
-        else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck['radio-inline-3'] === true && idCheck['radio-inline-4'] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
-
-            console.log('yay all yesses')
             document.getElementById('approveBtn').style.display = 'inline-block'
             document.getElementById('declineBtn').style.display = 'none'
             // document.getElementById('canttellBtn').style.display = 'none'
