@@ -26,6 +26,9 @@
     <div class="nhsuk-grid-column-two-thirds">
 
       <!-- Change the page title here -->
+      <span class="nhsuk-caption-l">
+               I.D. checker app
+      </span>
       <h1>
         NHS login identity verification and matching service
       </h1>
@@ -33,38 +36,91 @@
       <!-- Add your content here -->
       <!-- Styles and components can be found at https://beta.nhs.uk/service-manual/styles-components-patterns -->
 
-      <p class="nhsuk-lede-text">
+      <p class="nhsuk-body-l">
         A service for ID checkers to check identity documents, perform facial comparisons and match users to their NHS record.
       </p>
 
-      <hr>
 
-      <h2>
-        Prototype versions
-      </h2>
+
 
       <form action="{{ thisPage }}" method="POST" role="form">
 
-        <h3 class="nhsuk-heading-xs">Redesigned questions and rejection reasons</h3>
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Aligned to live
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
         <dl class="release-desc">
-          <dt class="design"><button type="submit" class="button-as-link" name="version" value="a"><strong>Version A</strong></button> <strong class="govuk-tag latest-release">research completed</strong> - <small>27,28 Nov 2019</small></dt>
-          <dt class="design"><button type="submit" class="button-as-link" name="version" value="b"><strong>Version B</strong></button> <strong class="govuk-tag in-progress">in progress</strong></dt>
+          <dt class="design"><button type="submit" class="button-as-link" name="version" value="d"><strong>Version D</strong></button></dt>
+          <dd class="nhsuk-u-margin-0">
+          <strong class="govuk-tag in-progress">last edited: July 2020</strong>
         </dl>
 
-        <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-6">Existing questions</h3>
+      </details>
+
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Work in progress 
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+
         <dl class="release-desc">
-          <dt class="design"><button type="submit" class="button-as-link" name="version" value="c"><strong>Version C</strong></button> <strong class="govuk-tag in-progress">in progress</strong></dt>
-          <dd class="nhsuk-u-margin-0"><ul class="nhsuk-list nhsuk-list--bullet" ><li>ID checker doesn't need to check ID if Paycasso has verified it.</li><li>Redesigned PDS retrace UI.</li><li>Resigned PDS comparison section.</li></dd>
+          <dt class="design"><button type="submit" class="button-as-link" name="version" value="e"><strong>Version E</strong></button></dt>
+          <dd class="nhsuk-u-margin-0">Reveal paycasso response codes to ID checkers so they can understand whats happened.</dd>
+          <strong class="govuk-tag in-progress">last edited: 28th July 2020</strong>
         </dl>
 
-        <h3 class="nhsuk-heading-xs nhsuk-u-margin-top-6">In line with LIVE</h3>
         <dl class="release-desc">
-          <dt class="design"><button type="submit" class="button-as-link" name="version" value="d"><strong>Version D</strong></button> <strong class="govuk-tag in-progress">in progress</strong></dt>
-          <dd class="nhsuk-u-margin-0"><ul class="nhsuk-list nhsuk-list--bullet" >To include tickets:
-          <li>CID-8142: PYI | ID Checker App | ID Checkers can can match names on ID to historic name</li>
-          <li>CID-7637: PYI | ID Checker App | Record passes automated doc check</li>
-          <li>CID-8124: PYI | ID Checker Application | NHS number re-trace in ID Checker App (DOB)</li></dd>
+          <dt class="design"><button type="submit" class="button-as-link" name="version" value="c"><strong>Version C</strong></button></dt>
+          <dd class="nhsuk-u-margin-0">ID checker doesn't need to check ID if Paycasso has verified it.<br>
+          Redesigned PDS retrace UI.<br>
+          Redesigned PDS comparison section.</dd>
+          <strong class="govuk-tag in-progress">last edited: May 2020</strong>
         </dl>
+
+        <dl class="release-desc">
+          <dt class="design"><button type="submit" class="button-as-link" name="version" value="b"><strong>Version B</strong></button></dt>
+          <dd class="nhsuk-u-margin-0">Redesigned questions and rejection reasons.</dd>
+          <strong class="govuk-tag in-progress">last edited: May 2020</strong>
+        </dl>
+
+          
+        </div>
+
+      </details>
+
+
+      <details class="nhsuk-details nhsuk-expander version-list">
+        <summary class="nhsuk-details__summary">
+          <span class="nhsuk-details__summary-text">
+            Old versions
+          </span>
+        </summary>
+        <div class="nhsuk-details__text version-text">
+
+        <dl class="release-desc">
+          <dt class="design"><button type="submit" class="button-as-link" name="version" value="d"><strong>Version D</strong></button></dt>
+          <dd class="nhsuk-u-margin-0">ID Checkers can can match names on ID to historic name (CID-8142). <br>
+          Record passes automated doc check (CID-7637). <br>
+          NHS number re-trace in ID Checker App (DOB) (CID-8124).</dd>
+          <strong class="govuk-tag in-progress">last edited: 8th July 2020</strong>
+        </dl>
+
+        <dl class="release-desc">
+          <dt class="design"><button type="submit" class="button-as-link" name="version" value="a"><strong>Version A</strong></button></dt>
+          <dd class="nhsuk-u-margin-0">Redesigned questions and rejection reasons.</dd>
+          <strong class="govuk-tag in-progress">last edited: November 2019</strong>
+        </dl>
+          
+        </div>
+
+      </details>
 
 
       </form>

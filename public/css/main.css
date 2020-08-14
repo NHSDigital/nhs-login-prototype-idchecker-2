@@ -7230,6 +7230,10 @@ details.dev-mode summary, details.dev-mode ol {
   font-size: 15px;
   font-weight: bold; }
 
+.nhsuk-list-small {
+  font-size: 16px;
+  line-height: 1.47368; }
+
 .button-as-link {
   background: none !important;
   color: #005eb8;
