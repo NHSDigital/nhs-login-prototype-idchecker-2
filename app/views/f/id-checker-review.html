@@ -51,15 +51,12 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
     </div>
     {% endif %}
 
-    {% if data.idv[data.prototype.count].uplift === 'true' %}
-        <div class="id-check_uplift">Uplift journey</div>
-
-        <div class="nhsuk-care-card__content">
-
-    {% endif %}
-
     {% if data.idv[data.prototype.count].media_video === '' %}
         <div class="id-check_automated">Automated journey</div>
+
+        {% if data.idv[data.prototype.count].uplift === 'true' %}
+            <div class="id-check_uplift">Uplift journey</div>
+        {% endif %}
 
         <!-- Warning - DeniedSuspectedFraud v2 -->
         <div class="nhsuk-care-card__heading-container">
@@ -96,11 +93,13 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
             </p>
         </div> #}
 
-
-        <div class="nhsuk-care-card__content">
-
     {% endif %}
 
+        {% if data.idv[data.prototype.count].uplift === 'true' and data.idv[data.prototype.count].media_video !== '' %}
+            <div class="id-check_uplift">Uplift journey</div>
+        {% endif %}
+
+    
     <div class="nhsuk-care-card__content">
 
         <div class="nhsuk-grid-row">
