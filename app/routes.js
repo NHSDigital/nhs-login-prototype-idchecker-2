@@ -21,7 +21,7 @@ router.post("/", function (req, res) {
   // pull in JSON data file
   delete req.session.data['idv']
   let idvFile = 'verification-requests.json'
-  let path = 'app/data/'
+  let path = 'app/data/g/'
   req.session.data['idv'] = loadJSONFromFile(idvFile, path)
 
   prototype.version = req.session.data.version
@@ -108,6 +108,10 @@ router.post("/*/continue", function (req, res) {
   req.session.data['prototype'] = prototype
   res.redirect('id-checker-review')
 })
+
+
+
+
 
 
 
