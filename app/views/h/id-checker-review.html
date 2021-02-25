@@ -503,7 +503,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                                 <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
                                     <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                                         <br class="nhsuk-fieldset__heading">
-                                            Can you find a single matching live PDS record to re-run a trace?
+                                            Can you find a single, matching PDS record?
                                         </h3>
                                     </legend>
                                 </div>
@@ -1313,10 +1313,13 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <select id="decline-0" class="govuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-010" data-question="">--- Please select ---</option>
 
-                            <option value="IDC-011" data-question="decline-text-2">No record found</option>
-                            <option value="IDC-012" data-question="decline-text-2">Multiple live records found</option>
-                            <option value="IDC-013" data-question="decline-text-2">Confusion record</option>
-                            <option value="IDC-014" data-question="decline-text-2">PDS issue with record</option>
+                            <option value="IDC-011" data-question="decline-text-2a">No record found</option>
+                            <option value="IDC-012" data-question="decline-text-2b">Duplicate live records found</option>
+                            <option value="IDC-013" data-question="decline-text-2b">Confusion record</option>
+                            <option value="IDC-014" data-question="decline-text-2a">PDS issue with record</option>
+                            <option value="IDC-015" data-question="decline-text-2a">Date of birth does not match</option>
+                            <option value="IDC-016" data-question="decline-text-2a">Postcodes do not match</option>
+
 
                         </select>
 
@@ -1411,8 +1414,12 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             </ul>
                             </span>
                     </div>
-                    <div id="decline-text-2" style="display:none;">
+                    <div id="decline-text-2a" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                    </div>
+
+                    <div id="decline-text-2b" style="display:none;">
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision, ensuring you include the ticket number.</label>
                     </div>
 
                     <div id="decline-text-3" style="display:none;">
