@@ -125,5 +125,18 @@ $(document).ready(function () {
     }
   })
 
+  // change CTA of transcoded video when clicked
+  $(".nhsuk-transcodedvideo-link__text").on("click", function(e) {
+    e.preventDefault()
+    var currentText= $( e.target ).text()
+    if (currentText== 'Show the original video'){
+      $( e.target ).text( "Show the transcoded video" )
+    }
+    else {
+      $( e.target ).text( "Show the original video" )
+    }
+
+  })
+
 
 })

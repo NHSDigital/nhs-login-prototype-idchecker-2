@@ -541,7 +541,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="nhs_number">
-                                NHS number (from PDS)
+                                NHS number
                             </label>
                             <input class="nhsuk-input nhsuk-input--width-10" id="nhs_number" value="" name="nhs_number" type="text" maxlength="" >
                         </div>
@@ -769,7 +769,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                             <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-0">
 
-                                <p style="">Check their PDS record. Do any historic first names match the first name on their photo ID?</p>
+                                <p style="">Use DSA to check the PDS record. Do any historic first names match the first name on the photo ID?</p>
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
@@ -848,7 +848,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                             <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-0">
 
-                                <p style="">Check their PDS record. Do any historic last names match the last name on their photo ID?</p>
+                                <p style="">Use DSA to check the PDS record. Do any historic last names match the last name on their photo ID?</p>
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
@@ -954,7 +954,24 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                 </div>
                 <br>
-                    <p class="nhsuk-body-s idcheck-help"><a href="#">Download the video</a> if you are having trouble playing it.</p>
+                                
+            {% if data.idv[data.prototype.count].media_video === '' %}
+            {% else %}
+
+
+                <div class="nhsuk-transcodedvideo-link">
+                    <a class="nhsuk-transcodedvideo-link__link" href="#">
+                        <img src="/images/transcodedvideo.svg" class="nhsuk-icon__arrow-right-circle">
+                        <span class="nhsuk-transcodedvideo-link__text" style="font-size:14px; vertical-align:middle" id="transcodelink">Show the original video</span>
+                    </a>
+                </div>
+            
+{#             <p class="nhsuk-body-s idcheck-help"><a href="#">Play the other video.</p></a>
+ #}
+
+{#             <p class="nhsuk-body-s idcheck-help">If you are unable to play the video, <a href="#">try playing this one instead</a>.</p>
+ #}
+            {% endif %}
             </div>
             <div class="nhsuk-grid-column-one-half">
                 <div class="qa-questions-group" data-complete="false">
@@ -1368,31 +1385,36 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <select id="decline-4c" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15">Driving licence - last names do not match</option>
-                            <option value="IDC-054" data-question="decline-text-15">Passport - last names do not match</option>
-                            <option value="IDC-057" data-question="decline-text-15">National identity card - last names do not match</option>
+                            <option value="IDC-051" data-question="decline-text-15c">Driving licence - last names do not match</option>
+                            <option value="IDC-054" data-question="decline-text-15c">Passport - last names do not match</option>
+                            <option value="IDC-057" data-question="decline-text-15c">National identity card - last names do not match</option>
 
                         </select>
 
                         <select id="decline-5" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-080" data-question="">--- Please select ---</option>
-                            <option value="IDC-081" data-question="none">There is a face, but it's not clear</option>
-                            <option value="IDC-082" data-question="none">There is no face in the picture</option>
-                            <option value="IDC-083" data-question="decline-text-9">The face is covered</option>
+                            <option value="IDC-081" data-question="decline-text-8a">There is a face, but it's not clear</option>
+                            <option value="IDC-082" data-question="decline-text-8b">There is no face in the video</option>
+                            <option value="IDC-083" data-question="decline-text-8c">Nobody is in the video</option>
                         </select>
 
                         <select id="decline-6" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-090" data-question="">--- Please select ---</option>
-                            <option value="IDC-091" data-question="decline-text-10">Faces do not match</option>
+                            <option value="IDC-091" data-question="decline-text-10">Driving licence - face in the photo ID does not match face in video</option>
+                            <option value="IDC-091" data-question="decline-text-10">Passport - face in the photo ID does not match face in video</option>
+                            <option value="IDC-091" data-question="decline-text-10">National identity card - face in the photo ID does not match face in video</option>
+
                         </select>
 
                         <select id="decline-7" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-100" data-question="">--- Please select ---</option>
-                            <option value="IDC-101" data-question="none">Mouth moves but there is no sound at all</option>
-                            <option value="IDC-102" data-question="decline-text-11">Cannot hear or see numbers clearly</option>
+                            <option value="IDC-101" data-question="decline-text-11a">There is no sound at all</option>
+                            <option value="IDC-102" data-question="decline-text-11">Cannot see or hear numbers clearly</option> {# this one needs updating - it doesn't mention see in live #}
                             <option value="IDC-103" data-question="decline-text-12">Missing first or last number</option>
-                            <option value="IDC-104" data-question="decline-text-13">Numbers are completely wrong</option>
-                            <option value="IDC-105" data-question="decline-text-14">Does not say or show numbers at all</option>
+                            <option value="IDC-104" data-question="decline-text-13">Numbers are completely wrong</option> {# this one needs updating - it doesn't say completely in live #}
+                            <option value="IDC-105" data-question="decline-text-14">Says something other than numbers</option>
+                            <option value="IDC-105" data-question="decline-text-14a">Someone else is saying the numbers</option>
+
                         </select>
                     </div>
                 </div>
@@ -1419,7 +1441,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <div id="decline-text-2b" style="display:none;">
-                        <label class="nhsuk-label" for="field3">Explain why you made this decision, ensuring you include the ticket number.</label>
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision, ensuring you include the ticket number. (required)</label>
                     </div>
 
                     <div id="decline-text-3" style="display:none;">
@@ -1452,7 +1474,20 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <div id="decline-text-8" style="display:none;">
-                        <label class="nhsuk-label" for="field3">Why not?</label>
+                        <label class="nhsuk-label" for="field3">Why not? (required)</label>
+                        <span class="nhsuk-hint">Tell us if:<br>
+                            &#9679; anything is covered up, and how<br>
+                            &#9679; anything is cut off<br>
+                            &#9679; there is glare<br>
+                            &#9679; there is blur<br>
+                            &#9679; it's too light<br>
+                            &#9679; it's too dark<br>
+                            &#9679; anything else is making it difficult for you to see the information clearly<br>
+                        </span>
+                    </div>
+                    
+                    <div id="decline-text-8a" style="display:none;">
+                        <label class="nhsuk-label" for="field3">Why not? (required)</label>
                         <span class="nhsuk-hint">Tell us if:<br>
                             &#9679; anything is covered up, and how<br>
                             &#9679; anything is cut off<br>
@@ -1464,6 +1499,15 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         </span>
                     </div>
 
+                    <div id="decline-text-8b" style="display:none;">
+                        <label class="nhsuk-label" for="field3">What can you see? (required)</label>
+                    </div>
+
+                    <div id="decline-text-8c" style="display:none;">
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision (required)</label>
+                    </div>
+
+
                     <div id="decline-text-9" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain how the face is covered</label>
                     </div>
@@ -1472,8 +1516,12 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <label class="nhsuk-label" for="field3">More information about why you think they do not match (optional)</label>
                     </div>
 
+                    <div id="decline-text-11a" style="display:none;">
+                        <label class="nhsuk-label" for="field3"></label>
+                    </div>
+
                     <div id="decline-text-11" style="display:none;">
-                        <label class="nhsuk-label" for="field3">Why can't you hear the numbers clearly? (required)</label>
+                        <label class="nhsuk-label" for="field3">Why can't you see or hear the numbers clearly? (required)</label> {# this one needs updating - it doesn't mention see in live #}
                     </div>
 
                     <div id="decline-text-12" style="display:none;">
@@ -1488,11 +1536,23 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <label class="nhsuk-label" for="field3">What do they say? (required)</label>
                     </div>
 
+                    <div id="decline-text-14a" style="display:none;">
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                    </div>
+
                     <div id="decline-text-15" style="display:none;">
                         <label class="nhsuk-label" for="field3" style="display:none;"></label>
                     </div>
 
                     <div id="decline-text-15a" style="display:none;">
+                        <label class="nhsuk-label" for="field3"></label>
+                    </div>
+
+                    <div id="decline-text-15b" style="display:none;">
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                    </div>
+
+                    <div id="decline-text-15c" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
                     </div>
 
@@ -1530,6 +1590,19 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     addOtherListener()
     addSlideoutListener()
     questionsComplete = false
+
+    // Change the trancoded button on click
+{#             function change()
+        {
+            var elem = document.getElementById("transcodelink");
+            if (elem.innerHTML=="Show the original video") elem.innerHTML = "Show the transcoded video";
+            else elem.innerHTML = "Show the original video";
+        } #}
+
+{# var btn = document.getElementById("transcodelink");
+btn.value = 'my value'; // will just add a hidden value
+btn.innerHTML = 'my text'; #}
+
 
     function getParameterByName(name, url) {
         if (!url) url = window.location.href
@@ -2072,6 +2145,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         // updateSolutions()
     }
 
+
 </script>
 
 {% endblock %}
@@ -2154,6 +2228,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         // document.getElementsByClassName('zoomable1')[0].style.transform = 'matrix(1, 0, 0, 1, 0, 0)'
         console.log(document.getElementsByClassName('zoomable1')[0])
     })
+
 
 </script>
 {% endblock %}
