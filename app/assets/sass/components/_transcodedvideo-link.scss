@@ -25,6 +25,7 @@
   padding-left: 38px; /* [2] */
   position: relative; /* [3] */
   text-decoration: none; /* [4] */
+  padding-top: 5px;
 
   &:hover {
     .nhsuk-transcodedvideo-link__text {
@@ -37,19 +38,7 @@
         margin-bottom: 0px; 
       }
     }
-  }
-
-  &:focus {
-    @include nhsuk-focused-text();
-
-    &:hover {
-      .nhsuk-transcodedvideo-link__text {
-        color: $nhsuk-focus-text-color;
-        text-decoration: none;
-      }
-    }
-
-  }
+}
 
   @include mq($until: tablet) {
     padding-left: 26px; /* [2] */
@@ -82,3 +71,4 @@
     }
 
   }
+
