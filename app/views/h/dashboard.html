@@ -22,7 +22,7 @@
       </div>
     </div>
   </div>
-  <div class="nhsuk-grid-column-one-quarter">
+  <div class="nhsuk-grid-column-one-quarter" href="holding-list"> 
     <div class="idcheck-dash idcheck-dash-{{holding|default('clear') }} {% if data.prototype.inholding === 1 %}u-inholding{% endif %}">
       <p class="idcheck-dash-heading">Holding list</p>
       <div class="idcheck-dash-details">
@@ -79,6 +79,6 @@
 
 {% endif%}
 
-
+<a href="holding-list"> Open the holding list </a>
 
 {% endblock %}
