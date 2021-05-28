@@ -1129,8 +1129,27 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     <div id="slideout_inner" data-status="closed">
         <form action="holding" method="POST" role="form">
             <h3>Move to holding list</h3>
-            <label class="" for="field6">Reason for moving (required)</label>
-            <textarea class="" id="field6" name="field6" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
+            <div class="nhsuk-form-group">
+  <label class="nhsuk-label" for="select-1">
+    Reason for moving
+  </label>
+  <select class="nhsuk-select" id="select-1" name="select-1" style="margin-top: 8px;">
+    <option value="1">Potential fraud</option>
+    <option value="2" >Potential safeguarding</option>
+    <option value="3" >No document example</option>
+    <option value="4" >Potential PDS duplicate</option>
+    <option value="5" >Potential PDS confusion</option>
+    <option value="6" >PDS Review - spelling mistake/1 letter difference</option>
+    <option value="7" >PDS Review - shortened name/ nickname</option>
+    <option value="8" >PDS Review - names switched</option>
+    <option value="9" >PDS Review - names missing</option>
+    <option value="10" >System issue</option>
+    <option value="11" >Automation issue</option>
+    <option value="12" >Other</option>
+  </select>
+</div>
+            <label class="nhsuk-label" for="field6">Description</label>
+            <textarea class="" id="field6" name="field6" type="text" rows="3" style="margin-top: 8px;" onkeyup='checkText(this.value);'></textarea>
             <button class="nhsuk-button nhsuk-button--reverse" id="id-holding">Move</button>
         </form>
     </div>
@@ -1688,7 +1707,7 @@ btn.innerHTML = 'my text'; #}
 
         var buttonType = object.text
 
-        if (buttonType === 'Decline') {
+        if (buttonType === 'Reject') {
             console.log(target)
             if (target === 'decline-5') {
                 heading.innerText = 'Select the reason for rejection'
@@ -1703,7 +1722,7 @@ btn.innerHTML = 'my text'; #}
             setReasons(target)
             document.getElementById('modal_create').click()
         } else {
-            heading.innerText = 'Select the reason for rejection'
+            heading.innerText = 'Information about this approved verification'
             document.getElementById('rejection-reasons').style.display = 'none'
         }
     }

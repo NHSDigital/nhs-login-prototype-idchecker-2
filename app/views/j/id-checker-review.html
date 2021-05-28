@@ -1688,7 +1688,7 @@ btn.innerHTML = 'my text'; #}
 
         var buttonType = object.text
 
-        if (buttonType === 'Decline') {
+        if (buttonType === 'Reject') {
             console.log(target)
             if (target === 'decline-5') {
                 heading.innerText = 'Select the reason for rejection'
@@ -1703,7 +1703,7 @@ btn.innerHTML = 'my text'; #}
             setReasons(target)
             document.getElementById('modal_create').click()
         } else {
-            heading.innerText = 'Select the reason for rejection'
+            heading.innerText = 'Information about this approved verification'
             document.getElementById('rejection-reasons').style.display = 'none'
         }
     }
