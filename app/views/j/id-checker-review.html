@@ -1114,10 +1114,10 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <a href="dashboard"
                            data-target="modal" id="declineBtn" class="nhsuk-button button--decline nhsuk-u-margin-top-3" style="display: none;">Decline</a>
                     </div>
-<!--                    <div id="id-canttell">-->
-<!--                        <a href="dashboard"-->
-<!--                           data-target="modal" id="canttellBtn" class="nhsuk-button button&#45;&#45;decline&#45;&#45;clarity" style="display: none;">Decline</a>-->
-<!--                    </div>-->
+                    <div id="id-canttell">
+                        <a href="dashboard"
+                           data-target="modal" id="canttellBtn" class="nhsuk-button button&#45;&#45;decline&#45;&#45;clarity" style="display: none;">Decline</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1129,27 +1129,8 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     <div id="slideout_inner" data-status="closed">
         <form action="holding" method="POST" role="form">
             <h3>Move to holding list</h3>
-            <div class="nhsuk-form-group">
-  <label class="nhsuk-label" for="select-1">
-    Reason for moving
-  </label>
-  <select class="nhsuk-select" id="select-1" name="select-1" style="margin-top: 8px;">
-    <option value="1">Potential fraud</option>
-    <option value="2" >Potential safeguarding</option>
-    <option value="3" >No document example</option>
-    <option value="4" >Potential PDS duplicate</option>
-    <option value="5" >Potential PDS confusion</option>
-    <option value="6" >PDS Review - spelling mistake/1 letter difference</option>
-    <option value="7" >PDS Review - shortened name/ nickname</option>
-    <option value="8" >PDS Review - names switched</option>
-    <option value="9" >PDS Review - names missing</option>
-    <option value="10" >System issue</option>
-    <option value="11" >Automation issue</option>
-    <option value="12" >Other</option>
-  </select>
-</div>
-            <label class="nhsuk-label" for="field6">Description</label>
-            <textarea class="" id="field6" name="field6" type="text" rows="3" style="margin-top: 8px;" onkeyup='checkText(this.value);'></textarea>
+            <label class="" for="field6">Reason for moving (required)</label>
+            <textarea class="" id="field6" name="field6" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
             <button class="nhsuk-button nhsuk-button--reverse" id="id-holding">Move</button>
         </form>
     </div>
@@ -1231,10 +1212,10 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <div class="nhsuk-grid-row">
                             <div class="nhsuk-grid-column-two-thirds">
-<!--                                <div class="idcheck-image" style="margin-top:0;">-->
-<!--                                    <img src="/images/passport_redacted.jpg" class="idcheck-image-img" style="width: 100%;"-->
-<!--                                         alt="Image of a passport"/>-->
-<!--                                </div>-->
+                                <div class="idcheck-image" style="margin-top:0;">
+                                    <img src="/images/passport_redacted.jpg" class="idcheck-image-img" style="width: 100%;"
+                                         alt="Image of a passport"/>
+                                </div>
 
                                 <div class="idcheck-image-container panzoom-parent">
 
@@ -1360,14 +1341,28 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         </select>
 
 
-                        <select id="decline-1" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
-                            <option value="IDC-023" data-question="">--- Please select ---</option>
+                        <label id="decline-1" class="nhsuk-label decline-group" for="field3"></h2>
+                            <span class="nhsuk-hint">Tell us if:<br>
+                            <ul>
+                            <li>anything is covered up, and how</li>
+                            <li>anything is cut off</li>
+                            <li>there is glare</li>
+                            <li>there is blur</li>
+                            <li>it's too light</li>
+                            <li>it's too dark</li>
+                            <li>anything else is making it difficult for you to see the information clearly</li>
+                            </ul>
+                            </span>
+
+                        <!-- <select id="decline-1" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
+                            {# <option value="IDC-023" data-question="">--- Please select ---</option> #}
                             {# <option value="IDC-024" data-question="none">User has not sent any ID at all</option> #}
                             {# <option value="IDC-025" data-question="none">It is not a type of ID we accept</option> #}
-                            <option value="IDC-026" data-question="decline-text-1">Driving licence - cannot see everything clearly</option>
-                            <option value="IDC-027" data-question="decline-text-1">Passport - cannot see everything clearly</option>
-                            <option value="IDC-028" data-question="decline-text-1">National identity card - cannot see everything clearly</option>
-                        </select>
+                            {# <option value="IDC-026" data-question="decline-text-1">Cannot see everything clearly</option> #}
+                            {# <option value="IDC-027" data-question="decline-text-1">Passport - cannot see everything clearly</option> #}
+                            {# <option value="IDC-028" data-question="decline-text-1">National identity card - cannot see everything clearly</option> #}
+                        </select> -->
+
 
                         <select id="decline-2" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-030" data-question="">--- Please select ---</option>
@@ -1442,7 +1437,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 <div class="nhsuk-form-group" id="rejection-text" style="display:none;">
 
                     <div id="decline-text-1" style="display:none;">
-                        <label class="nhsuk-label" for="field3">Which part of the ID is affected, and how? (required)</label>
+{#                         <label class="nhsuk-label" for="field3">Which part of the ID is affected, and how? (required)</label>
                             <span class="nhsuk-hint">Tell us if:<br>
                             <ul>
                             <li>anything is covered up, and how</li>
@@ -1453,7 +1448,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <li>it's too dark</li>
                             <li>anything else is making it difficult for you to see the information clearly</li>
                             </ul>
-                            </span>
+                            </span> #}
                     </div>
                     <div id="decline-text-2a" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
@@ -1707,12 +1702,14 @@ btn.innerHTML = 'my text'; #}
 
         var buttonType = object.text
 
-        if (buttonType === 'Reject') {
+        if (buttonType === 'Decline') {
             console.log(target)
             if (target === 'decline-5') {
                 heading.innerText = 'Select the reason for rejection'
             } else if (target === 'decline-0') {
                 heading.innerText = 'Select the reason for rejection'
+            } else if (target === 'decline-1') {
+                heading.innerText = 'Which part of the ID is affected, and how?'
             } else if (target === 'decline-7') {
                 heading.innerText = 'Select the reason for rejection'
             } else {
