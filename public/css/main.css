@@ -7270,8 +7270,7 @@ details.dev-mode summary, details.dev-mode ol {
   color: white; }
 
 #slideout-sendback_inner button {
-  padding: 0 24px;
-  margin: 12px 0; }
+  margin: 20px 0; }
 
 #slideout-sendback.active,
 #slideout-sendback[data-status="open"] {
@@ -7495,7 +7494,7 @@ strong.nhsuk-tag.unopened {
   font: small-caption;
   font-variant-caps: all-small-caps;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 16px;
   color: white; }
 
 strong.nhsuk-tag.with-checker {
@@ -7506,7 +7505,7 @@ strong.nhsuk-tag.with-checker {
   font: small-caption;
   font-variant-caps: all-small-caps;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 16px;
   color: white; }
 
 strong.nhsuk-tag.with-me {
@@ -7517,7 +7516,7 @@ strong.nhsuk-tag.with-me {
   font: small-caption;
   font-variant-caps: all-small-caps;
   font-weight: 600;
-  font-size: 22px;
+  font-size: 16px;
   color: black; }
 
 .move {
