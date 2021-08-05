@@ -496,7 +496,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                     {% else %}
 
                     <div class="qa-questions-group" data-complete="false">
-                        <div class="qa-questions-question" id="trace-1" data-answered="false" data-group="decline-4a">
+                        <div class="qa-questions-question" id="trace-1" data-answered="false" data-group="decline-0">
 
                             <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4">
 
@@ -537,7 +537,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                     </div>
 
 
-                    <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="nhs-yes" data-group="decline-4a">
+                    <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="nhs-yes" data-group="decline-0">
 
                         <div class="nhsuk-form-group">
                             <label class="nhsuk-label" for="nhs_number">
@@ -731,7 +731,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                             <div class="qa-questions-question-text nhsuk-u-padding-bottom-2">
                                 <legend class="nhsuk-fieldset__legend nhsuk-fieldset__legend--m">
                                     <h3 class="nhsuk-fieldset__heading">
-                                        Do the first names match?
+                                        Do the first and middle names match?
                                     </h3>
                                 </legend>
                             </div>
@@ -1346,7 +1346,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                     <div id="rejection-reasons">
 
-                        <select id="decline-0" class="govuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
+                        <select id="decline-0" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-010" data-question="">--- Please select ---</option>
 
                             <option value="IDC-011" data-question="decline-text-2a">No record found</option>
@@ -1360,7 +1360,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         </select>
 
 
-                        <label id="decline-1" class="nhsuk-label decline-group" for="field3"></h2>
+                        {# <label id="decline-1" class="nhsuk-label decline-group" for="field3"></h2>
                             <span class="nhsuk-hint">Tell us if:<br>
                             <ul>
                             <li>anything is covered up, and how</li>
@@ -1371,7 +1371,8 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <li>it's too dark</li>
                             <li>anything else is making it difficult for you to see the information clearly</li>
                             </ul>
-                            </span>
+                            </span> #}
+                        
 
                         <!-- <select id="decline-1" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             {# <option value="IDC-023" data-question="">--- Please select ---</option> #}
@@ -1404,23 +1405,32 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <select id="decline-4a" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15a">Driving licence - dates of birth do not match</option>
-                            <option value="IDC-051" data-question="decline-text-15a">Passport - dates of birth do not match</option>
-                            <option value="IDC-051" data-question="decline-text-15a">National identity card - dates of birth do not match</option>                            
+                            <option value="IDC-051" data-question="decline-text-15a">Date of birth does not match</option>
+                            <option value="IDC-052" data-question="decline-text-15a">No record found</option>
+                            <option value="IDC-053" data-question="decline-text-2b">Duplicate live records found</option>
+                            <option value="IDC-054" data-question="decline-text-2b">Confusion record</option>
+                            <option value="IDC-055" data-question="decline-text-15a">PDS issue with record</option>
+                            <option value="IDC-056" data-question="decline-text-15a">Postcodes do not match</option>                         
                         </select>
 
                         <select id="decline-4b" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
-                            <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15b">Driving licence - first names do not match</option>
-                            <option value="IDC-051" data-question="decline-text-15b">Passport - first names do not match</option>
-                            <option value="IDC-051" data-question="decline-text-15b">National identity card - first names do not match</option>
+                            <option value="IDC-060" data-question="">--- Please select ---</option>
+                            <option value="IDC-061" data-question="decline-text-15b">First or middle names do not match</option>
+                            <option value="IDC-062" data-question="decline-text-15b">No record found</option>
+                            <option value="IDC-063" data-question="decline-text-2b">Duplicate live records found</option>
+                            <option value="IDC-064" data-question="decline-text-2b">Confusion record</option>
+                            <option value="IDC-065" data-question="decline-text-15b">PDS issue with record</option>
+                            <option value="IDC-066" data-question="decline-text-15b">Postcodes do not match</option>  
                         </select>
 
                         <select id="decline-4c" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
-                            <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15c">Driving licence - last names do not match</option>
-                            <option value="IDC-054" data-question="decline-text-15c">Passport - last names do not match</option>
-                            <option value="IDC-057" data-question="decline-text-15c">National identity card - last names do not match</option>
+                            <option value="IDC-070" data-question="">--- Please select ---</option>
+                            <option value="IDC-071" data-question="decline-text-15c">Last names do not match</option>
+                            <option value="IDC-072" data-question="decline-text-15c">No record found</option>
+                            <option value="IDC-073" data-question="decline-text-2b">Duplicate live records found</option>
+                            <option value="IDC-074" data-question="decline-text-2b">Confusion record</option>
+                            <option value="IDC-075" data-question="decline-text-15c">PDS issue with record</option>
+                            <option value="IDC-076" data-question="decline-text-15c">Postcodes do not match</option>  
 
                         </select>
 
