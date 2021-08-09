@@ -214,7 +214,8 @@ $(document).ready(function () {
 $(".deletebutton").on('click', function() {
   var checked = jQuery('input:checkbox:checked').map(function () {
     return this.value;
-}).get();
-jQuery('input:checkbox:checked').parents("tr").remove();
+    }).get();
+  jQuery('input:checkbox:checked').parents("tr").remove();
+}
 
-});
+);
