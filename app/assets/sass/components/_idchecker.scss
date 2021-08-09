@@ -841,7 +841,7 @@ textarea {
 
 .modal-window {
   position: fixed;
-  background-color: rgba(255, 255, 255, 0.25);
+  background-color: rgba(0, 0, 0, 0.521);
   top: 0;
   right: 0;
   bottom: 0;
@@ -863,7 +863,7 @@ textarea {
     left: 50%;
     transform: translate(-50%, -50%);
     padding: 2em;
-    background: white;
+    background: rgb(255, 255, 255);
   }
   header {
     font-weight: bold;
@@ -893,17 +893,7 @@ textarea {
   Modal Overlay
 */
 .modal-overlay {
-  background:rgba(0,0,0,.8);
-  height: 100%;
-  left: 0;
-  display: flex;
-  overflow: auto;
-  padding: 1.5em;
-  position: fixed;
-  top: 0;
-  transition: opacity .2s;
-  width: 100%;
-  z-index: -1;
+ 
 
   &.no-fade {
     background:transparent;

@@ -2,7 +2,7 @@
   Modal Overlay
 */
 .modal-overlay {
-  background:rgba(0,0,0,.8);
+  background: rgba(255, 255, 255, 0.25);
   height: 100%;
   left: 0;
   display: flex;
@@ -59,7 +59,7 @@
   }
 
   .no-fade & {
-    box-shadow: rgba(black, 0.5) 2px 1px 5px;
+    box-shadow: rgba(0, 0, 0, 0.5) 2px 1px 5px;
   }
 }
 
