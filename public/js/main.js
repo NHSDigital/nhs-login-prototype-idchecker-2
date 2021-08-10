@@ -185,8 +185,13 @@ $(".deletebutton").on('click', function () {
     return this.value;
   }).get();
   jQuery('input:checkbox:checked').parents("tr").remove();
-}); // move to hold list notification
+}); // re-assign notification
 
-$("#submitForm").click(function () {
-  alert("The Form has been Submitted.");
+$(document).ready(function () {
+  $("#hide").click(function () {
+    $("p").hide();
+  });
+  $("#show").click(function () {
+    $("p").show();
+  });
 });

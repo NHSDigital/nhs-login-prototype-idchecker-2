@@ -6910,6 +6910,9 @@ textarea[disabled] {
 .btn-close:focus {
   outline: 1px dotted; }
 
+.noti {
+  display: none; }
+
 /*
   Modal Overlay
 */
