@@ -14,12 +14,16 @@
 
 <h1 class="nhsuk-heading-l">Holding list</h1>
 
+<div>
+ <section class="notification animation" id="notification">
+        <h6>Item added to basket</h6>
+        <a href="#">VIEW</a>
+    </section>
+</div>
 
-
-<p>If you click on the "Hide" button, I will disappear.</p>
-
-<button id="hide">Hide</button>
-<button id="show">Show</button>
+<div id="myDIV" class="alert" style="display: none">
+  This is my DIV element.
+</div>
 
 
 <div id="slideout-sendback"  style="text-align: left" data-status="closed">
@@ -28,7 +32,9 @@
             <h3>Send back to main</h3>
             <label class="" for="field6">Are you sure you want to move <b>[XX]</b> records?</label>
             <div>
-            <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div>
+            {# <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" onclick="myFunction() id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div> #}
+            <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" onclick="myFunction()">Yes, move these records</button>
+
     </div>
 </div>
 

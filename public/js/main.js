@@ -187,11 +187,21 @@ $(".deletebutton").on('click', function () {
   jQuery('input:checkbox:checked').parents("tr").remove();
 }); // re-assign notification
 
-$(document).ready(function () {
-  $("#hide").click(function () {
-    $("p").hide();
-  });
-  $("#show").click(function () {
-    $("p").show();
-  });
+function myFunction() {
+  var x = document.getElementById("myDIV");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+; //snazzy notfication
+
+$('.close').on('click', function () {
+  $(this).parent('.alert').hide();
+});
+$('.reset').on('click', function () {
+  $('.alert').show();
 });
