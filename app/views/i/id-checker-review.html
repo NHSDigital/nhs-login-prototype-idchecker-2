@@ -769,7 +769,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                             <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-0">
 
-                                <p style="">Run a PDS search. Having checked PDS, does the record look ok?</p>
+                                <p style="">Run a PDS search. Having done your PDS checks, does the record look ok?</p>
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
@@ -1350,7 +1350,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <option value="IDC-010" data-question="">--- Please select ---</option>
 
                             <option value="IDC-011" data-question="decline-text-2a">No record found</option>
-                            <option value="IDC-012" data-question="decline-text-2b">Duplicate live records found</option>
+                            {# <option value="IDC-012" data-question="decline-text-2b">Duplicate live records found</option> #}
                             <option value="IDC-013" data-question="decline-text-2b">Confusion record</option>
                             <option value="IDC-014" data-question="decline-text-2a">PDS issue with record</option>
                             <option value="IDC-015" data-question="decline-text-2a">Date of birth does not match</option>
@@ -1374,14 +1374,14 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             </span> #}
                         
 
-                        <!-- <select id="decline-1" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
-                            {# <option value="IDC-023" data-question="">--- Please select ---</option> #}
-                            {# <option value="IDC-024" data-question="none">User has not sent any ID at all</option> #}
-                            {# <option value="IDC-025" data-question="none">It is not a type of ID we accept</option> #}
-                            {# <option value="IDC-026" data-question="decline-text-1">Cannot see everything clearly</option> #}
-                            {# <option value="IDC-027" data-question="decline-text-1">Passport - cannot see everything clearly</option> #}
-                            {# <option value="IDC-028" data-question="decline-text-1">National identity card - cannot see everything clearly</option> #}
-                        </select> -->
+                         <select id="decline-1" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
+                            <option value="IDC-023" data-question="">--- Please select ---</option> 
+                            <option value="IDC-024" data-question="none">User has not sent any ID at all</option>
+                            <option value="IDC-025" data-question="none">It is not a type of ID we accept</option> 
+                            <option value="IDC-026" data-question="decline-text-1">Cannot see everything clearly</option> 
+                            <option value="IDC-027" data-question="decline-text-1">Passport - cannot see everything clearly</option> 
+                            <option value="IDC-028" data-question="decline-text-1">National identity card - cannot see everything clearly</option> 
+                        </select>
 
 
                         <select id="decline-2" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
@@ -1405,19 +1405,14 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <select id="decline-4a" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15a">Date of birth does not match</option>
-                            <option value="IDC-052" data-question="decline-text-15a">No record found</option>
-                            <option value="IDC-053" data-question="decline-text-2b">Duplicate live records found</option>
-                            <option value="IDC-054" data-question="decline-text-2b">Confusion record</option>
-                            <option value="IDC-055" data-question="decline-text-15a">PDS issue with record</option>
-                            <option value="IDC-056" data-question="decline-text-15a">Postcodes do not match</option>                         
-                        </select>
+                            <option value="IDC-051" data-question="decline-text-15a">Driving licence - dates of birth do not match</option>
+                            <option value="IDC-051" data-question="decline-text-15a">Passport - dates of birth do not match</option>
+                            <option value="IDC-051" data-question="decline-text-15a">National identity card - dates of birth do not match</option>                           </select>
 
                         <select id="decline-4b" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-060" data-question="">--- Please select ---</option>
                             <option value="IDC-061" data-question="decline-text-15b">First or middle names do not match</option>
-                            <option value="IDC-062" data-question="decline-text-15b">No record found</option>
-                            <option value="IDC-063" data-question="decline-text-2b">Duplicate live records found</option>
+                            {# <option value="IDC-063" data-question="decline-text-2b">Duplicate live records found</option> #}
                             <option value="IDC-064" data-question="decline-text-2b">Confusion record</option>
                             <option value="IDC-065" data-question="decline-text-15b">PDS issue with record</option>
                             <option value="IDC-066" data-question="decline-text-15b">Postcodes do not match</option>  
@@ -1426,8 +1421,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         <select id="decline-4c" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-070" data-question="">--- Please select ---</option>
                             <option value="IDC-071" data-question="decline-text-15c">Last names do not match</option>
-                            <option value="IDC-072" data-question="decline-text-15c">No record found</option>
-                            <option value="IDC-073" data-question="decline-text-2b">Duplicate live records found</option>
+                            {# <option value="IDC-073" data-question="decline-text-2b">Duplicate live records found</option> #}
                             <option value="IDC-074" data-question="decline-text-2b">Confusion record</option>
                             <option value="IDC-075" data-question="decline-text-15c">PDS issue with record</option>
                             <option value="IDC-076" data-question="decline-text-15c">Postcodes do not match</option>  
@@ -1466,7 +1460,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 <div class="nhsuk-form-group" id="rejection-text" style="display:none;">
 
                     <div id="decline-text-1" style="display:none;">
-{#                         <label class="nhsuk-label" for="field3">Which part of the ID is affected, and how? (required)</label>
+                         <label class="nhsuk-label" for="field3">Which part of the ID is affected, and how? (required)</label>
                             <span class="nhsuk-hint">Tell us if:<br>
                             <ul>
                             <li>anything is covered up, and how</li>
@@ -1477,7 +1471,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <li>it's too dark</li>
                             <li>anything else is making it difficult for you to see the information clearly</li>
                             </ul>
-                            </span> #}
+                            </span>
                     </div>
                     <div id="decline-text-2a" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
