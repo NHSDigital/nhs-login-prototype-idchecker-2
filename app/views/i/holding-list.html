@@ -14,20 +14,6 @@
 
 <h1 class="nhsuk-heading-l">Holding list</h1>
 
-{# <div>
- <section class="notification animation" id="notification">
-        <p>XXX records have been moved to the main queue</p>
-        <a href="#">VIEW</a>
-    </section>
-</div> #}
-
-<div id="myDIV" style="display: none">
-    <section class="notification animation" id="notification">
-        <p style="padding-top: 20px">XXX records have been moved to the main queue.</p>
-        <a href="#">VIEW</a>
-    </section>
-</div>
-
 
 <div id="slideout-sendback"  style="text-align: left" data-status="closed">
     <img src="/images/sendbacktomain.png" alt="Feedback" height="36" width="181" id="slideout-sendback__button"/>
@@ -298,6 +284,13 @@
    </tbody>
 </table>
 
+<div class="notification">
+    <div class="notification_message" id="myDIV" style="display: none">
+        <section class="notification animation" id="notification">
+            <p style="padding-top: 20px">XXX records have been moved to the main queue.</p>
+        </section>
+    </div>
+</div>
 
 
 <script type="text/javascript">

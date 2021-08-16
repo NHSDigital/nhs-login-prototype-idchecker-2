@@ -1033,9 +1033,14 @@ body {
 /* ------------- */
 /* Content Style */
 /* ------------- */
-
 .notification {
-    position: relative;
+  position: relative;
+}
+
+.notification_message {
+    position:absolute;
+    bottom:0;
+    right:0;
     display: flex;
     justify-content: space-between;
     align-items: center;
