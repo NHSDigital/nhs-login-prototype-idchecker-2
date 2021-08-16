@@ -6946,30 +6946,31 @@ body {
 /* ------------- */
 /* Content Style */
 /* ------------- */
-.notification {
-  position: relative; }
+.notification_position {
+  top: -125px; }
 
-.notification_message {
-  position: absolute;
-  bottom: 0;
-  right: 0;
+.notification {
+  position: relative;
   display: flex;
+  float: right;
   justify-content: space-between;
   align-items: center;
   width: 600px;
-  height: 50px;
+  height: 90px;
   margin: 30px;
   padding: 0 30px;
   background-color: #ffffff;
-  border-radius: 0px;
-  font-weight: 400; }
+  border: 2px solid #747373;
+  background-color: #fff;
+  font-weight: 400;
+  box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px; }
 
 .notification a {
   text-decoration: none;
   color: #ffffffee;
   font-weight: 700;
   letter-spacing: .5px;
-  padding-top: 20px;
+  padding-top: 30px;
   transition: 300ms; }
 
 .notification a:hover {
@@ -6999,6 +7000,17 @@ body {
     opacity: 1; }
   100% {
     opacity: 0; } }
+
+/* --------- */
+/* Close button */
+/* --------- */
+.noti-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  margin-right: 10px;
+  padding: 5px; }
 
 /*
   Modal Overlay
