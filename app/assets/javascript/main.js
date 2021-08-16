@@ -227,7 +227,7 @@ function myFunction() {
   }
 };
 
-// snazzy notfication
+//snazzy notfication
 $('.close').on('click', function() {
   $(this).parent('.alert').hide();
 });
