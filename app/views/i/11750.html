@@ -13,12 +13,9 @@
 
 <h1 class="nhsuk-heading-l">Holding list</h1>
 
-<div id="myDIV" style="display: none">
-    <section class="notification animation" id="notification">
-        <p style="padding-top: 20px">XXX records have been moved to the main queue.</p>
-        <a href="#">VIEW</a>
-    </section>
-</div>
+
+
+
 
 
 <div id="slideout-sendback"  style="text-align: left" data-status="closed">
@@ -181,6 +178,13 @@
       </tr>
    </tbody>
 </table>
+
+    <div id="myDIV" style="display: none">
+        <section class="notification animation" id="notification">
+        <p class="noti-close"  id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+            <p style="padding-top: 20px"> <strong> [XX]</strong> records have been moved to the main queue.</p>
+        </section>
+    </div>
 
 
 
