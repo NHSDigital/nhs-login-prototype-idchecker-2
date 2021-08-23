@@ -217,6 +217,23 @@ addSlideoutListener()
         }
     }
 
+
+    function addSlideoutListener() {
+        if (document.getElementById('slideout-sendback__button')) {
+            var selects = document.getElementById('slideout-sendback__button')
+            selects.addEventListener('click', function (event) {
+                if (document.getElementById('slideout-sendback').getAttribute('data-status') === 'closed') {
+                    console.log('slideout-sendback')
+                    document.getElementById('slideout-sendback').setAttribute('data-status', 'open')
+                    document.getElementById('slideout-sendback_inner').setAttribute('data-status', 'open')
+                } else {
+                    document.getElementById('slideout-sendback').setAttribute('data-status', 'closed')
+                    document.getElementById('slideout-sendback_inner').setAttribute('data-status', 'closed')
+                }
+            })
+        }
+    }
+
 </script>
 
 

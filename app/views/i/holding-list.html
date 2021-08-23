@@ -20,10 +20,10 @@
     <div id="slideout-sendback_inner" data-status="closed">
             <h3>Send back to main</h3>
             <label class="" for="field6">Are you sure you want to move <b>[XX]</b> records?</label>
-            <div>
             {# <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" onclick="myFunction() id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div> #}
-            <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
-
+    <div id="slideout-sendback__button2">
+    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
+    </div>
     </div>
 </div>
 
@@ -127,7 +127,7 @@
                                 </datalist>
                                 <br>
                                 <br>
-                                <button class="nhsuk-button nhsuk-button--ers">Confirm</button> 
+                                <a href="#" onclick="myFunction()"><button class="nhsuk-button nhsuk-button--ers">Confirm</button></a> 
 
             
                         </div>
@@ -310,6 +310,33 @@ addSlideoutListener()
     function addSlideoutListener() {
         if (document.getElementById('slideout-sendback__button')) {
             var selects = document.getElementById('slideout-sendback__button')
+            selects.addEventListener('click', function (event) {
+                if (document.getElementById('slideout-sendback').getAttribute('data-status') === 'closed') {
+                    console.log('slideout-sendback')
+                    document.getElementById('slideout-sendback').setAttribute('data-status', 'open')
+                    document.getElementById('slideout-sendback_inner').setAttribute('data-status', 'open')
+                } else {
+                    document.getElementById('slideout-sendback').setAttribute('data-status', 'closed')
+                    document.getElementById('slideout-sendback_inner').setAttribute('data-status', 'closed')
+                }
+            })
+        }
+    }
+
+addSlideoutListener2()
+
+    setTimeout(function () {
+        document.getElementById('slideout-sendback-value_tab_spinner').style.display = 'none'
+    }, 4000)
+
+    setTimeout(function () {
+        document.getElementById('slideout-sendback-value_tab_value').style.display = 'block'
+    }, 4000)
+
+
+    function addSlideoutListener2() {
+        if (document.getElementById('slideout-sendback__button2')) {
+            var selects = document.getElementById('slideout-sendback__button2')
             selects.addEventListener('click', function (event) {
                 if (document.getElementById('slideout-sendback').getAttribute('data-status') === 'closed') {
                     console.log('slideout-sendback')
