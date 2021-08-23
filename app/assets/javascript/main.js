@@ -235,3 +235,13 @@ $('.close').on('click', function() {
 $('.reset').on('click', function() {
   $('.alert').show();
 });
+
+// error notification
+function myFunctionError() {
+  var x = document.getElementById("myDIVerror");
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+};

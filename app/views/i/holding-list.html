@@ -23,6 +23,8 @@
             {# <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" onclick="myFunction() id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div> #}
     <div id="slideout-sendback__button2">
     <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
+    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling" data-status="closed" onclick="myFunctionError()">Dev-mode Error</button>
+
     </div>
     </div>
 </div>
@@ -289,6 +291,14 @@
         <section class="notification animation" id="notification">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
             <p style="padding-top: 20px"> <strong> [XX]</strong> records have been moved to the main queue.</p>
+        </section>
+    </div>
+
+
+    <div id="myDIVerror" style="display: none">
+        <section class="notification_error animation" id="notification_errror">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+            <p style="padding-top: 20px; color: red"> <strong> An error occurred.</strong> These records have not been moved </p>
         </section>
     </div>
 
