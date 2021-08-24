@@ -232,7 +232,7 @@
       </tr>
 
 
-      <tr data-row-id="5">
+      {# <tr data-row-id="5">
  <td><div class="checkbox table-checkbox">
             <div class="nhsuk-checkboxes__item block-label selection-button-checkbox nhsuk-checkboxes--small">
               <input class="nhsuk-checkboxes__input individual sub_chk" type="checkbox" data-id="5" id="organisation" name="ck1" type="checkbox" value="ck1">
@@ -277,7 +277,7 @@
                             </div>
                         </div>
             </td>
-      </tr>
+      </tr> #}
 
 
       
@@ -288,7 +288,7 @@
 </table>
 
     <div id="myDIV" style="display: none">
-        <section class="notification animation" id="notification">
+        <section class="notification animateOpen" id="notification">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
             <p style="padding-top: 20px"> <strong> [XX]</strong> records have been moved to the main queue.</p>
         </section>
@@ -296,9 +296,9 @@
 
 
     <div id="myDIVerror" style="display: none">
-        <section class="notification_error animation" id="notification_errror">
+        <section class="notification_error animateOpen" id="notification_errror">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-            <p style="padding-top: 20px; color: red"> <strong> An error occurred.</strong> These records have not been moved. </p>
+            <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> These records have not been moved. </p>
         </section>
     </div>
 
