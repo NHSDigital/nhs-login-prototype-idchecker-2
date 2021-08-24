@@ -22,8 +22,8 @@
             <label class="" for="field6">Are you sure you want to move <b>[XX]</b> records?</label>
             {# <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" onclick="myFunction() id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div> #}
     <div id="slideout-sendback__button2">
-    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
-    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling" data-status="closed" onclick="myFunctionError()">Dev-mode Error</button>
+    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunctionError()">Yes, move these records</button>
+    {# <button class="nhsuk-button--reverse nhsuk-button--ers movestyling" data-status="closed" onclick="myFunctionError()">Dev-mode Error</button> #}
 
     </div>
     </div>
@@ -104,34 +104,32 @@
             <td> Potential fraud <br> Auto uplift, doc issue</td>
             <td> 
                     <div class="container">
-                        <div class="interior">
-                            <a class="btn" href="#open-modal">Re-assign</a>
-                        </div>
-                    </div>
+                     <a class="btn" href="#open-modal">Re-assign</a>
+                     </div>
+                                <div id="open-modal" class="modal-window"><div>
+                                    <a href="#" title="Close" class="modal-close">Close</a>
+                                        <h1>Re-assign record</h1>
+                                        <p>Start typing to search for an ID checker. </p>
+                                        <input list="checkers" class="nhsuk-select" name="checker" id="checker">
+                                        <datalist id="checkers">
+                                                <option value="Gareth Sheard">Gareth Sheard</option>
+                                                <option value="Charlotte Wilson">Charlotte Wilson</option>
+                                                <option value="Ben Jones">Ben Jones</option>
+                                                <option value="Joseph Mitchell">Joseph Mitchell</option>
+                                                <option value="Cherlize Mayans">Cherlize Mayans</option>
+                                                <option value="Tommy Fleetwood">Tommy Fleetwood</option>
+                                                <option value="Bruce Willis">Bruce Willis</option>
+                                                <option value="Craig Hinchcliffe">Craig Hinchcliffe</option>
+                                                <option value="Alec Whitworth">Alec Whitworth</option>
+                                                <option value="James Chappel">James Chappel</option>
+                                                <option value="Maria Walker">Maria Walker</option>
+                                                <option value="Gabby Logan">Gabby Logan</option>
+                                        </datalist>
+                                        <br>
+                                        <br>
+                                        <a href="#" onclick="myFunctionAssignError()"><button class="nhsuk-button nhsuk-button--ers">Confirm</button></a> 
 
-                         <div id="open-modal" class="modal-window"><div>
-                            <a href="#" title="Close" class="modal-close">Close</a>
-                                <h1>Re-assign to:</h1>
-                                <input list="checkers" class="nhsuk-select" name="checker" id="checker">
-                                <datalist id="checkers">
-                                        <option value="Gareth Sheard">Gareth Sheard</option>
-                                        <option value="Charlotte Wilson">Charlotte Wilson</option>
-                                        <option value="Ben Jones">Ben Jones</option>
-                                        <option value="Joseph Mitchell">Joseph Mitchell</option>
-                                        <option value="Cherlize Mayans">Cherlize Mayans</option>
-                                        <option value="Tommy Fleetwood">Tommy Fleetwood</option>
-                                        <option value="Bruce Willis">Bruce Willis</option>
-                                        <option value="Craig Hinchcliffe">Craig Hinchcliffe</option>
-                                        <option value="Alec Whitworth">Alec Whitworth</option>
-                                        <option value="James Chappel">James Chappel</option>
-                                        <option value="Maria Walker">Maria Walker</option>
-                                        <option value="Gabby Logan">Gabby Logan</option>
-                                </datalist>
-                                <br>
-                                <br>
-                                <a href="#" onclick="myFunction()"><button class="nhsuk-button nhsuk-button--ers">Confirm</button></a> 
-
-            
+                    
                         </div>
             </td>
  </tr>
@@ -288,20 +286,38 @@
 </table>
 
     <div id="myDIV" style="display: none">
-        <section class="notification animateOpen" id="notification">
+        <section class="notification animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-            <p style="padding-top: 20px"> <strong> [XX]</strong> records have been moved to the main queue.</p>
+                                <img src="/images/tick.png" height="45" width="45" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px"> <strong> Records moved</strong> <br> [XX] records have been moved. </p>
         </section>
     </div>
-
 
     <div id="myDIVerror" style="display: none">
-        <section class="notification_error animateOpen" id="notification_errror">
+        <section class="notification_error animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-            <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> These records have not been moved. </p>
+                                <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> These records have not been moved. </p>
         </section>
     </div>
 
+   <div id="myDIVassign" style="display: none">
+        <section class="notification_assign animateOpen">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+                                <img src="/images/tick.png" height="45" width="45" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px"> <strong> Record reassigned</strong> <br> This record has been reassigned to [Xxxx]. </p>
+
+        </section>
+    </div>
+
+       <div id="myDIVassignerror" style="display: none">
+        <section class="notification_assign_error animateOpen">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+                                <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> This record has not been reassigned. </p>
+
+        </section>
+    </div>
 
 
 <script type="text/javascript">

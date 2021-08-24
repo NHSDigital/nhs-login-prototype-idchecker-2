@@ -6952,7 +6952,6 @@ body {
   position: relative;
   display: flex;
   float: right;
-  justify-content: space-between;
   align-items: center;
   width: 600px;
   bottom: 150px;
@@ -7039,7 +7038,170 @@ body {
   position: relative;
   display: flex;
   float: right;
-  justify-content: space-between;
+  align-items: center;
+  width: 600px;
+  bottom: 150px;
+  left: 350px;
+  height: 90px;
+  margin: 30px;
+  padding: 0 30px;
+  border: 3px solid #ff0000;
+  background-color: #fff;
+  font-weight: 400;
+  box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px; }
+
+.notification a {
+  text-decoration: none;
+  color: #ffffffee;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding-top: 30px;
+  transition: 300ms; }
+
+.notification a:hover {
+  color: #ffffffaa; }
+
+/* --------- */
+/* Animation */
+/* --------- */
+.animateOpen {
+  -webkit-animation: moveOpen 6s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards; }
+
+/* Safari and Chrome */
+@-webkit-keyframes moveOpen {
+  from {
+    -webkit-transform: translate(0, 500px); }
+  10% {
+    -webkit-transform: translate(0, 20px); }
+  12% {
+    -webkit-transform: translate(0, 23px); }
+  16% {
+    -webkit-transform: translate(0, 20px); }
+  80% {
+    -webkit-transform: translate(0, 20px); }
+  85% {
+    -webkit-transform: translate(0, 25px); }
+  to {
+    -webkit-transform: translate(0, 500px); } }
+
+/* --------- */
+/* Close button */
+/* --------- */
+.noti-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  margin-right: 10px;
+  padding: 5px; }
+
+.myDIVreassign {
+  width: 100%;
+  padding: 0px 0;
+  text-align: center;
+  margin-top: 20px; }
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: 1.5;
+  scroll-behavior: smooth; }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
+
+/* ------------- */
+/* Content Style */
+/* ------------- */
+.notification_assign {
+  position: relative;
+  display: flex;
+  float: right;
+  align-items: center;
+  width: 600px;
+  bottom: 150px;
+  left: 350px;
+  height: 90px;
+  margin: 30px;
+  padding: 0 30px;
+  border: 3px solid #212b32;
+  background-color: #fff;
+  font-weight: 400;
+  box-shadow: rgba(0, 0, 0, 0.274) 0px 5px 15px; }
+
+.notification a {
+  text-decoration: none;
+  color: #ffffffee;
+  font-weight: 700;
+  letter-spacing: .5px;
+  padding-top: 30px;
+  transition: 300ms; }
+
+.notification a:hover {
+  color: #ffffffaa; }
+
+/* --------- */
+/* Animation */
+/* --------- */
+.animateOpen {
+  -webkit-animation: moveOpen 6s;
+  -webkit-animation-iteration-count: 1;
+  -webkit-animation-fill-mode: forwards; }
+
+/* Safari and Chrome */
+@-webkit-keyframes moveOpen {
+  from {
+    -webkit-transform: translate(0, 500px); }
+  10% {
+    -webkit-transform: translate(0, 20px); }
+  12% {
+    -webkit-transform: translate(0, 23px); }
+  16% {
+    -webkit-transform: translate(0, 20px); }
+  80% {
+    -webkit-transform: translate(0, 20px); }
+  85% {
+    -webkit-transform: translate(0, 25px); }
+  to {
+    -webkit-transform: translate(0, 500px); } }
+
+/* --------- */
+/* Close button */
+/* --------- */
+.noti-close {
+  position: absolute;
+  top: 0;
+  right: 0;
+  margin: 5px;
+  margin-right: 10px;
+  padding: 5px; }
+
+.myDIVreassignerror {
+  width: 100%;
+  padding: 0px 0;
+  text-align: center;
+  margin-top: 20px; }
+
+html,
+body {
+  box-sizing: border-box;
+  font-size: 1em;
+  line-height: 1.5;
+  scroll-behavior: smooth; }
+
+*, *::before, *::after {
+  box-sizing: inherit; }
+
+/* ------------- */
+/* Content Style */
+/* ------------- */
+.notification_assign_error {
+  position: relative;
+  display: flex;
+  float: right;
   align-items: center;
   width: 600px;
   bottom: 150px;

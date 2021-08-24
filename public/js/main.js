@@ -185,7 +185,7 @@ $(".deletebutton").on('click', function () {
     return this.value;
   }).get();
   jQuery('input:checkbox:checked').parents("tr").remove();
-}); // re-assign notification
+}); // Move to hold notification
 
 function myFunction() {
   var x = document.getElementById("myDIV");
@@ -204,10 +204,34 @@ $('.close').on('click', function () {
 });
 $('.reset').on('click', function () {
   $('.alert').show();
-}); // error notification
+}); // Move to hold error notification
 
 function myFunctionError() {
   var x = document.getElementById("myDIVerror");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+; // re-assign notification
+
+function myFunctionAssign() {
+  var x = document.getElementById("myDIVassign");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+; // re-assign notification
+
+function myFunctionAssignError() {
+  var x = document.getElementById("myDIVassignerror");
 
   if (x.style.display === "none") {
     x.style.display = "block";
