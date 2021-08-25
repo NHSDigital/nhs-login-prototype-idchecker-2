@@ -265,3 +265,13 @@ function myFunctionAssignError() {
     x.style.display = "none";
   }
 };
+
+//show-hide reassign checkbox
+
+$('#checker').on('change', function () {
+  if(this.value === "Emily Lodge"){
+      $("#check").show();
+  } else {
+      $("check").show();
+  }
+});
