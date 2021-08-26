@@ -22,7 +22,7 @@
             <label class="" for="field6">Are you sure you want to move <b>[XX]</b> records?</label>
             {# <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" onclick="myFunction() id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div> #}
     <div id="slideout-sendback__button2">
-    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
+    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunctionError()">Yes, move these records</button>
     {# <button class="nhsuk-button--reverse nhsuk-button--ers movestyling" data-status="closed" onclick="myFunctionError()">Dev-mode Error</button> #}
 
     </div>
@@ -279,7 +279,7 @@
         <section class="notification_error animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
                                 <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> These records have not been moved. </p>
+                                <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> Some records have not been moved. Refresh the page and try again. </p>
         </section>
     </div>
 
