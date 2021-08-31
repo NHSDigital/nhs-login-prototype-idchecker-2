@@ -6956,7 +6956,7 @@ body {
   align-items: center;
   width: 600px;
   bottom: 150px;
-  left: 350px;
+  left: 100px;
   height: 90px;
   margin: 30px;
   padding: 0 30px;
@@ -7042,8 +7042,8 @@ body {
   align-items: center;
   width: 600px;
   bottom: 150px;
-  left: 350px;
-  height: 110px;
+  left: 100px;
+  height: 110xpx;
   margin: 30px;
   padding: 0 30px;
   border: 3px solid #ff0000;
@@ -7124,7 +7124,7 @@ body {
   align-items: center;
   width: 600px;
   bottom: 150px;
-  left: 350px;
+  left: 100px;
   height: 90px;
   margin: 30px;
   padding: 0 30px;
@@ -7206,7 +7206,7 @@ body {
   align-items: center;
   width: 600px;
   bottom: 150px;
-  left: 350px;
+  left: 100px;
   height: 90px;
   margin: 30px;
   padding: 0 30px;
