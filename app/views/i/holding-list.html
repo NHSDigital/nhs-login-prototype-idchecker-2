@@ -14,15 +14,22 @@
 
 <h1 class="nhsuk-heading-l">Holding list</h1>
 
+<!-- if no records are selected -->
+{# <div id="slideout-sendback"  style="text-align: left" data-status="closed">
+    <img src="/images/sendbacktomain.png" alt="Feedback" height="36" width="181" id="slideout-sendback__button"/>
+    <div id="slideout-sendback_inner" data-status="closed">
+            <label class="" for="field6">There are no records selected. Choose a record to get started.</label>
+    </div>
+</div> #}
 
+<!-- if records are selected -->
 <div id="slideout-sendback"  style="text-align: left" data-status="closed">
     <img src="/images/sendbacktomain.png" alt="Feedback" height="36" width="181" id="slideout-sendback__button"/>
     <div id="slideout-sendback_inner" data-status="closed">
             <h3>Send back to main</h3>
             <label class="" for="field6">Are you sure you want to move <b>[XX]</b> records?</label>
-            {# <button class="nhsuk-button--reverse nhsuk-button--ers deletebutton" onclick="myFunction() id="show" style="line-height:1.5; font-weight:800">Yes, move these records</button></div> #}
     <div id="slideout-sendback__button2">
-    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
+    <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunctionError()">Yes, move these records</button>
 
     </div>
     </div>
@@ -269,24 +276,24 @@
     <div id="myDIV" style="display: none">
         <section class="notification animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-                                <img src="/images/tick.png" height="45" width="45" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px"> <strong> Records moved</strong> <br> [XX] records have been moved. </p>
+                                <img src="/images/IDChecker-tick.svg" height="75" width="75" style="margin-right: 20px">
+                                <p style="padding-top: 20px"> <strong style="color:	#007f3b"> Records moved</strong> <br> <b>[XX]</b> records have been moved. </p>
         </section>
     </div>
 
     <div id="myDIVerror" style="display: none">
         <section class="notification_error animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-                                <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> Some records have not been moved. Refresh the page and try again. </p>
+                                <img src="/images/IDChecker-alert.svg" height="75" width="75" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px"> <strong style="color:	#d5281b">  An error occurred</strong> <br> Some records have not been moved. Refresh the page and try again. </p>
         </section>
     </div>
 
    <div id="myDIVassign" style="display: none">
         <section class="notification_assign animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-                                <img src="/images/tick.png" height="45" width="45" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px"> <strong> Record reassigned</strong> <br> This record has been reassigned to [Xxxx]. </p>
+                                <img src="/images/IDChecker-tick.svg" height="75" width="75" style="margin-right: 20px">
+                                <p style="padding-top: 20px"> <strong style="color:	#007f3b"> Record reassigned</strong> <br> This record has been reassigned to <b>[Xxxx]</b>. </p>
 
         </section>
     </div>
@@ -295,7 +302,7 @@
         <section class="notification_assign_error animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
                                 <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
-                                <p style="padding-top: 20px; color: red"> <strong> An error occurred</strong> <br> This record has not been reassigned. </p>
+                                <p style="padding-top: 20px"> <strong style="color:	#d5281b"> An error occurred</strong> <br> This record has not been reassigned. </p>
 
         </section>
     </div>

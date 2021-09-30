@@ -1421,9 +1421,10 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <select id="decline-4a" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15a">Driving licence - dates of birth do not match</option>
-                            <option value="IDC-051" data-question="decline-text-15a">Passport - dates of birth do not match</option>
-                            <option value="IDC-051" data-question="decline-text-15a">National identity card - dates of birth do not match</option>                           </select>
+                            <option value="IDC-051" data-question="decline-text-15a">Dates of birth do not match</option>
+                            <option value="IDC-051" data-question="decline-text-15a">Someone else is applying on their behalf</option>
+                            {# <option value="IDC-051" data-question="decline-text-15a">National identity card - dates of birth do not match</option> #}                           
+                        </select>
 
                         <select id="decline-4b" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-060" data-question="">--- Please select ---</option>
@@ -1488,13 +1489,17 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             <li>anything else is making it difficult for you to see the information clearly</li>
                             </ul>
                             </span>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
+                    
                     <div id="decline-text-2a" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-2b" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision, ensuring you include the ticket number. (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-3" style="display:none;">
@@ -1504,27 +1509,33 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                                 &#9679; in PDS<br>
                                 &#9679; in the photo ID<br>
                             </span>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-4a" style="display:none;">
                         <label class="nhsuk-label" for="field3">How did you identify that it's a fake? (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-4b" style="display:none;">
                         <label class="nhsuk-label" for="field3">What has been tampered with, and how? (required)</label>
-                    </div>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
+                   </div>
 
                     <div id="decline-text-6a" style="display:none;">
                         <label class="nhsuk-label" for="field3"></label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-6b" style="display:none;">
                         <label class="nhsuk-label" for="field3">What kind of ID is it? (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-7" style="display:none;">
                         <label class="nhsuk-label" for="field3">Which details do not match, and why? (required)</label>
-                    </div>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
+                   </div>
 
                     <div id="decline-text-8" style="display:none;">
                         <label class="nhsuk-label" for="field3">Why not? (required)</label>
@@ -1537,6 +1548,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             &#9679; it's too dark<br>
                             &#9679; anything else is making it difficult for you to see the information clearly<br>
                         </span>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
                     
                     <div id="decline-text-8a" style="display:none;">
@@ -1550,76 +1562,91 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             &#9679; it's too dark<br>
                             &#9679; anything else is making it difficult for you to see the information clearly<br>
                         </span>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-8b" style="display:none;">
                         <label class="nhsuk-label" for="field3">What can you see? (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-8c" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
 
                     <div id="decline-text-9" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain how the face is covered</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-10" style="display:none;">
                         <label class="nhsuk-label" for="field3">More information about why you think they do not match (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-11a" style="display:none;">
                         <label class="nhsuk-label" for="field3"></label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-11" style="display:none;">
                         <label class="nhsuk-label" for="field3">Why can't you see or hear the numbers clearly? (required)</label> {# this one needs updating - it doesn't mention see in live #}
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-12" style="display:none;">
                         <label class="nhsuk-label" for="field3">Which numbers do they miss? (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-13" style="display:none;">
                         <label class="nhsuk-label" for="field3">More information about why they were wrong (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-14" style="display:none;">
                         <label class="nhsuk-label" for="field3">What do they say? (required)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-14a" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-15" style="display:none;">
                         <label class="nhsuk-label" for="field3" style="display:none;"></label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-15a" style="display:none;">
-                        <label class="nhsuk-label" for="field3"></label>
+                        <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-15b" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
+
                     </div>
 
                     <div id="decline-text-15c" style="display:none;">
                         <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
                     <div id="decline-text-16" style="display:none;">
                         <label class="nhsuk-label" for="field3" style="display:block;">What is the 'other' reason?</label>
+                            <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
                     </div>
 
-                    <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3"
-                              style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
+
                 </div>
 
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
-                    <button class="nhsuk-button nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link"
-                       href="supervisor-dashboard" disabled="disabled">Submit</button>
+                    <button class="nhsuk-button nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link" href="supervisor-dashboard" disabled="disabled">Submit</button>
                     <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" id="modal_close">Cancel</a></p>
                 </div>
             </form>
