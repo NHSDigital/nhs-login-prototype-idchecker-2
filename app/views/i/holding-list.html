@@ -22,6 +22,14 @@
     </div>
 </div> #}
 
+<!-- if there is a timeout or API error -->
+{# <div id="slideout-sendback"  style="text-align: left" data-status="closed">
+    <img src="/images/sendbacktomain.png" alt="Feedback" height="36" width="181" id="slideout-sendback__button"/>
+    <div id="slideout-sendback_inner" data-status="closed">
+            <label class="" for="field6"></label>
+    </div>
+</div> #}
+
 <!-- if records are selected -->
 <div id="slideout-sendback"  style="text-align: left" data-status="closed">
     <img src="/images/sendbacktomain.png" alt="Feedback" height="36" width="181" id="slideout-sendback__button"/>
@@ -30,6 +38,8 @@
             <label class="" for="field6">Are you sure you want to move <b>[XX]</b> records?</label>
     <div id="slideout-sendback__button2">
     <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunction()">Yes, move these records</button>
+<!-- if you want the error to show instead, comment out above and bring in below -->
+    {# <button class="nhsuk-button--reverse nhsuk-button--ers movestyling deletebutton" data-status="closed" onclick="myFunctionError()">Yes, move these records</button> #}
 
     </div>
     </div>
@@ -281,6 +291,8 @@
         </section>
     </div>
 
+
+<!-- if there is a timeout or API error -->
     <div id="myDIVerror" style="display: none">
         <section class="notification_error animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
