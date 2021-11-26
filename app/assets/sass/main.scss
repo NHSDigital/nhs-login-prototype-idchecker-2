@@ -10,6 +10,7 @@
 @import 'components/dev-mode';
 @import 'components/transcodedvideo-link';
 @import 'components/slideout-sendback';
+@import 'components/accessible-autocomplete.min';
 
 ///////////////////////////////////////////
 // Add your custom CSS/Sass styles below... 
@@ -190,10 +191,10 @@ cursor: pointer;}
 strong.nhsuk-tag {
   
   &.unopened {
-  background: #007f3b;
+  background: #768692;
   padding: 2px 12px 5px 12px;
   border-radius: 6px;
-  border-color:#007f3b;
+  border-color:#768692;
   font: small-caption;
   font-variant-caps: all-small-caps;
   font-weight: 600;
@@ -201,10 +202,10 @@ strong.nhsuk-tag {
   color: rgb(255, 255, 255);
   }
   &.with-checker {
-    background: #768692;
+    background: #005eb8;
     padding: 2px 12px 5px 12px;
     border-radius: 6px;
-    border-color:#768692;
+    border-color:#005eb8;
     font: small-caption;
     font-variant-caps: all-small-caps;
     font-weight: 600;
@@ -212,10 +213,10 @@ strong.nhsuk-tag {
     color: rgb(255, 255, 255);
     }
   &.with-me {
-    background: #41B6E6;
+    background: #ffb81C;
     padding: 2px 12px 5px 12px;
     border-radius: 6px;
-    border-color:#41B6E6;
+    border-color:#ffb81C;
     font: small-caption;
     font-variant-caps: all-small-caps;
     font-weight: 600;
@@ -233,3 +234,5 @@ strong.nhsuk-tag {
 table{
   margin-top: 4em;
 }
+
+

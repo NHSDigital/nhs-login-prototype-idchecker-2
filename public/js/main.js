@@ -243,7 +243,7 @@ function myFunctionAssignError() {
 ; //show-hide reassign checkbox
 
 $('#checker').on('change', function () {
-  if (this.value === "Emily Lodge") {
+  if (this.value !== "") {
     $("#check").show();
   } else {
     $("check").show();
