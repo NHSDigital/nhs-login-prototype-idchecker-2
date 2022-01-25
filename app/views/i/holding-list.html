@@ -7,7 +7,7 @@
 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
-<script> src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
 <script type="text/javascript" src="assets/js/accessible-autocomplete.min.js"></script>
 
 
@@ -101,13 +101,10 @@
                                                                     <div class="nhsuk-grid-column-full">
                                                                     <p>This record is currently assigned to <strong>Lydia Dyer</strong>. </p>
                                                                         <p>Type the name of the person you want to reassign this record to.</p>
+                                                                         <label for="my-autocomplete">Select ID Checker</label>
+                                                                        <div id="my-autocomplete-container"></div> 
 
-                                                                        <label for="my-autocomplete">Select ID Checker</label>
-                                                                        <div id="my-autocomplete-container">                                                           
-                                                                        <input list="checkers" class="nhsuk-select" name="checker" id="my-autocomplete">
-                                                                        </div>
-
-                                                                            <input list="checkers" class="nhsuk-select" name="checker" id="checker">
+                                                                             <input list="checkers" class="nhsuk-select" name="checker" id="checker">
                                                                             <select id="checkers">
                                                                                     <option value="Emily Lodge">Emily Lodge</option>
                                                                                     <option value="Charlotte Wilson">Charlotte Wilson</option>
@@ -121,7 +118,7 @@
                                                                                     <option value="James Chappel">James Chappel</option>
                                                                                     <option value="Maria Walker">Maria Walker</option>
                                                                                     <option value="Gabby Logan">Gabby Logan</option>
-                                                                            </select>
+                                                                            </select> 
                                                                     </div>
                                                                 </div>
 
@@ -138,7 +135,7 @@
                                                                     </div>
                                                                 </div>
                                                                     
-                                                            <a href="#" onclick="myFunctionAssignError()"><button class="nhsuk-button nhsuk-button--ers" style="margin-top: 20px">Confirm</button></a> 
+                                                            <a href="#" onclick="myFunctionAssignError()" class="nhsuk-button nhsuk-button--ers" style="margin-top: 20px">Confirm</a> 
                                                     </div>
                                 </td>
                             </tr>
@@ -314,7 +311,7 @@
         <section class="notification_assign animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
                                 <img src="/images/IDChecker-tick.svg" height="75" width="75" style="margin-right: 20px">
-                                <p style="padding-top: 20px"> <strong style="color:	#007f3b"> Record reassigned</strong> <br> This record has been reassigned to <b>[Xxxx]</b>. </p>
+                                <p style="padding-top: 20px"> <strong style="color:	#007f3b"> Record reassigned</strong> <br> This record has been reassigned to <b>[XXX]</b>. </p>
 
         </section>
     </div>
@@ -322,7 +319,7 @@
        <div id="myDIVassignerror" style="display: none">
         <section class="notification_assign_error animateOpen">
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
-                                <img src="/images/warning.png" height="45" width="50" style="margin-right: 20px"/>
+                                <img src="/images/IDChecker-alert.svg" height="75" width="75" style="margin-right: 20px"/>
                                 <p style="padding-top: 20px"> <strong style="color:	#d5281b"> An error occurred</strong> <br> This record has not been reassigned. </p>
 
         </section>

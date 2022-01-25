@@ -1,5 +1,7 @@
 // ES6 or Vanilla JavaScript
 
+
+
 // helper function to place modal window as the first child
 // of the #page node
 var m = document.getElementById('modal_window'),
