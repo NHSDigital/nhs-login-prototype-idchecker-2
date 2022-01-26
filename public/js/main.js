@@ -240,12 +240,12 @@ function myFunctionAssignError() {
   }
 }
 
-; //show-hide reassign checkbox
+; //show-hide reassign all paragraph
 
-$('#checker').on('change', function () {
-  if (this.value !== "") {
-    $("#check").show();
+$('#my-autocomplete').on('change', function () {
+  if (this.value !== "0") {
+    $("#reassign-all").show();
   } else {
-    $("check").show();
+    $("reassign-all").show();
   }
 });

@@ -1,6 +1,6 @@
 
 {% extends 'layout.html' %}
-<link rel="stylesheet" href="https://raw.githubusercontent.com/alphagov/accessible-autocomplete/main/dist/accessible-autocomplete.min.js" />
+<link rel="stylesheet" href="accessible-autocomplete.min.scss" />
 
 {% block content %}
 
@@ -9,8 +9,6 @@
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/2.1.3/jquery.min.js"></script>
 <script src="https://maxcdn.bootstrapcdn.com/bootstrap/3.3.5/js/bootstrap.min.js"></script> 
 <script src="https://ajax.googleapis.com/ajax/libs/jquery/3.5.1/jquery.min.js"></script>
-<script src="https://raw.githubusercontent.com/alphagov/accessible-autocomplete/main/dist/accessible-autocomplete.min.js"></script>
-
 
 
 <div style="text-align: left">
@@ -123,6 +121,7 @@
                                 <div class="container">
                                     <a class="btn" href="#open-modal">Reassign</a>
                                 </div>
+                                
                                 <div class="nhsuk-form-group">
                                     <div id="open-modal" class="modal-window"><div>
                                         <a href="#" title="Close" class="modal-close">Close</a>
@@ -131,73 +130,30 @@
                                                     <div class="nhsuk-grid-column-full">
                                                         <p>This record is currently assigned to <strong>Alex Church</strong>. </p>
 
+                                                        <p>Type the name of the person you want to reassign this record to.</p>
+
+                                                        <label for="my-autocomplete"></label>
+                                                        <div class="autocomplete__wrapper">
+                                                        <div id="my-autocomplete-container">
+                                                        <span id="autocomplete-showAllValues__assistiveHint" style="display: none;">When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.</span></div>
+                                                        </div>
+
+                                                                <div class="nhsuk-grid-row" style="margin-top: 20px; display: none" id="reassign-all">
+                                                                    <div class="nhsuk-grid-column-full">
+                                                                        <div class="checkbox table-checkbox">
+                                                                            <div class="nhsuk-checkboxes__item block-label selection-button-checkbox nhsuk-checkboxes--small">
+                                                                            <input class="nhsuk-checkboxes__input individual sub_chk" type="checkbox" data-id="1" id="reassign-checkbox" name="ck1" type="checkbox" value="ck1">
+                                                                            <label class="nhsuk-label nhsuk-checkboxes__label nhsuk-hint" for="reassign-checkbox">Reassign all records held by <strong>Alex Church</strong> to <strong id="selected-name"></strong>
+                                                                            <div id="show" style="display: flex;justify-content: center; margin-top: 20px;"></div>
+                                                                            </label>
+                                                                            </div> 
+                                                                        </div>
+                                                                    </div>
+                                                                </div>
+
+                                                            <a href="#" onclick="myFunctionAssignError()" class="nhsuk-button nhsuk-button--ers" style="margin-top: 20px">Confirm</a> 
 
 
-<label for="my-autocomplete">Select the ID Checker</label>
-<div class="autocomplete__wrapper">
-<div id="my-autocomplete-container"> 
-<input aria-expanded="false" aria-owns="autocomplete-showAllValues__listbox" aria-autocomplete="list" aria-describedby="autocomplete-showAllValues__assistiveHint" autocomplete="off" class="autocomplete__input autocomplete__input--show-all-values" id="my-autocomplete" name="input-autocomplete" placeholder="" type="text" role="combobox">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="autocomplete__dropdown-arrow-down" focusable="false"><g stroke="none" fill="none" fill-rule="evenodd"><polygon fill="#000000" points="0 0 22 0 11 17"></polygon></g></svg>
-<ul class="autocomplete__menu autocomplete__menu--inline autocomplete__menu--hidden" id="autocomplete-showAllValues__listbox" role="listbox">
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--0" role="option" tabindex="-1" aria-posinset="1" aria-setsize="34">Afghanistan</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--1" role="option" tabindex="-1" aria-posinset="2" aria-setsize="34">Akrotiri</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--2" role="option" tabindex="-1" aria-posinset="3" aria-setsize="34">Albania</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--3" role="option" tabindex="-1" aria-posinset="4" aria-setsize="34">Algeria</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--4" role="option" tabindex="-1" aria-posinset="5" aria-setsize="34">American Samoa</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--5" role="option" tabindex="-1" aria-posinset="6" aria-setsize="34">Andorra</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--6" role="option" tabindex="-1" aria-posinset="7" aria-setsize="34">Angola</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--7" role="option" tabindex="-1" aria-posinset="8" aria-setsize="34">Anguilla</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--8" role="option" tabindex="-1" aria-posinset="9" aria-setsize="34">Antarctica</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--9" role="option" tabindex="-1" aria-posinset="10" aria-setsize="34">Antigua and Barbuda</li>
-</ul>
-<span id="autocomplete-showAllValues__assistiveHint" style="display: none;">When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.</span></div>
-        
-{# <div class="autocomplete__wrapper">
-<div style="border: 0px; clip: rect(0px, 0px, 0px, 0px); height: 1px; margin-bottom: -1px; margin-right: -1px; overflow: hidden; padding: 0px; position: absolute; white-space: nowrap; width: 1px;">
-<div id="autocomplete-showAllValues__status--A" role="status" aria-atomic="true" aria-live="polite"></div>
-<div id="autocomplete-showAllValues__status--B" role="status" aria-atomic="true" aria-live="polite"></div>
-</div>
-<input aria-expanded="false" aria-owns="autocomplete-showAllValues__listbox" aria-autocomplete="list" aria-describedby="autocomplete-showAllValues__assistiveHint" autocomplete="off" class="autocomplete__input autocomplete__input--show-all-values" id="autocomplete-showAllValues" name="input-autocomplete" placeholder="" type="text" role="combobox">
-<svg version="1.1" xmlns="http://www.w3.org/2000/svg" class="autocomplete__dropdown-arrow-down" focusable="false"><g stroke="none" fill="none" fill-rule="evenodd"><polygon fill="#000000" points="0 0 22 0 11 17"></polygon></g></svg>
-<ul class="autocomplete__menu autocomplete__menu--inline autocomplete__menu--hidden" id="autocomplete-showAllValues__listbox" role="listbox">
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--0" role="option" tabindex="-1" aria-posinset="1" aria-setsize="34">Afghanistan</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--1" role="option" tabindex="-1" aria-posinset="2" aria-setsize="34">Akrotiri</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--2" role="option" tabindex="-1" aria-posinset="3" aria-setsize="34">Albania</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--3" role="option" tabindex="-1" aria-posinset="4" aria-setsize="34">Algeria</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--4" role="option" tabindex="-1" aria-posinset="5" aria-setsize="34">American Samoa</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--5" role="option" tabindex="-1" aria-posinset="6" aria-setsize="34">Andorra</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--6" role="option" tabindex="-1" aria-posinset="7" aria-setsize="34">Angola</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--7" role="option" tabindex="-1" aria-posinset="8" aria-setsize="34">Anguilla</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--8" role="option" tabindex="-1" aria-posinset="9" aria-setsize="34">Antarctica</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--9" role="option" tabindex="-1" aria-posinset="10" aria-setsize="34">Antigua and Barbuda</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--10" role="option" tabindex="-1" aria-posinset="11" aria-setsize="34">Argentina</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--11" role="option" tabindex="-1" aria-posinset="12" aria-setsize="34">Armenia</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--12" role="option" tabindex="-1" aria-posinset="13" aria-setsize="34">Aruba</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--13" role="option" tabindex="-1" aria-posinset="14" aria-setsize="34">Ashmore and Cartier Islands</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--14" role="option" tabindex="-1" aria-posinset="15" aria-setsize="34">Australia</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--15" role="option" tabindex="-1" aria-posinset="16" aria-setsize="34">Austria</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--16" role="option" tabindex="-1" aria-posinset="17" aria-setsize="34">Azerbaijan</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--17" role="option" tabindex="-1" aria-posinset="18" aria-setsize="34">Bahamas, The</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--18" role="option" tabindex="-1" aria-posinset="19" aria-setsize="34">Bahrain</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--19" role="option" tabindex="-1" aria-posinset="20" aria-setsize="34">Bangladesh</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--20" role="option" tabindex="-1" aria-posinset="21" aria-setsize="34">Barbados</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--21" role="option" tabindex="-1" aria-posinset="22" aria-setsize="34">Bassas da India</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--22" role="option" tabindex="-1" aria-posinset="23" aria-setsize="34">Belarus</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--23" role="option" tabindex="-1" aria-posinset="24" aria-setsize="34">Belgium</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--24" role="option" tabindex="-1" aria-posinset="25" aria-setsize="34">Belize</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--25" role="option" tabindex="-1" aria-posinset="26" aria-setsize="34">Benin</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--26" role="option" tabindex="-1" aria-posinset="27" aria-setsize="34">Bermuda</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--27" role="option" tabindex="-1" aria-posinset="28" aria-setsize="34">Bhutan</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--28" role="option" tabindex="-1" aria-posinset="29" aria-setsize="34">Bolivia</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--29" role="option" tabindex="-1" aria-posinset="30" aria-setsize="34">Bosnia and Herzegovina</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--30" role="option" tabindex="-1" aria-posinset="31" aria-setsize="34">Botswana</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--31" role="option" tabindex="-1" aria-posinset="32" aria-setsize="34">Bouvet Island</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--32" role="option" tabindex="-1" aria-posinset="33" aria-setsize="34">Brazil</li>
-<li aria-selected="false" class="autocomplete__option autocomplete__option--odd" id="autocomplete-showAllValues__option--33" role="option" tabindex="-1" aria-posinset="34" aria-setsize="34">British Indian Ocean Territory</li>
-<li aria-selected="false" class="autocomplete__option" id="autocomplete-showAllValues__option--34" role="option" tabindex="-1" aria-posinset="35" aria-setsize="34">British Virgin Islands</li>
-</ul>
-<span id="autocomplete-showAllValues__assistiveHint" style="display: none;">When autocomplete results are available use up and down arrows to review and enter to select.  Touch device users, explore by touch or with swipe gestures.</span></div>
-         #}                                                                                                        
                                                        {#  <label for="my-autocomplete">Type the name of the person you want to reassign this record to.</label>
                                                             <div id="my-autocomplete-container"> 
                                                             <input list="checkers" class="nhsuk-select" name="checker" id="checker">
@@ -371,21 +327,21 @@
 
 
 
-                                    <script>
-                                    $('#checkers').on('input', function () {
-                                        $('#show').text($('#checkers').val());
-                                    })
-                                    </script>
+                                    
 
-
-<script type="text/javascript" src="assets/javascript/accessible-autocomplete.min.js"></script>
 <script type="text/javascript">
 
-                                                        accessibleAutocomplete.enhanceSelectElement({
+ accessibleAutocomplete.enhanceSelectElement({
   selectElement: document.querySelector('#location-picker')
 })
 
 </script>
+
+                                    <script type="text/javascript">
+                                    $('#my-autocomplete').on('input', function () {
+                                        $('#show').text($('#my-autocomplete').val());
+                                    })
+                                    </script>
 
 
 <script type="text/javascript">

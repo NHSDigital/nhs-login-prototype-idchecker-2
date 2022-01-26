@@ -6812,7 +6812,7 @@ textarea[disabled] {
     opacity: 1;
     pointer-events: auto; }
   .modal-window > div {
-    width: 650px;
+    width: 700px;
     height: 400px;
     position: absolute;
     top: 50%;
