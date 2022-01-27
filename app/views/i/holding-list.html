@@ -60,11 +60,11 @@
                             Choose record
                         </div> 
                 </th>
-                <th>Verification ID</th>
                 <th>Status</th>
                 <th>Added by</th>
                 <th>Reason</th>
                 <th>Submitted</th>
+                                <th>Verification ID</th>
                 <th>Action</th>
             </tr>
         </thead>
@@ -82,11 +82,11 @@
                                     </div> 
                                 </div>
                                 </td>
-                                <td>9a268036</td>
                                 <td><strong class="nhsuk-tag unopened">UNOPENED</strong></td>
                                 <td>Alex Church</td>
                                 <td> Potential fraud doc issue</td>
-                                <td>6 days, 2 hours, 5 minutes</td>
+                                <td>6d 2h 5m</td>
+                                <td>9a268036</td>
                                 <td><a href="#">Open</a></td>
 
 
@@ -112,11 +112,12 @@
                                 </div> 
 
                                 </div></td>
-                            <td>c8275o2	</td>
+                            
                             <td><strong class="nhsuk-tag with-me">WITH ME</strong></td>
                             <td>Maisy Kennedy</td>
                             <td> PDS review missing middle name, post codes don't match	</td>
-                            <td>5 days, 4 hours, 0 minutes</td>
+                            <td>5d 4h 0m</td>
+                            <td>c8275o2	</td>
                             <td><a href="#">Reopen</a><br> 
                                 <div class="container">
                                     <a class="btn" href="#open-reassign-1">Reassign</a>
@@ -166,11 +167,11 @@
                                 </div> 
 
                                 </div></td>         
-                            <td>7o63848a	</td>
                             <td><strong class="nhsuk-tag with-checker">WITH Alex Church</strong></td>
                             <td>Tomas Fleetwood</td>
                             <td> Potential safeguarding</td>
-                            <td>2 days, 0 hours, 9 minutes</td>
+                            <td>2d 0h 9m</td>
+                            <td>7o63848a	</td>
                             <td><a class="btn" href="#open-reassign-2">Reassign</a>
                                 
                                 <div class="nhsuk-form-group">
@@ -202,7 +203,7 @@
                                                                     </div>
                                                                 </div>
 
-                                                            <a href="#" onclick="myFunctionAssignError()" class="nhsuk-button nhsuk-button--ers" style="margin-top: 20px">Confirm</a> 
+                                                            <a href="#" onclick="myFunctionAssignMultiple()" class="nhsuk-button nhsuk-button--ers" style="margin-top: 20px">Confirm</a> 
                                 </td>
                         </tr>
 
@@ -216,60 +217,13 @@
                                 </div> 
 
                                 </div></td>
-                            <td>7d8299a	</td>
                             <td><strong class="nhsuk-tag unopened">UNOPENED</strong></td>
                             <td>Cerys Adams</td>
                             <td> Automation issue expiry date in 10 months</td>
-                            <td>4 days, 9 hours, 5 minutes	</td>
+                            <td>4d 9h 5m</td>
+                            <td>7d8299a	</td>
                             <td><a href="#">Open</a></td>
                         </tr>
-
-
-                        {# <tr data-row-id="5">
-                    <td><div class="checkbox table-checkbox">
-                                <div class="nhsuk-checkboxes__item block-label selection-button-checkbox nhsuk-checkboxes--small">
-                                <input class="nhsuk-checkboxes__input individual sub_chk" type="checkbox" data-id="5" id="organisation" name="ck1" type="checkbox" value="ck1">
-                                <label class="nhsuk-label nhsuk-checkboxes__label" for="organisation">
-                                </label>
-                                </div> 
-
-                    </div></td>
-                            <td>5760d622	</td>
-                            <td><strong class="nhsuk-tag with-checker">WITH JOHN GREEN</strong></td>
-                            <td>3d 2h 2m</td>
-                            <td>Anna Hobson</td>
-                            <td> Potential safeguarding <br> Auto uplift, doc issue</td>
-                            <td> 
-                                <div class="container">
-                                                <a class="btn" href="#open-modal">Reassign</a>
-                                            </div>
-                                        </div>
-                                            <div id="open-modal" class="modal-window"><div>
-                                                <a href="#" title="Close" class="modal-close">Close</a>
-                                                    <h1>Reassign to:</h1>
-                                                    <input list="checkers" class="nhsuk-select" name="checker" id="checker">
-                                                    <datalist id="checkers">
-                                                            <option value="Gareth Sheard">Gareth Sheard</option>
-                                                            <option value="Charlotte Wilson">Charlotte Wilson</option>
-                                                            <option value="Ben Jones">Ben Jones</option>
-                                                            <option value="Joseph Mitchell">Joseph Mitchell</option>
-                                                            <option value="Cherlize Mayans">Cherlize Mayans</option>
-                                                            <option value="Tommy Fleetwood">Tommy Fleetwood</option>
-                                                            <option value="Bruce Willis">Bruce Willis</option>
-                                                            <option value="Craig Hinchcliffe">Craig Hinchcliffe</option>
-                                                            <option value="Alec Whitworth">Alec Whitworth</option>
-                                                            <option value="James Chappel">James Chappel</option>
-                                                            <option value="Maria Walker">Maria Walker</option>
-                                                            <option value="Gabby Logan">Gabby Logan</option>
-                                                    </datalist>
-                                                    <br>
-                                                    <br>
-                                                    <button class="nhsuk-button nhsuk-button--ers">Confirm</button>
-
-                                                </div>
-                                            </div>
-                                </td>
-                        </tr> #}
 
 
                         
@@ -311,6 +265,24 @@
         <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
                                 <img src="/images/IDChecker-alert.svg" height="75" width="75" style="margin-right: 20px"/>
                                 <p style="padding-top: 20px"> <strong style="color:	#d5281b"> An error occurred</strong> <br> This record has not been reassigned. </p>
+
+        </section>
+    </div>
+
+       <div id="myDIVassign-multiple" style="display: none">
+        <section class="notification_assign animateOpen">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+                                <img src="/images/IDChecker-tick.svg" height="75" width="75" style="margin-right: 20px">
+                                <p style="padding-top: 20px"> <strong style="color:	#007f3b"> Records reassigned</strong> <br> YYY records have been reassigned to <b>[XXX]</b>. </p>
+
+        </section>
+    </div>
+
+       <div id="myDIVassignerror-multiple" style="display: none">
+        <section class="notification_assign_error animateOpen">
+        <p class="noti-close" id='noti-close' onclick='this.parentNode.parentNode.parentNode.removeChild(this.parentNode.parentNode); return false;'>&times</p>
+                                <img src="/images/IDChecker-alert.svg" height="75" width="75" style="margin-right: 20px"/>
+                                <p style="padding-top: 20px"> <strong style="color:	#d5281b"> An error occurred</strong> <br> YYY records have not been reassigned. </p>
 
         </section>
     </div>

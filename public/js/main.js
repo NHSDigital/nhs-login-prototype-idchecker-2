@@ -228,10 +228,34 @@ function myFunctionAssign() {
   }
 }
 
-; // re-assign notification
+;
 
 function myFunctionAssignError() {
   var x = document.getElementById("myDIVassignerror");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+; // re-assign notification multiple
+
+function myFunctionAssignMultiple() {
+  var x = document.getElementById("myDIVassign-multiple");
+
+  if (x.style.display === "none") {
+    x.style.display = "block";
+  } else {
+    x.style.display = "none";
+  }
+}
+
+;
+
+function myFunctionAssignErrorMultiple() {
+  var x = document.getElementById("myDIVassignerror-multiple");
 
   if (x.style.display === "none") {
     x.style.display = "block";
