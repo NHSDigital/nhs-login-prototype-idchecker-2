@@ -513,29 +513,31 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
 
                 <div class="nhsuk-u-margin-top-9 nhsuk-u-margin-bottom-9 nhsuk-care-card__content">
 
-                    {% if data.idv[data.prototype.count].media_video === '' %}
-                    <h3>Image from face scan</h3>
-                    {% else %}
+                    {% if data["media"] == 'video' %}
                     <h3>Video selfie</h3>
+                    {% else %}
+                    <h3>Image from face scan</h3>
                     {% endif %}
                     <div class="idcheck-media">
-                        <div class="idcheck-video">
+                        
 
-                            
+                        
 
-                            <div class="idcheck-video-number">{{data.idv[data.prototype.count].challenge }}</div>
-
-                            {% if data.idv[data.prototype.count].media_video === '' %}
-                            <img src="/images/media/scans/{{ data.idv[data.prototype.count].media_scan }}" class="idcheck-image-img" style="width: 100%; height: auto;"
-                                alt="Image of the user from iproov"/>
-                            {% else %}
-                            <video id="uploaded-video" controls autoplay="" name="media" style="width:100%;height:auto;">
-                                <source src="/images/media/videos/{{ data.idv[data.prototype.count].media_video }}" type="video/mp4">
+                            {% if data["media"] == 'video' %} 
+                            <div class="idcheck-video-number ">1234</div> <!--pull data from numbers challenge-->
+                            <video class="idcheck-video" id="uploaded-video" controls autoplay="" name="media" style="width: 100%; height: auto;">
+                                <img src="/images/media/scans/{{ data.idv[data.prototype.count].media_scan }}" type="video/mp4">
                                 <p>Your browser doesn't support Apple's HEVC videos yet. Here is
                                     a <a href="hevc.mkv">link to the video</a> instead.</p>
                             </video>
+                            
+                            {% else %}
+
+                            <img src="/images/media/scans/{{ data.idv[data.prototype.count].media_scan }}" class="idcheck-image-img" style="width: 100%; height: auto;"
+                                alt="Image of the user from iproov"/>
                             {% endif %}
-                        </div>
+                             
+                    </div>
 
                     <div class="idcheck-divider">&nbsp;</div>
 
