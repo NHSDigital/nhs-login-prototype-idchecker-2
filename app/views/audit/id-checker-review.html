@@ -238,35 +238,8 @@
         <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-full gap">
                 <text class="float-left audit-banner-text audit-banner">ASSURANCE AUDIT</text>
-                <text class="float-lef banner-title nhsuk-u-font-weight-bold">You are auditing submission reference: XYZ12345</text>  
+                <text class="float-lef banner-title nhsuk-u-font-weight-bold"></text>  
             </div>   
-        </div>
-    </div>
-    
-    <div class="nhsuk-care-card__content">
-
-        <div class="nhsuk-grid-row">
-            <div class="nhsuk-grid-column-one-half">
-
-                <h3>Details</h3>
-                <h4 class="nhsuk-heading-xs">Submission date</h4>
-                <p class="nhsuk-body-s">21st March 2022 - 09:03</p>
-
-            </div>
-            
-            
-            <div class="nhsuk-grid-column-one-half">
-                <h3>Result</h3>
-
-                <div class="approved-tag">
-                    <svg class="tick" class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <text class="approved" >Approved by ID checker</text>
-                </div>
-                
-
-            </div>
         </div>
     </div>
 </div>
@@ -295,6 +268,11 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
 
 
 <div class="nhsuk-care-card nhsuk-care-card--non-urgent nhsuk-u-margin-bottom-0">
+    <div class="nhsuk-care-card__content-override">
+        <div class="id-check_automated">Automated journey</div>
+        <div class="id-check_uplift">Uplift journey</div>  
+    </div>
+    
 
     
     <div class="nhsuk-care-card__content-override">
@@ -338,7 +316,7 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                 <!--\\\\\\\\\\\\\\\\\\\\\\\\    USER SUBMITTED DATA   ////////////////////////////-->
                 
                 <div class="nhsuk-care-card__content">
-                    <h3>User submitted information</h3>
+                    <h3>User information</h3>
 
                     {# if the user knew their NHS number then show it #}
                     {% if data.idv[data.prototype.count].nhs_number !== '' %}
@@ -428,49 +406,6 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                 </div>
                 
 
-
-
-                <!--\\\\\\\\\\\\\\\\\\\\\\\\    Optical character recognition (OCR)   ////////////////////////////-->
-
-
-
-                {# is this automated? check for an absence of video file #}
-                {% if data.idv[data.prototype.count].media_video === '' %}
-
-                <div class="nhsuk-u-margin-top-9 nhsuk-care-card__content">
-                    <h3>Optical character recognition (OCR) from ID</h3>
-
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label" for="ocrfirstname">
-                            First name
-                        </label>
-                        <input class="nhsuk-input nhsuk-input--width-20" id="ocrfirstname" value="{{ data.idv[data.prototype.count].ocr_name_first}}" name="ocrfirstname" type="text" maxlength="" readonly >
-                    </div>
-    
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label" for="ocrmiddlename">
-                            Middle names
-                        </label>
-                        <input class="nhsuk-input nhsuk-input--width-20" id="ocrmiddlename" value="{{ data.idv[data.prototype.count].ocr_name_middle}}" name="ocrmiddlename" type="text" maxlength="" readonly >
-                    </div>
-    
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label" for="ocrlastname">
-                            Last name
-                        </label>
-                        <input class="nhsuk-input nhsuk-input--width-20" id="ocrlastname" value="{{ data.idv[data.prototype.count].ocr_name_last}}" name="ocrlastname" type="text" maxlength="" readonly >
-                    </div>
-    
-                    <div class="nhsuk-form-group">
-                        <label class="nhsuk-label" for="ocrdob">
-                            Date of birth
-                        </label>
-                        <input class="nhsuk-input nhsuk-input--width-20" id="ocrdob" value="{{ data.idv[data.prototype.count].ocr_dob}}" name="ocrdob" type="text" maxlength="" readonly >
-                    </div>
-    
-                    {% endif %}
-    
-                </div>
                 
                 
                 <!--\\\\\\\\\\\\\\\\\\\\\\\\           PDS RECORD        ////////////////////////////////////////////////////////
