@@ -395,7 +395,7 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
 
                     <div class="nhsuk-u-margin-top-9 nhsuk-u-margin-bottom-9 nhsuk-care-card__content">
 
-                        {% if data["media"] == 'video' %}
+                        {% if data["media"] == '' %}
                         <h3>Video selfie</h3>
                         {% else %}
                         <h3>Image from face scan</h3>
@@ -405,7 +405,7 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
 
                             
 
-                                {% if data["media"] == 'video' %} 
+                                {% if data["media"] == '' %} 
                                 <div class="idcheck-video-number ">1234</div> <!--pull data from numbers challenge-->
                                 <video class="idcheck-video" id="uploaded-video" controls autoplay="" name="media" style="width: 100%; height: auto;">
                                     <img src="/images/media/scans/{{ data.idv[data.prototype.count].media_scan }}" type="video/mp4">
