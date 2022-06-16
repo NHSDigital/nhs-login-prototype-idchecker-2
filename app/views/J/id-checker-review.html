@@ -326,36 +326,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                         {# is this automated? check for an absence of video file #}
                         {% if data.idv[data.prototype.count].media_video === '' %}
 
-                        <h3>Optical character recognition (OCR) from ID</h3>
-
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="ocrfirstname">
-                                First name
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="ocrfirstname" value="{{ data.idv[data.prototype.count].ocr_name_first}}" name="ocrfirstname" type="text" maxlength="" readonly >
-                        </div>
-
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="ocrmiddlename">
-                                Middle names
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="ocrmiddlename" value="{{ data.idv[data.prototype.count].ocr_name_middle}}" name="ocrmiddlename" type="text" maxlength="" readonly >
-                        </div>
-
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="ocrlastname">
-                                Last name
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="ocrlastname" value="{{ data.idv[data.prototype.count].ocr_name_last}}" name="ocrlastname" type="text" maxlength="" readonly >
-                        </div>
-
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="ocrdob">
-                                Date of birth
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="ocrdob" value="{{ data.idv[data.prototype.count].ocr_dob}}" name="ocrdob" type="text" maxlength="" readonly >
-                        </div>
-
+                        
                         {% endif %}
 
             </div>
