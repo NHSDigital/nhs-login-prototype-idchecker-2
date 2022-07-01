@@ -442,7 +442,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
                     <div aria-hidden="true" style="display: none;" class="js-hidden nhsuk-u-margin-top-3" id="nhs-no" data-group="decline-0">
                         <div id="id-decline2">
-                            <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline">Decline</a>
+                            <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline">Decline</a>
                         </div>
                     </div>
 
@@ -666,7 +666,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                         <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="pds-no-1" data-group="decline-4b">
                             <div id="id-decline2">
-                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline nhsuk-u-margin-bottom-0">Decline</a>
+                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline nhsuk-u-margin-bottom-0">Decline</a>
                             </div>
                         </div>
 
@@ -745,7 +745,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                         <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="pds-no-2" data-group="decline-4c">
                             <div id="id-decline2">
-                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline nhsuk-u-margin-bottom-0">Decline</a>
+                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline nhsuk-u-margin-bottom-0">Decline</a>
                             </div>
                         </div>
 
@@ -979,12 +979,11 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                 <div id="id-buttons"> 
                     <div id="id-approve">
-                        <a href="dashboard" data-target="modal" id="approveBtn" class="nhsuk-button button---approve nhsuk-u-margin-top-3" style="">Continue to approve
+                        <a href="dashboard" data-target="modal" id="approveBtn" class="nhsuk-button button---approve button--modal nhsuk-u-margin-top-3" style="display: inline-block;">Continue to approve
                         </a>  
                     </div>
                     <div id="id-decline">
-                        <a href="dashboard"
-                           data-target="modal" id="declineBtn" class="nhsuk-button button--decline nhsuk-u-margin-top-3" style="display: none;">Decline</a>
+                        <a href="dashboard" data-target="modal" id="declineBtn" class="nhsuk-button button--decline button--modal nhsuk-u-margin-top-3" style="display: none;">Decline</a>
                     </div>
 <!--                    <div id="id-canttell">-->
 <!--                        <a href="dashboard"-->
@@ -1004,7 +1003,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 <div id="slideout" data-status="closed" >
     <img src="/images/problem.png" alt="Feedback" height="173" width="32" id="slideout__button" />
     <div id="slideout_inner" data-status="closed">
-        <form action="holding-from-review-approval" method="POST" role="form">
+        <form action="holding-from-review" method="POST" role="form">
             <h3>Move to holding list</h3>
             <label class="" for="field6">Reason for moving (required)</label>
             <textarea class="" id="field6" name="field6" type="text" rows="3" style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
@@ -1074,33 +1073,35 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
 
 
-<!-- APPROVE MODALLLLL 
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+
+<!-- MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW 
+    MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW 
+    MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW MODAL WINDOW 
     --------------->
 
+
 <div class="modal-overlay" id="modal_window" aria-hidden="true" role="dialog" aria-labelledby="modal_title">
-    <div class="modal-content" id="modal_holder" role="document">
+    <div class="modal-content" id="modal_holder" role="document" >
         <label class="nhsuk-label" for="sort">
-            <h3 id="modal-header"></h3>
+            <h3 id="modal-header">Information about this declined Verification<br>Rejection reason</h3>
         </label>
 
 
-        <div class="first-item">
-            <form action="reject" method="POST" role="form">
+        <!-- APPROVE MODALLLLL 
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ---------------->
 
-                    <div class="nhsuk-form-group">
+        <div class="first-item" id="approve-modal" style="display:none">
+            <form action="accept-from-review" method="POST" role="form">
+
+                    <div class="nhsuk-form-group" >
                   
                         <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
                   
                             <div class="nhsuk-checkboxes">
                     
                                 <div class="nhsuk-checkboxes__item">
-                                    <input class="nhsuk-checkboxes__input" onclick="setTimeout(conFirm, 500);" id="confirm" name="example" type="checkbox" value="email">
+                                    <input class="nhsuk-checkboxes__input" onclick="setTimeout(conFirm, 500);" id="confirm" name="example" type="checkbox" value="">
                                     <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
                                         Yes, I confirm it has passed all checks
                                     </label>
@@ -1110,42 +1111,22 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
-                        <button action="reject" method="POST" class="nhsuk-button nhsuk-u-margin-bottom-3 button--approve nhsuk-u-margin-top-0"  id="modal-link" style="transition-duration: 500ms; transition-timing-function: ease;"
+                        <button action="modal-link" method="POST" class="nhsuk-button nhsuk-u-margin-bottom-3 button--approve nhsuk-u-margin-top-0"  id="modal-link" style="transition-duration: 500ms; transition-timing-function: ease;"
                             href="javascript{}:" onclick="document.getElementById('modal-link').submit(); return false;" disabled="disabled">Approve</button>
-                        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" id="modal_close">Cancel</a></p>
+                        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a  href="#" onclick="cancel()" class="cancel" id="modal_close2">Cancel</a></p>
                     </div>
             </form>
         </div>
-    </div> <!-- end .modal-content -->   
-        
-        
-
-</div> 
-
-<!-- end .modal-overlay -->
 
 
 
-
-<!-- DECLINE MODALLLLL 
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
-    --------------->
+        <!-- DECLINE MODALLLLL 
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ---------------->
 
 
-<div class="modal-overlay" id="modal_window" aria-hidden="true" role="dialog" aria-labelledby="modal_title">
-    <div class="modal-content" id="modal_holder" role="document">
-        <label class="nhsuk-label" for="sort">
-            <h3 id="modal-header">Information about this declined Verification<br>Rejection reason</h3>
-        </label>
-
-
-        <div class="first-item">
-            <form action="reject" method="POST" role="form">
+        <div class="first-item" id="decline-modal" style="display:none"> 
+            <form action="reject-from-review" method="POST" role="form">
 
                 
 
@@ -1508,14 +1489,17 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 </div>
 
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
-                    <button class="nhsuk-button nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link"
+                    <button class="nhsuk-button nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link-decline"
                        href="supervisor-dashboard" disabled="disabled">Submit</button>
-                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" id="modal_close">Cancel</a></p>
+                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="cancel2()" id="modal_close">Cancel</a></p>
                 </div>
             </form>
         </div>
     </div> <!-- end .modal-content -->
-</div> <!-- end .modal-overlay -->
+</div> 
+
+<!-- end .modal-overlay --> 
+
 
 
 
@@ -1529,7 +1513,14 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 <p class="u-visuallyhidden" style="visibility: hidden;"><a id="modal_create" class="smartcard" href="#">.</a><a id="holding" href="dashboard">.</a></p>
 
 
-
+<script src="https://code.jquery.com/jquery-3.5.1.min.js"></script>
+<script>
+$(document).ready(function(){
+    $(".cancel").click(function(){
+        $("#confirm").prop("checked", false);
+    });
+});
+</script>
 
 
 <script type="text/javascript">
@@ -1651,6 +1642,8 @@ btn.innerHTML = 'my text'; #}
         var buttonType = object.text
 
         if (buttonType === 'Decline') {
+            document.getElementById('decline-modal').style.display = 'block'
+            document.getElementById('approve-modal').style.display = 'none'
             console.log(target)
             if (target === 'decline-5') {
                 heading.innerText = 'Select the reason for rejection'
@@ -1666,7 +1659,8 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('modal_create').click()
         } else {
             heading.innerText = 'Do you confirm the record has passed all checks?'
-            document.getElementById('rejection-reasons').style.display = 'none'
+            document.getElementById('approve-modal').style.display = 'block'
+            document.getElementById('decline-modal').style.display = 'none'
         }
     }
 
@@ -1761,9 +1755,9 @@ btn.innerHTML = 'my text'; #}
 
     function checkText(text) {
         if(text.length >= 1) {
-            document.getElementById('modal-link').removeAttribute("disabled")
+            document.getElementById('modal-link-decline').removeAttribute("disabled")
         } else if(text.length == 0) {
-            document.getElementById('modal-link').setAttribute("disabled", '')
+            document.getElementById('modal-link-decline').setAttribute("disabled", '')
         }
     }
 
@@ -1775,12 +1769,25 @@ btn.innerHTML = 'my text'; #}
         }
     }
 
-    function finalConfirm() {
-        if((document.getElementById('finalConfirm').checked)) {
-            document.getElementById('approveBtn').style.display = 'inline-block'
-        } else {
-            document.getElementById('approveBtn').style.display = 'none'
-        }
+    function cancel() {
+        document.getElementById('modal-link').setAttribute("disabled", '')
+        document.getElementById('modal_window').setAttribute('aria-hidden', 'true')
+        document.getElementById('modal_window').setAttribute('tabindex', '-1')
+        event.preventDefault()
+        modalOpen = false
+        lastFocus.focus()
+
+    }
+
+
+    function cancel2() {
+        document.getElementById('modal-link-decline').setAttribute("disabled", '')
+        document.getElementById('modal_window').setAttribute('aria-hidden', 'true')
+        document.getElementById('modal_window').setAttribute('tabindex', '-1')
+        event.preventDefault()
+        modalOpen = false
+        lastFocus.focus()
+
     }
 
 
@@ -1847,16 +1854,7 @@ btn.innerHTML = 'my text'; #}
     }
 
     function addButtonListeners() {
-        var inputs = document.querySelectorAll('.button--decline')
-        for (i = 0; i < inputs.length; i++) {
-            inputs[i].addEventListener('click', function (event) {
-                buttonClick(this, event)
-            })
-        }
-    }
-
-    function addButtonListeners() {
-        var inputs = document.querySelectorAll('.button---approve')
+        var inputs = document.querySelectorAll('.button--modal')
         for (i = 0; i < inputs.length; i++) {
             inputs[i].addEventListener('click', function (event) {
                 buttonClick(this, event)

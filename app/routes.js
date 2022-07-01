@@ -122,7 +122,7 @@ router.post("/*/review", function (req, res) {
 })
 
 
-router.post("/*/holding-from-review-approval", function (req, res) {
+router.post("/*/holding-from-review", function (req, res) {
   let prototype = req.session.data['prototype']
   prototype.thePage = 'dashboard'
   prototype.count = prototype.count +1
@@ -134,9 +134,25 @@ router.post("/*/holding-from-review-approval", function (req, res) {
 })
 
 
+router.post("/*/accept-from-review", function (req, res) {
+  let prototype = req.session.data['prototype']
+  prototype.thePage = 'dashboard'
+  prototype.count = prototype.count +1
+  prototype.inprogress = 0
+  prototype.approvalprocessing = 0
+  req.session.data['prototype'] = prototype
+  res.redirect('dashboard')
+})
 
-
-
+router.post("/*/reject-from-review", function (req, res) {
+  let prototype = req.session.data['prototype']
+  prototype.thePage = 'dashboard'
+  prototype.count = prototype.count +1
+  prototype.inprogress = 0
+  prototype.approvalprocessing = 0
+  req.session.data['prototype'] = prototype
+  res.redirect('dashboard')
+})
 
 // Dev Mode
 
