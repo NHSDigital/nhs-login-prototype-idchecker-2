@@ -446,7 +446,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                     {% if data.idv[data.prototype.count].pds_failreason === 'expired' %}
 
                     <div id="id-decline3">
-                        <a href="dashboard" data-target="modal" id="declineBtn3" class="button button--decline">Decline</a>
+                        <a href="dashboard" data-target="modal" id="declineBtn3" class="button button--modal button--decline">Decline</a>
                     </div>
 
                     {% else %}
@@ -516,7 +516,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
                     <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="nhs-no" data-group="decline-0">
                         <div id="id-decline2">
-                            <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline">Decline</a>
+                            <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline">Decline</a>
                         </div>
                     </div>
 
@@ -748,7 +748,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                         <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="pds-no-1" data-group="decline-4b">
                             <div id="id-decline2">
-                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline nhsuk-u-margin-bottom-0">Decline</a>
+                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline nhsuk-u-margin-bottom-0">Decline</a>
                             </div>
                         </div>
 
@@ -827,7 +827,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                         <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="pds-no-2" data-group="decline-4c">
                             <div id="id-decline2">
-                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline nhsuk-u-margin-bottom-0">Decline</a>
+                                <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline nhsuk-u-margin-bottom-0">Decline</a>
                             </div>
                         </div>
 
@@ -1065,8 +1065,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         </a>  
                     </div>
                     <div id="id-decline">
-                        <a href="dashboard"
-                           data-target="modal" id="declineBtn" class="nhsuk-button button--decline button--modal nhsuk-u-margin-top-3" style="display: none;">Decline</a>
+                        <a href="dashboard" data-target="modal" id="declineBtn" class="nhsuk-button button--decline button--modal nhsuk-u-margin-top-3" style="display: none;">Decline</a>
                     </div>
 <!--                    <div id="id-canttell">-->
 <!--                        <a href="dashboard"-->
@@ -1576,7 +1575,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
                     <button class="nhsuk-button nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link-decline"
                        href="supervisor-dashboard" disabled="disabled">Submit</button>
-                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="" id="modal_close">Cancel</a></p>
+                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="cancel2()" id="modal_close">Cancel</a></p>
                 </div>
             </form>
         </div>
@@ -1857,6 +1856,17 @@ btn.innerHTML = 'my text'; #}
 
     function cancel() {
         document.getElementById('modal-link').setAttribute("disabled", '')
+        document.getElementById('modal_window').setAttribute('aria-hidden', 'true')
+        document.getElementById('modal_window').setAttribute('tabindex', '-1')
+        event.preventDefault()
+        modalOpen = false
+        lastFocus.focus()
+
+    }
+
+
+    function cancel2() {
+        document.getElementById('modal-link-decline').setAttribute("disabled", '')
         document.getElementById('modal_window').setAttribute('aria-hidden', 'true')
         document.getElementById('modal_window').setAttribute('tabindex', '-1')
         event.preventDefault()

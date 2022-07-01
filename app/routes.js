@@ -53,7 +53,7 @@ router.post("/*/reject", function (req, res) {
   prototype.thePage = 'dashboard'
   prototype.inprogress = 0
   req.session.data['prototype'] = prototype
-  prototype.approvalprocessing = 0
+  prototype.approvalprocessing = +1
   res.redirect('dashboard')
 })
 
