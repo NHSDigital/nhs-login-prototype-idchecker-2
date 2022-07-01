@@ -6291,11 +6291,20 @@ b {
 .idcheck-dash {
   background-color: #005eb8;
   color: white;
-  padding: 16px; }
+  padding: 24px; }
   .idcheck-dash.u-inprogress {
     background-color: #007f3b; }
+  .idcheck-dash.u-inqueue {
+    background-color: #4c6272; }
+  .idcheck-dash.u-approvalprocessing {
+    background-color: #ffb81C;
+    color: #212b32; }
   .idcheck-dash.u-inholding {
     background-color: #d5281b; }
+  .idcheck-dash.u-completed {
+    background-color: #005eb8; }
+  .idcheck-dash.u-inholding-new {
+    background-color: #8043B1; }
 
 .idcheck-dash-heading {
   margin-bottom: 1em; }

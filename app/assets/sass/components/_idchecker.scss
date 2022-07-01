@@ -188,12 +188,25 @@
 .idcheck-dash {
   background-color:  $color_nhsuk-blue;
   color: white;
-  padding: 16px;
+  padding: 24px;
   &.u-inprogress {
     background-color: $color_nhsuk-green;
   }
+  &.u-inqueue {
+    background-color: $color_nhsuk-grey-1;
+  }
+  &.u-approvalprocessing {
+    background-color: $color_nhsuk-warm-yellow;
+    color: $nhsuk-text-color;
+  }
   &.u-inholding {
     background-color: $color_nhsuk-red;
+  }
+  &.u-completed {
+    background-color: $color_nhsuk-blue;
+  }
+  &.u-inholding-new {
+    background-color: #8043B1;
   }
 }
 
@@ -662,6 +675,8 @@ textarea {
   &:active::before {
     top: 0.75em;
   }
+
+  
 }
 
 .button--decline,

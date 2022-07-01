@@ -29,6 +29,7 @@ router.post("/", function (req, res) {
   prototype.inprogress = 0
   prototype.inholding = 0
   prototype.count = 0
+  prototype.approvalprocessing = 0
 
   req.session.data['prototype'] = prototype
 
@@ -52,6 +53,7 @@ router.post("/*/reject", function (req, res) {
   prototype.thePage = 'dashboard'
   prototype.inprogress = 0
   req.session.data['prototype'] = prototype
+  prototype.approvalprocessing = 0
   res.redirect('dashboard')
 })
 
@@ -60,6 +62,7 @@ router.post("/*/accept", function (req, res) {
   prototype.count = prototype.count +1
   prototype.thePage = 'dashboard'
   prototype.inprogress = 0
+  prototype.approvalprocessing = +1
   req.session.data['prototype'] = prototype
   res.redirect('dashboard')
 })
@@ -78,7 +81,7 @@ router.post("/*/abort", function (req, res) {
   let prototype = req.session.data['prototype']
   prototype.thePage = 'dashboard'
   prototype.inprogress = 0
-  req.session.data['prototype'] = prototype
+  req.session.data['prototype'] = prototype 
   res.redirect('dashboard')
 })
 
@@ -99,16 +102,36 @@ router.post("/*/return", function (req, res) {
   req.session.data['prototype'] = prototype
   res.redirect('dashboard')
 })
-
+ 
 router.post("/*/continue", function (req, res) {
   let prototype = req.session.data['prototype']
   prototype.thePage = 'idcheck'
   prototype.count = prototype.count -1
-  prototype.inprogress = 0
+  prototype.inprogress = 0 
   req.session.data['prototype'] = prototype
   res.redirect('id-checker-review')
 })
 
+router.post("/*/review", function (req, res) {
+  let prototype = req.session.data['prototype']
+  prototype.thePage = 'review-approval'
+  prototype.count = prototype.count -1
+  prototype.inprogress = 0
+  req.session.data['prototype'] = prototype
+  res.redirect('review-approval')
+})
+
+
+router.post("/*/holding-from-review-approval", function (req, res) {
+  let prototype = req.session.data['prototype']
+  prototype.thePage = 'dashboard'
+  prototype.count = prototype.count +1
+  prototype.inprogress = 0
+  prototype.inholding = 1
+  prototype.approvalprocessing = 0
+  req.session.data['prototype'] = prototype
+  res.redirect('dashboard')
+})
 
 
 
