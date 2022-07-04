@@ -42,6 +42,7 @@ router.post('/*/dashboard', function (req, res) {
   let prototype = req.session.data['prototype']
   prototype.thePage = 'idcheck'
   prototype.count = req.session.data.user -1
+  prototype.approvalprocessing = 0
   req.session.data['prototype'] = prototype
   res.redirect('id-checker-review')
 })
@@ -153,6 +154,8 @@ router.post("/*/reject-from-review", function (req, res) {
   req.session.data['prototype'] = prototype
   res.redirect('dashboard')
 })
+
+
 
 // Dev Mode
 
