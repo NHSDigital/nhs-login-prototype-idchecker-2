@@ -55,6 +55,7 @@ router.post("/*/reject", function (req, res) {
   prototype.inprogress = 0
   req.session.data['prototype'] = prototype
   prototype.recordprocessing = +1
+  prototype.recordrejected = +1
   res.redirect('dashboard')
 })
 

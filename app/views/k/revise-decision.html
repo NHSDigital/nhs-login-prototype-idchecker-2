@@ -1104,7 +1104,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 <div class="modal-overlay" id="modal_window" aria-hidden="true" role="dialog" aria-labelledby="modal_title">
     <div class="modal-content" id="modal_holder" role="document" >
         <label class="nhsuk-label" for="sort">
-            <h3 id="modal-header">{% if data['reject'] === 'true' %} Rejection {% else %} Approval {% endif %} cancelled</h3>
+            <h3 id="modal-header">{% if data.prototype.recordrejected === 1 %} Rejection {% else %} Approval {% endif %} cancelled</h3>
         </label>
 
 
