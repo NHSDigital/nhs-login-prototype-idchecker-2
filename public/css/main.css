@@ -6295,8 +6295,8 @@ b {
   .idcheck-dash.u-inprogress {
     background-color: #007f3b; }
   .idcheck-dash.u-inqueue {
-    background-color: #4c6272; }
-  .idcheck-dash.u-approvalprocessing {
+    background-color: #005eb8; }
+  .idcheck-dash.u-recordprocessing {
     background-color: #ffb81C;
     color: #212b32; }
   .idcheck-dash.u-inholding {
@@ -6304,7 +6304,7 @@ b {
   .idcheck-dash.u-completed {
     background-color: #005eb8; }
   .idcheck-dash.u-inholding-new {
-    background-color: #8043B1; }
+    background-color: #330072; }
 
 .idcheck-dash-heading {
   margin-bottom: 1em; }

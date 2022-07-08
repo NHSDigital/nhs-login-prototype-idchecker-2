@@ -193,9 +193,9 @@
     background-color: $color_nhsuk-green;
   }
   &.u-inqueue {
-    background-color: $color_nhsuk-grey-1;
+    background-color:  $color_nhsuk-blue;
   }
-  &.u-approvalprocessing {
+  &.u-recordprocessing {
     background-color: $color_nhsuk-warm-yellow;
     color: $nhsuk-text-color;
   }
@@ -206,7 +206,7 @@
     background-color: $color_nhsuk-blue;
   }
   &.u-inholding-new {
-    background-color: #8043B1;
+    background-color: $color_nhsuk-purple;
   }
 }
 
