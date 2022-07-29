@@ -64,6 +64,29 @@ ID checker application
 
         {% endif %}
 
+        {% if data.prototype.thePage === 'revise-decision' %}
+
+        <div class="nhsuk-header__content" id="content-header">
+
+            <nav class="nhsuk-header__navigation" id="header-navigation" role="navigation"
+                 aria-label="Primary navigation"
+                 aria-labelledby="label-navigation">
+                <div class="nhsuk-width-container">
+                    <ul class="nhsuk-header__navigation-list">
+                        <li class="nhsuk-header__navigation-item">
+                            <form action="return-from-revise" method="POST" role="form" id="return-from-revise">
+                                <a class="nhsuk-header__navigation-link" href="javascript{}:" onclick="document.getElementById('return-from-revise').submit(); return false;">
+                                    Return to dashboard
+                                </a>
+                            </form>
+                        </li>
+                    </ul>
+                </div>
+            </nav>
+        </div>
+
+        {% endif %}
+
     </div>
 </header>
 {% endblock %}

@@ -6710,6 +6710,28 @@ textarea[disabled] {
     top: 0.75em;
     height: 30px; }
 
+.button--approve-modal {
+  padding-left: 2.5em; }
+  .button--approve-modal::before, .button--approve-modal::after {
+    content: "";
+    left: 0;
+    top: 0;
+    position: absolute;
+    zoom: 1; }
+  .button--approve-modal::before {
+    background: transparent;
+    border: solid;
+    border-color: #ffffff;
+    border-width: 0 0 8px 8px;
+    height: 18px;
+    top: 0.75em;
+    left: 0.6em;
+    transform: rotate(-45deg);
+    width: 25px;
+    margin-left: 38%; }
+  .button--approve-modal:active::before {
+    top: 0.75em; }
+
 .nhsuk-checkboxes--small .nhsuk-checkboxes__item:after {
   content: "";
   display: block;

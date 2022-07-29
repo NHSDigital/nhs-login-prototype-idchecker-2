@@ -66,6 +66,20 @@
     {% endif %}
   </div>
 
+  {% if data.prototype.recordopen === 1 %}
+
+  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5" >
+    <div class="nhsuk-grid-column-full" style="display:flex; flex-direction:row;">
+      <div class="" style="display:flex; flex-direction:row-reverse; align-items: center;">
+        <form action="continue-reverify" method="POST" role="form" id="continue-reverify">
+          <a class="nhsuk-button" href="javascript{}:" onclick="document.getElementById('continue-reverify').submit(); return false;"> Continue verification</a>
+        </form>
+      </div>
+    </div>
+  </div>
+
+  {% else %}
+
   <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5" >
     <div class="nhsuk-grid-column-full" style="display:flex; flex-direction:row;">
       <div class="" style="display:flex; flex-direction:row-reverse; align-items: center;">
@@ -81,9 +95,7 @@
     </div>
   </div>
 
-  
-
-
+  {% endif %}
 
 
 {% elif data.prototype.recordprocessing === 1 %}

@@ -30,6 +30,7 @@ router.post("/", function (req, res) {
   prototype.inholding = 0
   prototype.count = 0
   prototype.recordprocessing = 0
+  prototype.recordopen = 0
 
   req.session.data['prototype'] = prototype
 
@@ -154,6 +155,26 @@ router.post("/*/reject-from-review", function (req, res) {
   prototype.recordprocessing = 0
   req.session.data['prototype'] = prototype
   res.redirect('dashboard')
+})
+
+router.post("/*/return-from-revise", function (req, res) {
+  let prototype = req.session.data['prototype']
+  prototype.inprogress = 1
+  prototype.recordopen = 1
+  prototype.recordprocessing = 0
+  prototype.count = prototype.count +1
+  prototype.thePage = 'dashboard'
+  req.session.data['prototype'] = prototype
+  res.redirect('dashboard')
+})
+
+router.post("/*/continue-reverify", function (req, res) {
+  let prototype = req.session.data['prototype']
+  prototype.thePage = 'revise-decision'
+  prototype.count = prototype.count -1
+  prototype.inprogress = 0 
+  req.session.data['prototype'] = prototype
+  res.redirect('revise-decision')
 })
 
 
