@@ -292,16 +292,16 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                         <p style="background-color: #fff9c4; padding: 16px 24px 16px 24px; font-size: 20px; font-weight: bold; width: fit-content;">{{ data.idv[data.prototype.count].postcode}}</p>
                 </div>
 
-<!-- ------------------   User submitted information  ---------------------------
+<!-- ------------------   User information  ---------------------------
 -----------------------   User submitted information  ---------------------------
 -----------------------   User submitted information  ---------------------------
 -->
                 {# {% if data.idv[data.prototype.count].pds_match === 'true' %} #}
                 {# hide this in the old styles #}
-                <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7">
+                <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7" style= "{% if data['pds_match'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
                     <summary class="nhsuk-details__summary">
                       <span class="nhsuk-details__summary-text">
-                      Show personal information sent by user
+                      Show user information
                       </span>
                     </summary>
 
@@ -309,7 +309,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                     {# {% endif %} #}
 
 
-                        <h3>User entered</h3>
+                        <h3>User information</h3>
 
                         {# if the user knew their NHS number then show it #}
                         {% if data.idv[data.prototype.count].nhs_number !== '' %}
@@ -398,49 +398,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                         {% endif %}
                 </details>
 
-<!-- ------------------   PDS information / P5 success ---------------------------
------------------------   PDS information / P5 success ---------------------------
------------------------   PDS information / P5 success ---------------------------
--->
-                {# {% if data.idv[data.prototype.count].pds_match === 'true' %} #}
-                {# hide this in the old styles #}
-                <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7" style= "{% if data['pds_match'] === 'true' %} display:block; {% else %} display:none; {% endif %}">
-                    <summary class="nhsuk-details__summary">
-                    <span class="nhsuk-details__summary-text">
-                    Information from PDS
-                    </span>
-                    </summary>
-
-                    <div class="nhsuk-details__text">
-                    {# {% endif %} #}
-
-
-                    <h3>PDS record</h3>
-
-                    <div class="idcheck-match">
-    
-                        <table id="pds-result">
-                            <tr>
-                                <td>First name:</td>
-                                <td><b>{{ data.idv[data.prototype.count].pds_name_first }}</b></td>
-                            </tr>
-                            <tr>
-                                <td>Middle name:</td>
-                                <td><b>{{ data.idv[data.prototype.count].pds_name_middle }}</b></td>
-                            </tr>
-                            <tr>
-                                <td>Last name:</td>
-                                <td><b>{{ data.idv[data.prototype.count].pds_name_last }}</b></td>
-                            </tr>
-                            <tr>
-                                <td>Date of birth:</td>
-                                <td><b>{{ data.idv[data.prototype.count].pds_name_dob }}</b></td>
-                            </tr>
-                        </table>
-                    </div>
-                </details>
-
-
+                
 <!-- ------------------   OCR from ID / show for both journies if we have the information  ---------------------------
 -----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
 -----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
