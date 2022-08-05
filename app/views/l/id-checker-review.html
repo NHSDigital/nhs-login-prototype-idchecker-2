@@ -403,7 +403,10 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 -----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
 -----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
 -->
-                        {# is this automated? check for an absence of video file #}
+
+<!-- We have removed this section due to ID Checkers not needing to see OCR scrape when doing an ID Check (only when they do deeper searches but its available on Splunk)-->
+
+<!--                         {# is this automated? check for an absence of video file #}
                         {% if data.idv[data.prototype.count].media_video === '' %}
 
                         
@@ -456,7 +459,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
     
                             {% endif %}
                     </details>
-            </div>
+            </div> -->
 
 <!-- ------------------   PDS Trace Right column  ---------------------------
 -----------------------   PDS Trace Right column  ---------------------------
