@@ -21,7 +21,7 @@ router.post("/", function (req, res) {
   // pull in JSON data file
   delete req.session.data['idv']
   let idvFile = 'verification-requests.json'
-  let path = 'app/data/b/'
+  let path = 'app/data/30inqueue/'
   req.session.data['idv'] = loadJSONFromFile(idvFile, path)
 
   prototype.version = req.session.data.version

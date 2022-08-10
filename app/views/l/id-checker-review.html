@@ -30,12 +30,15 @@
             <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
         </div>
         {% endif %} -->
-     
-        {% if data['media_video'] === 'true' %}
+
+        <!-- is this automated? check for an absence of video file --> 
+        {% if data.idv[data.prototype.count].media_video === '' %}
+        
+        <div class="id-check_automated" >Automated journey</div>
+        {% else %}
+
         <div class="id-check_uplift">Manual journey</div>
     
-        {% else %}
-        <div class="id-check_automated" >Automated journey</div>
     
         {% endif %}
      
@@ -46,7 +49,9 @@
             -----------------------------PHOTO ID CHECK------------------------------------------------------------
             -----------------------------PHOTO ID CHECK------------------------------------------------------------            
     -->
-
+    
+    {% if data.idv[data.prototype.count].media_video === '' %}
+        {% if data.idv[data.prototype.count].paycasso_response_code === 'DeniedSuspectedFraud' %}
         <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
             <!-- Warning - DeniedSuspectedFraud v2 -->
             <div class="nhsuk-care-card__heading-container ">
@@ -59,11 +64,13 @@
                 <li>the details on the front of the ID match those on the reverse of the ID</li>
                 </ul>
                 </p>
-            </div> 
-         
-        
+            </div>
+        </div>
+            
+        {% elif data.idv[data.prototype.count].paycasso_response_code === 'DeniedAgeRequirementNotMetDeniedNotReadableID' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
             <!-- Warning - DeniedAgeRequirementNotMet & DeniedNotReadableID v2 -->
-            {# <div class="nhsuk-care-card__heading-container">
+            <div class="nhsuk-care-card__heading-container">
                 <h5 class="nhsuk-heading-xs">Please ensure:</h5>
                 <p>
                 <ul class="nhsuk-list-small">
@@ -71,19 +78,24 @@
                 <li>you can clearly read the MRZ or DL number</li>
                 </ul>
                 </p>
-            </div> #}
-        
-        
+            </div>
+        </div>
+
+        {% elif data.idv[data.prototype.count].paycasso_response_code === 'DeniedDocumentExpired' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
             <!-- Warning - DeniedDocumentExpired v2 -->
-            {# <div class="nhsuk-care-card__heading-container">
+            <div class="nhsuk-care-card__heading-container">
                 <h5 class="nhsuk-heading-xs">Please ensure:</h5>
                 <p>
                 <ul class="nhsuk-list-small">
                 <li>the ID expired less than 12 months ago (30th January 2020)</li>
                 </ul>
                 </p>
-            </div> #}
+            </div>
         </div>
+
+        {% endif %}
+    {% endif %}
 
         <div class="nhsuk-care-card__content">
         
