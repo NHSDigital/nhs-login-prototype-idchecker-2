@@ -14,7 +14,87 @@
 
 
 
+<div class="nhsuk-care-card">
 
+    <!-- -----------------------------JOURNEY TAGS------------------------------------------------------------
+         -----------------------------JOURNEY TAGS------------------------------------------------------------
+         -----------------------------JOURNEY TAGS------------------------------------------------------------
+    -->
+
+    <div class="sticky" >
+
+<!--         {% if data.idv[data.prototype.count].style === 'new' %}
+        <div class="nhsuk-care-card__heading-container">
+            <h2 class="nhsuk-care-card__heading"><span role="text">Check if we can accept this ID</span></h2>
+            <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
+        </div>
+        {% endif %} -->
+
+        <!-- is this automated? check for an absence of video file --> 
+        {% if data.idv[data.prototype.count].media_video === '' %}
+        
+        <div class="id-check_automated" >Automated journey</div>
+        {% else %}
+
+        <div class="id-check_uplift">Manual journey</div>
+    
+    
+        {% endif %}
+     
+    </div>
+    
+
+    <!--    -----------------------------PHOTO ID CHECK------------------------------------------------------------
+            -----------------------------PHOTO ID CHECK------------------------------------------------------------
+            -----------------------------PHOTO ID CHECK------------------------------------------------------------            
+    -->
+    
+    {% if data.idv[data.prototype.count].media_video === '' %}
+        {% if data.idv[data.prototype.count].paycasso_response_code === 'DeniedSuspectedFraud' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+            <!-- Warning - DeniedSuspectedFraud v2 -->
+            <div class="nhsuk-care-card__heading-container ">
+                    
+                <h5 class="nhsuk-heading-xs">Please ensure:</h5>
+                <p>
+                <ul class="nhsuk-list-small">
+                <li>the expiry date is clearly visible and expired less than 12 months ago (30th January 2020)</li>
+                <li>you can clearly read the MRZ or DL number</li>
+                <li>the details on the front of the ID match those on the reverse of the ID</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+            
+        {% elif data.idv[data.prototype.count].paycasso_response_code === 'DeniedAgeRequirementNotMetDeniedNotReadableID' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+            <!-- Warning - DeniedAgeRequirementNotMet & DeniedNotReadableID v2 -->
+            <div class="nhsuk-care-card__heading-container">
+                <h5 class="nhsuk-heading-xs">Please ensure:</h5>
+                <p>
+                <ul class="nhsuk-list-small">
+                <li>the expiry date is clearly visible and expired less than 12 months ago (30th January 2020)</li>
+                <li>you can clearly read the MRZ or DL number</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        {% elif data.idv[data.prototype.count].paycasso_response_code === 'DeniedDocumentExpired' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+            <!-- Warning - DeniedDocumentExpired v2 -->
+            <div class="nhsuk-care-card__heading-container">
+                <h5 class="nhsuk-heading-xs">Please ensure:</h5>
+                <p>
+                <ul class="nhsuk-list-small">
+                <li>the ID expired less than 12 months ago (30th January 2020)</li>
+                </ul>
+                </p>
+            </div>
+        </div> 
+
+        {% endif %}
+    {% endif %}
 
 
 <!--
@@ -32,17 +112,6 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
 
 
 
-<div class="nhsuk-care-card nhsuk-care-card--non-urgent nhsuk-u-margin-bottom-0">
-   
-
-    {% if data.idv[data.prototype.count].style === 'new' %}
-    <div class="nhsuk-care-card__heading-container">
-        <h2 class="nhsuk-care-card__heading"><span role="text">Check if we can accept this ID</span></h2>
-        <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
-    </div>
-    {% endif %}
-
-    
     <div class="nhsuk-care-card__content">
 
         <div class="nhsuk-grid-row">
@@ -207,7 +276,7 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
             </div>
         </div>
     </div>
-</div>
+
 
 
 <!--
@@ -234,11 +303,36 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
     </div>
 
     {% endif %}
-
+ 
     <div class="nhsuk-care-card__content">
 
         <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-one-half">
+
+<!-- ------------------   Post Code  ---------------------------
+-----------------------   Post Code  ---------------------------
+-----------------------   Post Code  ---------------------------
+-->
+                <div class="nhsuk-form-group nhsuk-u-margin-bottom-7" >
+                        <h3>Postcode</h3>
+                        <p style="background-color: #fff9c4; padding: 16px 24px 16px 24px; font-size: 20px; font-weight: bold; width: fit-content;">{{ data.idv[data.prototype.count].postcode}}</p>
+                </div>
+
+<!-- ------------------   User information  ---------------------------
+-----------------------   User submitted information  ---------------------------
+-----------------------   User submitted information  ---------------------------
+-->
+                {# {% if data.idv[data.prototype.count].pds_match === 'true' %} #}
+                {# hide this in the old styles #}
+                <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7" style= "{% if data['pds_match'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+                    <summary class="nhsuk-details__summary">
+                      <span class="nhsuk-details__summary-text">
+                      Show user information
+                      </span>
+                    </summary>
+
+                    <div class="nhsuk-details__text">
+                    {# {% endif %} #}
 
 
                         <h3>User information</h3>
@@ -328,19 +422,78 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                             <input class="nhsuk-input nhsuk-input--width-5" id="postcode" value="{{ data.idv[data.prototype.count].postcode}}" name="postcode" type="text" maxlength="" readonly >
                         </div>
                         {% endif %}
+                </details>
 
+                
+<!-- ------------------   OCR from ID / show for both journies if we have the information  ---------------------------
+-----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
+-----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
+-->
 
+<!-- We have removed this section due to ID Checkers not needing to see OCR scrape when doing an ID Check (only when they do deeper searches but its available on Splunk)-->
 
-                        {# is this automated? check for an absence of video file #}
+<!--                         {# is this automated? check for an absence of video file #}
                         {% if data.idv[data.prototype.count].media_video === '' %}
 
                         
 
-                        {% endif %}
+                    <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7" >
+                        <summary class="nhsuk-details__summary">
+                          <span class="nhsuk-details__summary-text">
+                          OCR scrape
+                          </span>
+                        </summary>
+    
+                        <div class="nhsuk-details__text">
+
+                            {# {% endif %} #}
+    
+                            {# is this automated? check for an absence of video file #}
+                            {% if data.idv[data.prototype.count].media_video === '' %}
+    
+                            <h3>Optical character recognition (OCR) from ID</h3>
+    
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label" for="ocrfirstname">
+                                    First name
+                                </label>
+                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrfirstname" value="{{ data.idv[data.prototype.count].ocr_name_first}}" name="ocrfirstname" type="text" maxlength="" readonly >
+                            </div>
+    
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label" for="ocrmiddlename">
+                                    Middle names
+                                </label>
+                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrmiddlename" value="{{ data.idv[data.prototype.count].ocr_name_middle}}" name="ocrmiddlename" type="text" maxlength="" readonly >
+                            </div>
+    
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label" for="ocrlastname">
+                                    Last name
+                                </label>
+                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrlastname" value="{{ data.idv[data.prototype.count].ocr_name_last}}" name="ocrlastname" type="text" maxlength="" readonly >
+                            </div>
+    
+                            <div class="nhsuk-form-group">
+                                <label class="nhsuk-label" for="ocrdob">
+                                    Date of birth
+                                </label>
+                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrdob" value="{{ data.idv[data.prototype.count].ocr_dob}}" name="ocrdob" type="text" maxlength="" readonly >
+                            </div>
+    
+                            {% endif %}
+    
+                            {% endif %}
+                    </details> -->
+
+
 
             </div>
 
-
+<!-- ------------------   PDS Trace Right column  ---------------------------
+-----------------------   PDS Trace Right column  ---------------------------
+-----------------------   PDS Trace Right column  ---------------------------
+-->
             <div class="nhsuk-grid-column-one-half">
                 <h3>PDS trace result</h3>
 
@@ -361,10 +514,11 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                 <!-- PDS RESULT -->
 
 
-                <div id="trace" class="idcheck-match{% if data.idv[data.prototype.count].pds_matches === 'false' %} fail{% endif %}" style="display:none;">
+                <div id="trace" class="idcheck-match {% if data['pds_match'] !== 'true' %}  fail{% endif %}" style="display:none;">
 
                     <div class="idcheck-result">
-                        {% if data.idv[data.prototype.count].pds_matches === 'true' %}
+                        
+                        {% if data['pds_match'] === 'true' %} 
                             Single record found
                         {% else %}
                             {% if data.idv[data.prototype.count].pds_failreason === 'expired' %}
@@ -433,7 +587,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
                     {% endif %}
 
-                </div>
+                </div> 
 
                 <div id="retrace" class="idcheck-match" style="display:none;">
                     <div class="idcheck-result">
@@ -448,12 +602,12 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                     {% if data.idv[data.prototype.count].pds_failreason === 'expired' %}
 
                     <div id="id-decline3">
-                        <a href="dashboard" data-target="modal" id="declineBtn3" class="button button--modal button--decline">Decline</a>
+                        <a href="dashboard" data-target="modal" id="declineBtn3" class="button button--decline">Decline</a>
                     </div>
 
                     {% else %}
 
-                    <div class="qa-questions-group" data-complete="false">
+                    <div class="qa-questions-group" data-complete="false" style=" {% if data['pds_match'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
                         <div class="qa-questions-question" id="trace-1" data-answered="false" data-group="decline-4a">
 
                             <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-4">
@@ -518,7 +672,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
                     <div aria-hidden="true" aria-expanded="false" class="js-hidden nhsuk-u-margin-top-3" id="nhs-no" data-group="decline-0">
                         <div id="id-decline2">
-                            <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--modal button--decline">Decline</a>
+                            <a href="dashboard" id="declineBtn2" data-target="modal" class="nhsuk-button button--decline">Decline</a>
                         </div>
                     </div>
 
@@ -1599,7 +1753,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
 <p class="u-visuallyhidden" style="visibility: hidden;"><a id="modal_create" class="smartcard" href="#">.</a><a id="holding" href="dashboard">.</a></p>
 
-
+</div>
 
 
 <script type="text/javascript">
