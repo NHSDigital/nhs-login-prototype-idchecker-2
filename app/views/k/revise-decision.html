@@ -36,6 +36,88 @@
 
 
 
+<div class="nhsuk-care-card">
+
+    <!-- -----------------------------JOURNEY TAGS------------------------------------------------------------
+         -----------------------------JOURNEY TAGS------------------------------------------------------------
+         -----------------------------JOURNEY TAGS------------------------------------------------------------
+    -->
+
+    <div class="sticky" >
+
+<!--         {% if data.idv[data.prototype.count].style === 'new' %}
+        <div class="nhsuk-care-card__heading-container">
+            <h2 class="nhsuk-care-card__heading"><span role="text">Check if we can accept this ID</span></h2>
+            <span class="nhsuk-care-card__arrow" aria-hidden="true"></span>
+        </div>
+        {% endif %} -->
+
+        <!-- is this automated? check for an absence of video file --> 
+        {% if data.idv[data.prototype.count].media_video === '' %}
+        
+        <div class="id-check_automated" >Automated journey</div>
+        {% else %}
+
+        <div class="id-check_uplift">Manual journey</div>
+    
+    
+        {% endif %}
+     
+    </div>
+    
+
+    <!--    -----------------------------PHOTO ID CHECK------------------------------------------------------------
+            -----------------------------PHOTO ID CHECK------------------------------------------------------------
+            -----------------------------PHOTO ID CHECK------------------------------------------------------------            
+    -->
+    
+    {% if data.idv[data.prototype.count].media_video === '' %}
+        {% if data.idv[data.prototype.count].paycasso_response_code === 'DeniedSuspectedFraud' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+            <!-- Warning - DeniedSuspectedFraud v2 -->
+            <div class="nhsuk-care-card__heading-container ">
+                    
+                <h5 class="nhsuk-heading-xs">Please ensure:</h5>
+                <p>
+                <ul class="nhsuk-list-small">
+                <li>the expiry date is clearly visible and expired less than 12 months ago (30th January 2020)</li>
+                <li>you can clearly read the MRZ or DL number</li>
+                <li>the details on the front of the ID match those on the reverse of the ID</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+            
+        {% elif data.idv[data.prototype.count].paycasso_response_code === 'DeniedAgeRequirementNotMetDeniedNotReadableID' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+            <!-- Warning - DeniedAgeRequirementNotMet & DeniedNotReadableID v2 -->
+            <div class="nhsuk-care-card__heading-container">
+                <h5 class="nhsuk-heading-xs">Please ensure:</h5>
+                <p>
+                <ul class="nhsuk-list-small">
+                <li>the expiry date is clearly visible and expired less than 12 months ago (30th January 2020)</li>
+                <li>you can clearly read the MRZ or DL number</li>
+                </ul>
+                </p>
+            </div>
+        </div>
+
+        {% elif data.idv[data.prototype.count].paycasso_response_code === 'DeniedDocumentExpired' %}
+        <div style="background-color:#005eb8; color:#ffff; border: 1px solid transparent; {% if data['media_video'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+            <!-- Warning - DeniedDocumentExpired v2 -->
+            <div class="nhsuk-care-card__heading-container">
+                <h5 class="nhsuk-heading-xs">Please ensure:</h5>
+                <p>
+                <ul class="nhsuk-list-small">
+                <li>the ID expired less than 12 months ago (30th January 2020)</li>
+                </ul>
+                </p>
+            </div>
+        </div> 
+
+        {% endif %}
+    {% endif %}
+
 <!-- 
 
 $$$$$$$\  $$\   $$\  $$$$$$\ $$$$$$$$\  $$$$$$\         $$$$$$\  $$\   $$\ $$$$$$$$\  $$$$$$\  $$\   $$\
@@ -51,7 +133,7 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
 
 
 
-<div class="nhsuk-care-card nhsuk-care-card--non-urgent nhsuk-u-margin-bottom-0">
+
    
 
     {% if data.idv[data.prototype.count].style === 'new' %}
@@ -226,7 +308,6 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
             </div>
         </div>
     </div>
-</div>
 
 
 <!--
@@ -259,104 +340,185 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
         <div class="nhsuk-grid-row">
             <div class="nhsuk-grid-column-one-half">
 
-
-                        <h3>User information</h3>
-
-                        {# if the user knew their NHS number then show it #}
-                        {% if data.idv[data.prototype.count].nhs_number !== '' %}
-
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="nhsnum">
-                                NHS Number
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-10" id="nhsnum" value="{{ data.idv[data.prototype.count].nhs_number}}" name="nhsnum" type="text" maxlength="10" readonly>
-                        </div>
-
-                        {% endif %}
-
-                        {# if the user entered a first name then show it #}
-                        {% if data.idv[data.prototype.count].name_first !== '' %}
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="firstname">
-                                First name
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="firstname" value="{{ data.idv[data.prototype.count].name_first}}" name="firstname" type="text" maxlength="" readonly >
-                        </div>
-                        {% endif %}
-
-                        {# if the user entered a middle name then show it #}
-                        {% if data.idv[data.prototype.count].name_middle !== '' %}                        
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="middlename">
-                                Middle names
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="middlename" value="{{ data.idv[data.prototype.count].name_middle}}" name="middlename" type="text" maxlength="" readonly >
-                        </div>
-                        {% endif %}
-
-                        {# if the user entered a last name then show it #}
-                        {% if data.idv[data.prototype.count].name_last !== '' %}
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="lastname">
-                                Last name
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-20" id="lastname" value="{{ data.idv[data.prototype.count].name_last}}" name="lastname" type="text" maxlength="" readonly >
-                        </div>
-                        {% endif %}
-
-                        {# if the user entered a date of birth then show it #}
-                        {% if data.idv[data.prototype.count].date_day !== '' %}
-                        {% if data.idv[data.prototype.count].date_month !== '' %}
-                        {% if data.idv[data.prototype.count].date_year !== '' %}
-                        <div class="nhsuk-form-group">
-                            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
-                                <legend class="nhsuk-fieldset__legend">
-                                    <h3 class="nhsuk-fieldset__legend">
-                                        Date of birth
-                                    </h3>
-                                </legend>
-                                <div class="nhsuk-date-input" id="example">
-                                    <div class="nhsuk-date-input__item">
-                                        <div class="nhsuk-form-group">
-                                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-day" name="example-day" type="number" value="{{ data.idv[data.prototype.count].date_day}}" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="nhsuk-date-input__item">
-                                        <div class="nhsuk-form-group">
-                                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-month" name="example-month" type="number" value="{{ data.idv[data.prototype.count].date_month}}" readonly>
-                                        </div>
-                                    </div>
-                                    <div class="nhsuk-date-input__item">
-                                        <div class="nhsuk-form-group">
-                                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="example-year" name="example-year" type="number" value="{{ data.idv[data.prototype.count].date_year}}" readonly>
-                                        </div>
-                                    </div>
+                <!-- ------------------   Post Code  ---------------------------
+                -----------------------   Post Code  ---------------------------
+                -----------------------   Post Code  ---------------------------
+                -->
+                                <div class="nhsuk-form-group nhsuk-u-margin-bottom-7" >
+                                        <h3>Postcode</h3>
+                                        <p style="background-color: #fff9c4; padding: 16px 24px 16px 24px; font-size: 20px; font-weight: bold; width: fit-content;">{{ data.idv[data.prototype.count].postcode}}</p>
                                 </div>
-                            </fieldset>
-                        </div>
-                        {% endif %}
-                        {% endif %}
-                        {% endif %}
-                        
-                        {# if the user entered a postcode then show it #}
-                        {% if data.idv[data.prototype.count].postcode !== '' %}
-                        <div class="nhsuk-form-group">
-                            <label class="nhsuk-label" for="postcode">
-                                Postcode
-                            </label>
-                            <input class="nhsuk-input nhsuk-input--width-5" id="postcode" value="{{ data.idv[data.prototype.count].postcode}}" name="postcode" type="text" maxlength="" readonly >
-                        </div>
-                        {% endif %}
-
-
-
-                        {# is this automated? check for an absence of video file #}
-                        {% if data.idv[data.prototype.count].media_video === '' %}
-
-                        
-
-                        {% endif %}
-
+                
+                <!-- ------------------   User information  ---------------------------
+                -----------------------   User submitted information  ---------------------------
+                -----------------------   User submitted information  ---------------------------
+                -->
+                                {# {% if data.idv[data.prototype.count].pds_match === 'true' %} #}
+                                {# hide this in the old styles #}
+                                <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7" style= "{% if data['pds_match'] === 'true' %} display:none; {% else %} display:block; {% endif %}">
+                                    <summary class="nhsuk-details__summary">
+                                      <span class="nhsuk-details__summary-text">
+                                      Show user information
+                                      </span>
+                                    </summary>
+                
+                                    <div class="nhsuk-details__text">
+                                    {# {% endif %} #}
+                
+                
+                                        <h3>User information</h3>
+                
+                                        {# if the user knew their NHS number then show it #}
+                                        {% if data.idv[data.prototype.count].nhs_number !== '' %}
+                
+                                        <div class="nhsuk-form-group">
+                                            <label class="nhsuk-label" for="nhsnum">
+                                                NHS Number
+                                            </label>
+                                            <input class="nhsuk-input nhsuk-input--width-10" id="nhsnum" value="{{ data.idv[data.prototype.count].nhs_number}}" name="nhsnum" type="text" maxlength="10" readonly>
+                                        </div>
+                
+                                        {% endif %}
+                
+                                        {# if the user entered a first name then show it #}
+                                        {% if data.idv[data.prototype.count].name_first !== '' %}
+                                        <div class="nhsuk-form-group">
+                                            <label class="nhsuk-label" for="firstname">
+                                                First name
+                                            </label>
+                                            <input class="nhsuk-input nhsuk-input--width-20" id="firstname" value="{{ data.idv[data.prototype.count].name_first}}" name="firstname" type="text" maxlength="" readonly >
+                                        </div>
+                                        {% endif %}
+                
+                                        {# if the user entered a middle name then show it #}
+                                        {% if data.idv[data.prototype.count].name_middle !== '' %}                        
+                                        <div class="nhsuk-form-group">
+                                            <label class="nhsuk-label" for="middlename">
+                                                Middle names
+                                            </label>
+                                            <input class="nhsuk-input nhsuk-input--width-20" id="middlename" value="{{ data.idv[data.prototype.count].name_middle}}" name="middlename" type="text" maxlength="" readonly >
+                                        </div>
+                                        {% endif %}
+                
+                                        {# if the user entered a last name then show it #}
+                                        {% if data.idv[data.prototype.count].name_last !== '' %}
+                                        <div class="nhsuk-form-group">
+                                            <label class="nhsuk-label" for="lastname">
+                                                Last name
+                                            </label>
+                                            <input class="nhsuk-input nhsuk-input--width-20" id="lastname" value="{{ data.idv[data.prototype.count].name_last}}" name="lastname" type="text" maxlength="" readonly >
+                                        </div>
+                                        {% endif %}
+                
+                                        {# if the user entered a date of birth then show it #}
+                                        {% if data.idv[data.prototype.count].date_day !== '' %}
+                                        {% if data.idv[data.prototype.count].date_month !== '' %}
+                                        {% if data.idv[data.prototype.count].date_year !== '' %}
+                                        <div class="nhsuk-form-group">
+                                            <fieldset class="nhsuk-fieldset" aria-describedby="example-hint" role="group">
+                                                <legend class="nhsuk-fieldset__legend">
+                                                    <h3 class="nhsuk-fieldset__legend">
+                                                        Date of birth
+                                                    </h3>
+                                                </legend>
+                                                <div class="nhsuk-date-input" id="example">
+                                                    <div class="nhsuk-date-input__item">
+                                                        <div class="nhsuk-form-group">
+                                                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-day" name="example-day" type="number" value="{{ data.idv[data.prototype.count].date_day}}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nhsuk-date-input__item">
+                                                        <div class="nhsuk-form-group">
+                                                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-2" id="example-month" name="example-month" type="number" value="{{ data.idv[data.prototype.count].date_month}}" readonly>
+                                                        </div>
+                                                    </div>
+                                                    <div class="nhsuk-date-input__item">
+                                                        <div class="nhsuk-form-group">
+                                                            <input class="nhsuk-input nhsuk-date-input__input nhsuk-input--width-4" id="example-year" name="example-year" type="number" value="{{ data.idv[data.prototype.count].date_year}}" readonly>
+                                                        </div>
+                                                    </div>
+                                                </div>
+                                            </fieldset>
+                                        </div>
+                                        {% endif %}
+                                        {% endif %}
+                                        {% endif %}
+                                        
+                                        {# if the user entered a postcode then show it #}
+                                        {% if data.idv[data.prototype.count].postcode !== '' %}
+                                        <div class="nhsuk-form-group">
+                                            <label class="nhsuk-label" for="postcode">
+                                                Postcode
+                                            </label>
+                                            <input class="nhsuk-input nhsuk-input--width-5" id="postcode" value="{{ data.idv[data.prototype.count].postcode}}" name="postcode" type="text" maxlength="" readonly >
+                                        </div>
+                                        {% endif %}
+                                </details>
+                
+                                
+                <!-- ------------------   OCR from ID / show for both journies if we have the information  ---------------------------
+                -----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
+                -----------------------   OCR from ID / show for both journies if we have the information  ---------------------------
+                -->
+                
+                <!-- We have removed this section due to ID Checkers not needing to see OCR scrape when doing an ID Check (only when they do deeper searches but its available on Splunk)-->
+                
+                <!--                         {# is this automated? check for an absence of video file #}
+                                        {% if data.idv[data.prototype.count].media_video === '' %}
+                
+                                        
+                
+                                    <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-bottom-7" >
+                                        <summary class="nhsuk-details__summary">
+                                          <span class="nhsuk-details__summary-text">
+                                          OCR scrape
+                                          </span>
+                                        </summary>
+                    
+                                        <div class="nhsuk-details__text">
+                
+                                            {# {% endif %} #}
+                    
+                                            {# is this automated? check for an absence of video file #}
+                                            {% if data.idv[data.prototype.count].media_video === '' %}
+                    
+                                            <h3>Optical character recognition (OCR) from ID</h3>
+                    
+                                            <div class="nhsuk-form-group">
+                                                <label class="nhsuk-label" for="ocrfirstname">
+                                                    First name
+                                                </label>
+                                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrfirstname" value="{{ data.idv[data.prototype.count].ocr_name_first}}" name="ocrfirstname" type="text" maxlength="" readonly >
+                                            </div>
+                    
+                                            <div class="nhsuk-form-group">
+                                                <label class="nhsuk-label" for="ocrmiddlename">
+                                                    Middle names
+                                                </label>
+                                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrmiddlename" value="{{ data.idv[data.prototype.count].ocr_name_middle}}" name="ocrmiddlename" type="text" maxlength="" readonly >
+                                            </div>
+                    
+                                            <div class="nhsuk-form-group">
+                                                <label class="nhsuk-label" for="ocrlastname">
+                                                    Last name
+                                                </label>
+                                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrlastname" value="{{ data.idv[data.prototype.count].ocr_name_last}}" name="ocrlastname" type="text" maxlength="" readonly >
+                                            </div>
+                    
+                                            <div class="nhsuk-form-group">
+                                                <label class="nhsuk-label" for="ocrdob">
+                                                    Date of birth
+                                                </label>
+                                                <input class="nhsuk-input nhsuk-input--width-20" id="ocrdob" value="{{ data.idv[data.prototype.count].ocr_dob}}" name="ocrdob" type="text" maxlength="" readonly >
+                                            </div>
+                    
+                                            {% endif %}
+                    
+                                            {% endif %}
+                                    </details> -->
+                
+                
+                
             </div>
 
 
@@ -537,19 +699,19 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                     <table id="pds-result">
                         <tr>
                             <td>First name:</td>
-                            <td><b>Joe</b></td>
+                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_first }}{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>Middle name:</td>
-                            <td><b>William</b></td>
+                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_middle }}{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>Last name:</td>
-                            <td><b>Boggs</b></td>
+                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_last }}{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>Date of birth:</td>
-                            <td><b>09 Feb 79</b></td>
+                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_dob }}{% else %}-{% endif %}</b></td>
                         </tr>
                     </table>
 
@@ -592,10 +754,10 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                             <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
-                                <div class="nhsuk-radios nhsuk-radios--inline">
+                                <div class="nhsuk-radios nhsuk-radios--inline" aria-disabled="true">
 
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="8" name="a-4" type="radio" value="yes" aria-checked="false" >
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="8" name="a-4" type="radio" value="yes" aria-checked="false">
                                         <label class="nhsuk-label nhsuk-radios__label" for="8">
                                             Yes
                                         </label>
@@ -639,7 +801,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                                 <div class="nhsuk-radios nhsuk-radios--inline">
 
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="10" name="a-5" type="radio" value="yes" aria-checked="false" >
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="10" name="a-5" type="radio" value="yes" aria-checked="false">
                                         <label class="nhsuk-label nhsuk-radios__label" for="10">
                                             Yes
                                         </label>
@@ -670,7 +832,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                                 <div class="nhsuk-radios nhsuk-radios--inline">
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="radio-inline-3" name="radio-inline-group-1" type="radio" value="yes" aria-checked="false"  aria-controls="pds-yes-1">
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="radio-inline-3" name="radio-inline-group-1" type="radio" value="yes" aria-checked="false" aria-controls="pds-yes-1">
                                         <label class="nhsuk-label nhsuk-radios__label" for="radio-inline-3">
                                             Yes
                                         </label>
@@ -718,7 +880,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                                 <div class="nhsuk-radios nhsuk-radios--inline">
 
                                     <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="12" name="a-6" type="radio" value="yes" aria-checked="false" >
+                                        <input class="nhsuk-radios__input qa-questions-answer" id="12" name="a-6" type="radio" value="yes" aria-checked="false">
                                         <label class="nhsuk-label nhsuk-radios__label" for="12">
                                             Yes
                                         </label>
@@ -1551,7 +1713,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
 <p class="u-visuallyhidden" style="visibility: hidden;"><a id="modal_create" class="smartcard" href="#">.</a><a id="holding" href="dashboard">.</a></p>
 
-
+</div>
 
 <script type="text/javascript">
     /* eslint-disable indent */

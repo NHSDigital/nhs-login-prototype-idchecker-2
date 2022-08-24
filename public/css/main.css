@@ -6915,7 +6915,7 @@ textarea[disabled] {
 .modal-overlay[aria-hidden="false"] {
   opacity: 1;
   visibility: visible;
-  z-index: 200; }
+  z-index: 2; }
 
 /*
   Modal Content Area
@@ -8042,7 +8042,7 @@ details.dev-mode summary, details.dev-mode ol {
   padding-top: 32px;
   background-color: #f0f4f5;
   margin-bottom: 0px;
-  z-index: 999; }
+  z-index: 1; }
 
 .nhsuk-list-small {
   font-size: 16px;
