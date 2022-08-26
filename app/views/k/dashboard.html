@@ -124,7 +124,7 @@
     
       </form>
     </div>
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
+    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px; {% if data.prototype.newdecision === 1 %} display: none;{% endif %}">
       <form action="review" method="POST" role="form" id="review">
         <p><a href="javascript{}:" onclick="document.getElementById('review').submit(); return false;">Reopen record</a><span> to cancel your decision</span></p>
       </form>

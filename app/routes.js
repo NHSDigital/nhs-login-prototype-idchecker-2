@@ -141,7 +141,8 @@ router.post("/*/accept-from-review", function (req, res) {
   prototype.thePage = 'dashboard'
   prototype.count = prototype.count +1
   prototype.inprogress = 0
-  prototype.recordprocessing = 0
+  prototype.recordprocessing = 1 
+  prototype.newdecision = 1
   req.session.data['prototype'] = prototype
   res.redirect('dashboard')
 })
@@ -151,7 +152,8 @@ router.post("/*/reject-from-review", function (req, res) {
   prototype.thePage = 'dashboard'
   prototype.count = prototype.count +1
   prototype.inprogress = 0
-  prototype.recordprocessing = 0
+  prototype.recordprocessing = 1
+  prototype.newdecision = 1
   req.session.data['prototype'] = prototype
   res.redirect('dashboard')
 })
