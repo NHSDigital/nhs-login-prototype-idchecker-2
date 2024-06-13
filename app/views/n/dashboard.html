@@ -3,40 +3,39 @@
 
 {% block content %}
 
-
-
 <h1>Dashboard</h1>
 
 <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5">
   <div class="nhsuk-grid-column-one-quarter">
-    <div class="idcheck-dash u-inqueue" id="pending" style="border-radius: 4px;">
+    <div class="idcheck-dash idcheck-dash-{{ queue}}" id="pending">
       <p class="idcheck-dash-heading">Queue</p>
       <div class="idcheck-dash-details">
         <div class="idcheck-dash-number nhsuk-heading-xl">{{ data.prototype.total - data.prototype.count }}</div>
       </div>
     </div>
   </div>
+  
   <div class="nhsuk-grid-column-one-quarter">
-    <div class="idcheck-dash idcheck-dash-{{processig|default('clear') }} {% if data.prototype.recordprocessing === 1 %}u-recordprocessing{% endif %}"id="recordprocessing"style="border-radius: 4px;" >
-      <p class="idcheck-dash-heading">Processing record</p>
+    <div class="idcheck-dash {% if data.prototype.inprogress === 1 %}u-inprogress{% endif %}"id="inprogress" >
+      <p class="idcheck-dash-heading">In progress</p>
       <div class="idcheck-dash-details">
-        <span class="idcheck-dash-number nhsuk-heading-xl" id="progress-num">{{ data.prototype.recordprocessing }}</span>
-      </div>
-    </div>
-  </div>
-  <div class="nhsuk-grid-column-one-quarter">
-    <div class="idcheck-dash u-completed" style="border-radius: 4px;">
-      <p class="idcheck-dash-heading">Completed today</p>
-      <div class="idcheck-dash-details">
-        <div class="idcheck-dash-number nhsuk-heading-xl">{{ data.prototype.count - data.prototype.inprogress - data.prototype.inholding - data.prototype.recordprocessing }}</div>
+        <span class="idcheck-dash-number nhsuk-heading-xl" id="progress-num">{{ data.prototype.inprogress }}</span>
       </div>
     </div>
   </div>
   <div class="nhsuk-grid-column-one-quarter" href="holding-list"> 
-    <div class="idcheck-dash idcheck-dash-{{holding|default('clear') }} {% if data.prototype.inholding === 1 %}u-inholding-new{% endif %}" style="border-radius: 4px;">
+    <div class="idcheck-dash idcheck-dash-{{holding|default('clear') }} {% if data.prototype.inholding === 1 %}u-inholding{% endif %}">
       <p class="idcheck-dash-heading">Holding list</p>
       <div class="idcheck-dash-details">
         <div class="idcheck-dash-number nhsuk-heading-xl">{{ data.prototype.inholding }}</div>
+      </div>
+    </div>
+  </div>
+  <div class="nhsuk-grid-column-one-quarter">
+    <div class="idcheck-dash">
+      <p class="idcheck-dash-heading">Completed today</p>
+      <div class="idcheck-dash-details">
+        <div class="idcheck-dash-number nhsuk-heading-xl">{{ data.prototype.count - data.prototype.inprogress - data.prototype.inholding}}</div>
       </div>
     </div>
   </div>
@@ -45,114 +44,18 @@
 
 
 {% if data.prototype.inprogress === 1 %}
+  <p>You still have a verification in progress</p>
 
+  <form action="continue" method="POST" role="form" id="continue">
+    <a class="nhsuk-button" href="javascript{}:" onclick="document.getElementById('continue').submit(); return false;">Continue verification</a>
+  </form>
 
-  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-5">
-    <div class="nhsuk-grid-column-one-half">
-        <p class="">You still have a verification in progress</p>
-    </div>
-
-    {% if data.prototype.inholding === 1 %}
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="javascript{}:" onclick="document.getElementById('review').submit(); return false;"></a><span></span></p>
-      </form>
-    </div>
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="holding-list">Open holding list</a><span></span></p>
-      </form>
-    </div>
-    {% endif %}
-  </div>
-
-  {% if data.prototype.recordopen === 1 %}
-
-  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5" >
-    <div class="nhsuk-grid-column-full" style="display:flex; flex-direction:row;">
-      <div class="" style="display:flex; flex-direction:row-reverse; align-items: center;">
-        <form action="continue-reverify" method="POST" role="form" id="continue-reverify">
-          <a class="nhsuk-button" href="javascript{}:" onclick="document.getElementById('continue-reverify').submit(); return false;"> Continue verification</a>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  {% else %}
-
-  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5" >
-    <div class="nhsuk-grid-column-full" style="display:flex; flex-direction:row;">
-      <div class="" style="display:flex; flex-direction:row-reverse; align-items: center;">
-        <form action="continue" method="POST" role="form" id="continue">
-          <a class="nhsuk-button" href="javascript{}:" onclick="document.getElementById('continue').submit(); return false;">Continue verification</a>
-        </form>
-      </div>
-      <div class="nhsuk-u-margin-left-6" style="display:flex; flex-direction:row-reverse; align-items: center;">
-        <form action="abort-from-dash" method="POST" role="form" id="abort">
-          <p><a href="javascript{}:" onclick="document.getElementById('abort').submit(); return false;">Abort</a></p>
-        </form>
-      </div>
-    </div>
-  </div>
-
-  {% endif %}
-
-
-{% elif data.prototype.recordprocessing === 1 %}
-
-  <div class="nhsuk-grid-row nhsuk-u-margin-bottom-5">
-    <div class="nhsuk-grid-column-one-quarter">
-      <form action="{{ thisPage }}" method="POST" role="form">
-
-        <button class="nhsuk-button">Start next verification</button>
-    
-        <div class="{% if data['devMode'] !== 'true' %}js-hidden{% endif %}">
-    
-          <hr class="nhsuk-section-break">
-    
-          <div class="dev-mode">
-    
-            <select id="decline-0" class="nhsuk-select decline-group" id="sort" name="user">
-              {% for i in range(0, data.prototype.total) -%}
-              <option name="user{{ data.idv[i].index }}" value="{{ data.idv[i].index }}" {% if i === data.prototype.count %}selected{% endif %}>{{ data.idv[i].label }}</option>
-              {%- endfor %}
-            </select>
-    
-          </div>
-    
-        </div>
-    
-      </form>
-    </div>
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px; {% if data.prototype.newdecision === 1 %} display: none;{% endif %}">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="javascript{}:" onclick="document.getElementById('review').submit(); return false;">Reopen record</a><span> to cancel your decision</span></p>
-      </form>
-    </div>
-
-
-    {% if data.prototype.inholding === 1 %}
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="javascript{}:" onclick="document.getElementById('review').submit(); return false;"></a><span></span></p>
-      </form>
-    </div>
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="holding-list">Open holding list</a><span></span></p>
-      </form>
-    </div>
-    {% endif %}
-  </div>
-  
-
-
+  <form action="abort-from-dash" method="POST" role="form" id="abort">
+    <p><a href="javascript{}:" onclick="document.getElementById('abort').submit(); return false;">Abort</a></p>
+  </form>
 
 {% else %}
 
-<div class="nhsuk-grid-row nhsuk-u-margin-bottom-5">
-  <div class="nhsuk-grid-column-one-quarter">
-    
   <form action="{{ thisPage }}" method="POST" role="form">
 
     <button class="nhsuk-button">Start next verification</button>
@@ -174,31 +77,11 @@
     </div>
 
   </form>
-  </div>
-
-
-  {% if data.prototype.inholding === 1 %}
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="javascript{}:" onclick="document.getElementById('review').submit(); return false;"></a><span></span></p>
-      </form>
-    </div>
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="review">
-        <p><a href="javascript{}:" onclick="document.getElementById('review').submit(); return false;"></a><span></span></p>
-      </form>
-    </div>
-    <div class="nhsuk-grid-column-one-quarter" style="padding-left: 24px;">
-      <form action="review" method="POST" role="form" id="">
-        <p><a href="holding-list">Open holding list</a><span></span></p>
-      </form>
-    </div>
-    {% endif %}
-</div>
-
-
 
 {% endif%}
+
+
+<p><a href="holding-list">Open the holding list</a></p>
 
 
 {% endblock %}
