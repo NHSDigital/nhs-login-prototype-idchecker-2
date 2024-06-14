@@ -1344,12 +1344,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             </form>
         </div>
 
-
-
         <!-- DECLINE MODALLLLL 
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         ---------------->
-
 
         <div class="first-item" id="decline-modal" style="display:none"> 
             <form action="reject" method="POST" role="form">
@@ -1724,7 +1721,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             </form> 
         </div>
 
-                <!-- MOVE TO HOLD QUEUE MODALLLLL 
+        <!-- MOVE TO HOLD QUEUE MODALLLLL 
         @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
         ---------------->
         <div class="first-item" id="moveHold-modal" style="display:none"> 
@@ -1903,6 +1900,7 @@ btn.innerHTML = 'my text'; #}
         var buttonType = object.id
 
         if (object.id === 'declineBtn') {
+            heading.classList.remove('nhsuk-heading-l');
             document.getElementById('decline-modal').style.display = 'block'
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('moveHold-modal').style.display = 'none'
@@ -1920,10 +1918,11 @@ btn.innerHTML = 'my text'; #}
             setReasons(target)
 
         } else if (object.id === 'approveBtn') {
-        heading.innerText = 'Do you confirm the record has passed all checks?';
-        document.getElementById('approve-modal').style.display = 'block';
-        document.getElementById('decline-modal').style.display = 'none';
-        document.getElementById('moveHold-modal').style.display = 'none'
+            heading.innerText = 'Do you confirm the record has passed all checks?';
+            heading.classList.remove('nhsuk-heading-l');
+            document.getElementById('approve-modal').style.display = 'block';
+            document.getElementById('decline-modal').style.display = 'none';
+            document.getElementById('moveHold-modal').style.display = 'none'
 
         } else if (object.id === 'slideout__button') {
             heading.innerText = 'Move to holding list';
@@ -1932,7 +1931,7 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('decline-modal').style.display = 'none';
             console.log(target)
-            
+                
             document.getElementById('modal_create').click()
 
         }
