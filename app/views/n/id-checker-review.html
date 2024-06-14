@@ -1230,7 +1230,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 </div> 
 
 <div id="slideout" data-status="closed">
-    <a href="dashboard" data-target="modal" id="slideout__button"class="button--modal">
+    <a href="dashboard" data-target="modal" id="slideout__button" class="button--modal">
         <img src="/images/problem.png" alt="Feedback" height="173" width="32" />
     </a>
 </div>
@@ -1754,8 +1754,13 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
                 </div>
 
-                <div class="nhsuk-form-group" id="move-reason" style="display:none;">
-                    <label class="" for="field6">Reason for moving (required)</label>
+                <div class="nhsuk-form-group" id="move-reason-optional" style="display:none;">
+                    <label>Reason for moving (optional)</label>
+                    <textarea class="nhsuk-textarea" id="move-textbox" name="move-textbox" type="text"style="margin-top: 16px;" onkeyup='checkMoveHoldText(this.value);'></textarea>
+                </div>
+
+                <div class="nhsuk-form-group" id="move-reason-required" style="display:none;">
+                    <label>Reason for moving (required)</label>
                     <textarea class="nhsuk-textarea" id="move-textbox" name="move-textbox" type="text"style="margin-top: 16px;" onkeyup='checkMoveHoldText(this.value);'></textarea>
                 </div>
 
@@ -2062,17 +2067,22 @@ btn.innerHTML = 'my text'; #}
         // Check the selected option
         if (selectElement.value === "Other") {
             // Show the textarea for "Other"
-            document.getElementById("move-reason").style.display = "block";
+            document.getElementById("move-reason-required").style.display = "block";
+            // Hide the optional textarea
+            document.getElementById("move-reason-optional").style.display = "none";
             // Disable the submit button
             submitButton.setAttribute("disabled", "disabled");
         } else if (selectElement.value === "--- Please select ---") {
-            // Hide the textarea for "Other"
-            document.getElementById("move-reason").style.display = "none";
+            // Hide all the textarea
+            document.getElementById("move-reason-required").style.display = "none";
+            document.getElementById("move-reason-optional").style.display = "none";
             // Disable the submit button
             submitButton.setAttribute("disabled", "disabled");    
         } else {
             // Hide the textarea for "Other"
-            document.getElementById("move-reason").style.display = "none";
+            document.getElementById("move-reason-required").style.display = "none";
+            // Show the optional textarea
+            document.getElementById("move-reason-optional").style.display = "block";
             // Enable the submit button
             submitButton.removeAttribute("disabled");
         }
