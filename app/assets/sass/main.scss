@@ -189,7 +189,7 @@ cursor: pointer;}
   cursor: pointer;
 }
 
-//tags
+//tags in live
 strong.nhsuk-tag {
   
   &.unopened {
@@ -200,7 +200,7 @@ strong.nhsuk-tag {
   font: small-caption;
   font-variant-caps: all-small-caps;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 18px;
   color: rgb(255, 255, 255);
   }
   &.with-checker {
@@ -211,7 +211,7 @@ strong.nhsuk-tag {
     font: small-caption;
     font-variant-caps: all-small-caps;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     color: rgb(255, 255, 255);
     }
   &.with-me {
@@ -222,7 +222,7 @@ strong.nhsuk-tag {
     font: small-caption;
     font-variant-caps: all-small-caps;
     font-weight: 600;
-    font-size: 16px;
+    font-size: 18px;
     color: rgb(0, 0, 0);
     }
  }
