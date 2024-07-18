@@ -34,9 +34,24 @@ router.post("/", function (req, res) {
 
   req.session.data['prototype'] = prototype
 
-  res.redirect('/' + prototype.version + '/dashboard')
-
-})
+    // Retrieve the feature state and target page from the request
+    let featureState = req.body['feature-state'];
+    let targetPage = req.body['target-page'];
+  
+    let parentUrl;
+    if (featureState === 'live') {
+      parentUrl = '/live'; // Replace with the actual parent URL for live features
+    } else if (featureState === 'in-progress') {
+      parentUrl = '/features-in-progress'; // Replace with the actual parent URL for features in development
+    } else {
+      parentUrl = '/assurance-audit'; // Replace with the actual parent URL for audit view
+    }
+  
+    // Construct the redirection URL with the target page
+    let redirectionUrl = `${parentUrl}/${targetPage}`;
+  
+    res.redirect(redirectionUrl);
+  });
 
 
 router.post('/*/dashboard', function (req, res) {
@@ -45,7 +60,7 @@ router.post('/*/dashboard', function (req, res) {
   prototype.count = req.session.data.user -1
   prototype.recordprocessing = 0
   req.session.data['prototype'] = prototype
-  res.redirect('id-checker-review')
+  res.redirect('id-checker')
 })
 
 
@@ -111,7 +126,7 @@ router.post("/*/continue", function (req, res) {
   prototype.count = prototype.count -1
   prototype.inprogress = 0 
   req.session.data['prototype'] = prototype
-  res.redirect('id-checker-review')
+  res.redirect('id-checker')
 })
 
 router.post("/*/review", function (req, res) {

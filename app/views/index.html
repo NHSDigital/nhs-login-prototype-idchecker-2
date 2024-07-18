@@ -40,99 +40,172 @@
         A service for ID checkers to check identity documents, perform facial comparisons and match users to their NHS record.
       </p>
 
-      <p class="nhsuk-body-l">
-Need to merge version K into version L.     </p>
 
 
-
-      <form action="{{ thisPage }}" method="POST" role="form">
-
-
-      <details class="nhsuk-details nhsuk-expander version-list">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Aligned to live
-          </span>
-        </summary>
-        <div class="nhsuk-details__text version-text">
-          <dl class="release-desc">
-            <dt class="design"><button type="submit" class="button-as-link" name="version" value="#"><strong>work in progress</strong></button></dt>
-            <p>Currently, working to build this into the prototype.</p>
-            <p>Use
-              <a href="https://qa-nhs-idc.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=49l6g3jrlbdl8i547fe9aklhp3&redirect_uri=https://idchecker.qa.signin.nhs.uk/cis/cognito-token.html">ID Checker App demo environment</a>
-              to see what's in live.
-            </p>
-            <p>Username: research</p>
-            <p>Password: Password1!</p>
-            <dd class="nhsuk-u-margin-0">
-            <strong class="govuk-tag in-progress">last edited: July 2024</strong> 
-          </dl>
+<!--
+//.................................................................
+//..I....NN......N.........LL.........I...VV......VV...EEEEEEEEE...
+//.III..INNN....NNN....... LLL.......III.IVVV....VVVV.VEEEEEEEEEE..
+//.III..INNNN...NNN....... LLL.......III.IVVV....VVVV.VEEEEEEEEEE..
+//.III..INNNN...NNN....... LLL.......III.IVVVV...VVVV.VEEEEEEEEEE..
+//.III..INNNNN..NNN....... LLL.......III..VVVV..VVVV..VEEE.........
+//.III..INNNNNN.NNN....... LLL.......III..VVVV..VVVV..VEEEEEEEEE...
+//.III..INNNNNN.NNN....... LLL.......III..VVVVV.VVVV..VEEEEEEEEE...
+//.III..INN.NNNNNNN....... LLL.......III...VVVVVVVV...VEEEEEEEEE...
+//.III..INN.NNNNNNN....... LLL.......III...VVVVVVVV...VEEEEEEEEE...
+//.III..INN..NNNNNN....... LLL.......III....VVVVVVV...VEEE.........
+//.III..INN..NNNNNN....... LLL.......III....VVVVVV....VEEE.........
+//.III..INN...NNNNN....... LLLLLLLLL.III....VVVVVV....VEEEEEEEEEE..
+//.III..INN...NNNNN....... LLLLLLLLL.III.....VVVVV....VEEEEEEEEEE..
+//.III..INN....NNNN....... LLLLLLLLL.III.....VVVV.....VEEEEEEEEEE..
+//.................................................................
+-->  
 
 
-      </details>
+      <form action="/" method="post">
+        <input type="hidden" name="feature-state" value="live">
+        <details class="nhsuk-details nhsuk-expander version-list">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Aligned to live
+            </span>
+          </summary>
+          <div class="nhsuk-details__text version-text">
+              <dl class="release-desc">
+                <dt style="display:none;" class="design"><button type="submit" class="button-as-link" name="target-page" value="#"><strong>Work in progress</strong></button></dt>
+                <p>Currently, working to build this into the prototype.</p>
+                <p>Use
+                  <a href="https://qa-nhs-idc.auth.eu-west-2.amazoncognito.com/login?response_type=token&client_id=49l6g3jrlbdl8i547fe9aklhp3&redirect_uri=https://idchecker.qa.signin.nhs.uk/cis/cognito-token.html">ID Checker App demo environment</a>
+                  to see what's in live.
+                </p>
+                <p>Username: research</p>
+                <p>Password: Password1!</p>
+                <dd class="nhsuk-u-margin-0">
+                <strong class="govuk-tag in-progress">last edited: July 2024</strong> 
+              </dl>
+          </div>
 
-      <details class="nhsuk-details nhsuk-expander version-list">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Audit view
-          </span>
-        </summary>
-        <div class="nhsuk-details__text version-text">
-        <dl class="release-desc">
-          <dt class="design"><button type="submit" class="button-as-link" name="version" value="assurance-audit"><strong>Assurance audit</strong></button></dt>
-          <dd class="nhsuk-u-margin-0">
-            <p>Assurance audit is a process for ID checkers to audit themselves. It is carried out by trained supervisors only.</p>
-            <p>Audit view is not accessed via ID checker dashboard.</p>
-            <p>Spluk randomly selects 10% of the approved checks and generates a list. Supervisors log in to Splunk and copy this list and create links on a spreadsheet. 
-              They then manually assign these to themselves and go over individual checks link by link.
-            </p>
-          <strong class="govuk-tag in-progress">last edited: May 2022</strong>
-        </dl>
-        </div>
-
-      </details>
-
-      <details class="nhsuk-details nhsuk-expander version-list">
-        <summary class="nhsuk-details__summary">
-          <span class="nhsuk-details__summary-text">
-            Features in progress
-          </span>
-        </summary>
-        <div class="nhsuk-details__text version-text">
-
-          <dl class="release-desc">
-            <dt class="design"><button type="submit" class="button-as-link" name="version" value="a"><strong>Assurance audit: User submitted info update</strong></button></dt>
-            <dd class="nhsuk-u-margin-0">
-              Update user information to display postcode only.<br>
-              Postcode is the only field displaying what the user have originally submitted at P5.<br>
-              Once a PDS match is found and completed, all other user submitted information is replaced with what is in PDS. Due to this, ID checkers only trust and use the postcode while checking against the ID.<br>
-            </dd>
-            <strong class="govuk-tag in-progress">last edited: 18 July 2024</strong>
-          </dl>
-
-          <dl class="release-desc">
-            <dt class="design"><button type="submit" class="button-as-link" name="version" value="n"><strong>Move to hold queue updates</strong></button></dt>
-            <dd class="nhsuk-u-margin-0">
-              Move to hold reasons as pre-select drop down list instead of free text box<br>
-              Move to hold redesign to open as a modal instead of side bar<br>
-            </dd>
-            <strong class="govuk-tag in-progress">last edited: 13 June 2024</strong>
-          </dl>
-
-          <dl class="release-desc">
-            <dt class="design"><button type="submit" class="button-as-link" name="version" value="k"><strong>Reverification process</strong></button></dt>
-            <dd class="nhsuk-u-margin-0">
-              Ability to revoke decisions<br>
-              New dashboard design to show pending state<br>
-            <strong class="govuk-tag in-progress">last edited: Jun 2022</strong>
-          </dl>
-        </div>
-
-      </details>
+        </details>
 
       </form>
 
-      <!-- End of content -->
+<!--
+//...............................................................................................................................
+//..I....NN......N.........PPPPP.......RRRRR..........OOOOOO.........GGGGG......RRRRR........EEEEEEEEE....SSSSSS......SSSSSS.....
+//.III..INNN....NNN....... PPPPPPPPP..PRRRRRRRRR.....OOOOOOOOO.....GGGGGGGGG...GRRRRRRRRR...REEEEEEEEEE..SSSSSSSS....SSSSSSSS....
+//.III..INNNN...NNN....... PPPPPPPPP..PRRRRRRRRRR...OOOOOOOOOO....GGGGGGGGGG...GRRRRRRRRRR..REEEEEEEEEE.ESSSSSSSSS..SSSSSSSSSS...
+//.III..INNNN...NNN....... PPPPPPPPPP.PRRRRRRRRRR..ROOOOOOOOOOO..OGGGGGGGGGGG..GRRRRRRRRRR..REEEEEEEEEE.ESSSSSSSSS..SSSSSSSSSS...
+//.III..INNNNN..NNN....... PPP...PPPP.PRRR...RRRRR.ROOO....OOOO..OGGG....GGGG..GRRR...RRRRR.REEE.......EESS...SSSSSSSSS...SSSSS..
+//.III..INNNNNN.NNN....... PPP...PPPP.PRRR...RRRRR.ROOO....OOOOOOOGGG....GGGG..GRRR...RRRRR.REEEEEEEEE.EESSSS......SSSSSS........
+//.III..INNNNNN.NNN....... PPPPPPPPPP.PRRRRRRRRRR.RROO......OOOOOOGG...GGGGGG..GRRRRRRRRRR..REEEEEEEEE..ESSSSSSSS...SSSSSSSSS....
+//.III..INN.NNNNNNN....... PPPPPPPPPP.PRRRRRRRRRR.RROO......OOOOOOGG...GGGGGG..GRRRRRRRRRR..REEEEEEEEE..ESSSSSSSSS..SSSSSSSSSS...
+//.III..INN.NNNNNNN....... PPPPPPPPP..PRRRRRRRRRR.RROO......OOOOOOGG...GGGGGG..GRRRRRRRRRR..REEEEEEEEE....SSSSSSSSS...SSSSSSSSS..
+//.III..INN..NNNNNN....... PPPPPPPP...PRRR..RRRRR..ROOO....OOOOOOOGGG..GGGGGG..GRRR..RRRRR..REEE.......EESS..SSSSSSSSSS..SSSSSS..
+//.III..INN..NNNNNN....... PPP........PRRR...RRRR..ROOO....OOOO..OGGG....GGGG..GRRR...RRRR..REEE.......EESS....SSSSSSSS....SSSS..
+//.III..INN...NNNNN....... PPP........PRRR...RRRR..ROOOOOOOOOOO..OGGGGGGGGGGG..GRRR...RRRR..REEEEEEEEEEEESSSSSSSSSSSSSSSSSSSSSS..
+//.III..INN...NNNNN....... PPP........PRRR...RRRR...OOOOOOOOOO....GGGGGGGGGGG..GRRR...RRRR..REEEEEEEEEE.ESSSSSSSSS..SSSSSSSSSS...
+//.III..INN....NNNN....... PPP........PRRR...RRRRR...OOOOOOOOO.....GGGGGGGGGG..GRRR...RRRRR.REEEEEEEEEE..SSSSSSSSS...SSSSSSSSS...
+//....................................................OOOOOO........GGGG..................................SSSSSS......SSSSSS.....
+//...............................................................................................................................
+-->
+      <form action="/" method="post">
+        <input type="hidden" name="feature-state" value="in-progress">
+        <details class="nhsuk-details nhsuk-expander version-list">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Features in progress
+            </span>
+          </summary>
+          <div class="nhsuk-details__text version-text">
+
+              <dl class="release-desc">
+                <dt class="design"><button type="submit" class="button-as-link" name="target-page" value="d"><strong>PDS record info re-order</strong></button></dt>
+                <dd class="nhsuk-u-margin-0">
+                  Revising the order of info displayed under PDS record section.<br>
+                  Photo IDs usually display a surname followed by a first name. On the ID checker app however the display is first name followed by surname.<br>
+                  This update will align the ID checker app to follow the ID format e.g. surname followed by first name.<br>
+                </dd>
+                <strong class="govuk-tag in-progress">last edited: 19 July 2024</strong>
+              </dl>
+
+              <dl class="release-desc">
+                <dt class="design"><button type="submit" class="button-as-link" name="target-page" value="c/id-assurance-check"><strong>Assurance audit: User submitted info update</strong></button></dt>
+                <dd class="nhsuk-u-margin-0">
+                  Update user information to display postcode only.<br>
+                  Postcode is the only field displaying what the user have originally submitted at P5.<br>
+                  Once a PDS match is found and completed, all other user submitted information is replaced with what is in PDS. Due to this, ID checkers only trust and use the postcode while checking against the ID.<br>
+                </dd>
+                <strong class="govuk-tag in-progress">last edited: 18 July 2024</strong>
+              </dl>
+
+            <dl class="release-desc">
+              <dt class="design"><button type="submit" class="button-as-link" name="target-page" value="b/id-checker"><strong>Move to hold queue updates</strong></button></dt>
+              <dd class="nhsuk-u-margin-0">
+                Move to hold reasons as pre-select drop down list instead of free text box<br>
+                Move to hold redesign to open as a modal instead of side bar<br>
+              </dd>
+              <strong class="govuk-tag in-progress">last edited: 13 June 2024</strong>
+            </dl>
+
+            <dl class="release-desc">
+              <dt class="design"><button type="submit" class="button-as-link" name="target-page" value="a/dashboard"><strong>Reverification process</strong></button></dt>
+              <dd class="nhsuk-u-margin-0">
+                Ability to revoke decisions<br>
+                New dashboard design to show pending state<br>
+              <strong class="govuk-tag in-progress">last edited: Jun 2022</strong>
+            </dl>
+
+          </div>
+
+        </details>
+
+      </form>
+
+<!--    
+//.........................................................
+//......AAA.......UU.....UU....DDDDD........I...TTTTTTTTT..
+//.....AAAAA.....UUUU...UUUU..DDDDDDDDD....III.TTTTTTTTTT..
+//.....AAAAA.....UUUU...UUUU..DDDDDDDDDDD..III.TTTTTTTTTT..
+//....AAAAAAA....UUUU...UUUU..DDDDDDDDDDD..III.TTTTTTTTTT..
+//....AAAAAAA....UUUU...UUUU..DDDD...DDDDD.III.....TTTT....
+//....AAAAAAA....UUUU...UUUU..DDDD....DDDD.III.....TTTT....
+//...AAAAAAAAA...UUUU...UUUU..DDDD....DDDD.III.....TTTT....
+//...AAAA.AAAA...UUUU...UUUU..DDDD....DDDD.III.....TTTT....
+//...AAAAAAAAAA..UUUU...UUUU..DDDD....DDDD.III.....TTTT....
+//..AAAAAAAAAAA..UUUU...UUUU..DDDD...DDDDD.III.....TTTT....
+//..AAAAAAAAAAA..UUUU...UUUU..DDDD...DDDD..III.....TTTT....
+//..AAAAAAAAAAAA.UUUUUUUUUUU..DDDDDDDDDDD..III.....TTTT....
+//.AAAAA....AAAA.UUUUUUUUUUU..DDDDDDDDDD...III.....TTTT....
+//.AAAA.....AAAA..UUUUUUUUU...DDDDDDDDD....III.....TTTT....
+//..................UUUUU..................................
+//.........................................................
+-->  
+
+      <form action="/" method="post">
+        <input type="hidden" name="feature-state" value="audit">
+        <details class="nhsuk-details nhsuk-expander version-list">
+          <summary class="nhsuk-details__summary">
+            <span class="nhsuk-details__summary-text">
+              Audit view
+            </span>
+          </summary>
+          <div class="nhsuk-details__text version-text">
+              <dl class="release-desc">
+                <dt class="design"><button type="submit" class="button-as-link" name="target-page" value="id-assurance-check"><strong>Assurance audit</strong></button></dt>
+                <dd class="nhsuk-u-margin-0">
+                  <p>Assurance audit is a process for ID checkers to audit themselves. It is carried out by trained supervisors only.</p>
+                  <p>Audit view is not accessed via ID checker dashboard.</p>
+                  <p>Spluk randomly selects 10% of the approved checks and generates a list. Supervisors log in to Splunk and copy this list and create links on a spreadsheet. 
+                    They then manually assign these to themselves and go over individual checks link by link.
+                  </p>
+                <strong class="govuk-tag in-progress">last edited: May 2022</strong>
+              </dl>
+          </div>
+
+        </details>
+
+      </form>      
+
 
     </div>
   </div>
