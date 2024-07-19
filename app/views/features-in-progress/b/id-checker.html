@@ -614,22 +614,28 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                 <div class="idcheck-match">
 
                     <table id="pds-result">
-                        <tr>
-                            <td>First name:</td>
-                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_first }}{% else %}-{% endif %}</b></td>
-                        </tr>
-                        <tr>
-                            <td>Middle name:</td>
-                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_middle }}{% else %}-{% endif %}</b></td>
-                        </tr>
-                        <tr>
-                            <td>Last name:</td>
-                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_last }}{% else %}-{% endif %}</b></td>
-                        </tr>
-                        <tr>
-                            <td>Date of birth:</td>
-                            <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}{{ data.idv[data.prototype.count].pds_name_dob }}{% else %}-{% endif %}</b></td>
-                        </tr>
+                        <table id="pds-result">
+                            <tr>
+                                <td>First name:</td>
+                                <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}Joe{% else %}-{% endif %}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Middle name:</td>
+                                <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}William{% else %}-{% endif %}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Last name:</td>
+                                <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}Boggs{% else %}-{% endif %}</b></td>
+                            </tr>
+                            <tr>
+                                <td>Date of birth:</td>
+                                <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}26th November, 1991{% else %}-{% endif %}</b></td>
+                            </tr>
+                            <tr>
+                                <td>NHS number:</td>
+                                <td><b>{% if data.idv[data.prototype.count].pds_matches === 'true' %}9686883606{% else %}-{% endif %}</b></td>
+                            </tr>
+                        </table>
                     </table>
 
                     {# results shown after a re-trace #}
