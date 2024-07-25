@@ -48,10 +48,10 @@
 
     <div class="sticky" >
         <!-- is this automated? check for an absence of video file --> 
-        {% if data.journey === 'manual' %}
-        <div class="id-check_uplift">Manual journey</div>
-        {% else %}
+        {% if data.idv[data.prototype.count].media_video === '' %}
         <div class="id-check_automated" >Automated journey</div>
+        {% else %}
+        <div class="id-check_uplift">Manual journey</div>
         {% endif %}
     </div>
     
@@ -86,12 +86,12 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                              alt="Picture of identity document"/>
                     </div>
 
-                    {% if data.IDback === 'true' %}
+                    {% if data.idv[data.prototype.count].media_photoid_back !== '' %}
 
                     <div class="reading-width idcheck-image-container">
                         <div class="idcheck-image-expand"><a href="#" class="idcheck-image-expand-button">Expand image</a></div>
                         <div class="idcheck-image zoomable2">
-                            <img src="/images/media/photos/DL-back.jpg" class="idcheck-image-img" style="width: 100%;" alt="Image of a driving licence"/>
+                            <img src="/images/media/photos/{{ data.idv[data.prototype.count].media_photoid_back}}" class="idcheck-image-img" style="width: 100%;" alt="Image of a driving licence"/>
                         </div>
                     </div>
 
@@ -1010,6 +1010,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     <div id="id-decline">
                         <a href="dashboard" data-target="modal" id="declineBtn" class="nhsuk-button button--decline button--modal nhsuk-u-margin-top-3" style="display: none;">Decline</a>
                     </div>
+                    <div id="id-move">
+                        <a href="dashboard" data-target="modal" id="moveBtn" class="nhsuk-button nhsuk-button--secondary button--modal nhsuk-u-margin-top-3" style="display: none;">Move to holding list</a>
+                    </div>
                 </div>
             </div>
         </div>
@@ -1020,67 +1023,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         <img src="/images/problem.png" alt="Feedback" height="173" width="32" />
     </a>
 </div>
-
-<div id="slideout-value" style="visibility: hidden">
-    <div id="slideout-value_tab">
-        <p>Comparison<br>Score</p>
-        <div id="slideout-value_tab_spinner">&nbsp</div>
-        <div id="slideout-value_tab_value" style="display: none;">98.85%</div>
-    </div>
-    <div id="slideout-value_inner">
-        <h3 class="slideout-title">Photo ID information</h3>
-        <table class="slideout-table">
-            <tr>
-                <td>Confidence score</td>
-                <td>99.2%</td>
-            </tr>
-            <tr>
-                <td>Brightness: </td>
-                <td>73.9993</td>
-            </tr>
-            <tr>
-                <td>Sharpness: </td>
-                <td>97.466</td>
-            </tr>
-            <tr>
-                <td>Glasses: </td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Gender: </td>
-                <td>Male (99%)</td>
-            </tr>
-        </table>
-
-        <h3 class="slideout-title">Video information</h3>
-        <table class="slideout-table">
-            <tr>
-                <td>Confidence score</td>
-                <td>99.2%</td>
-            </tr>
-            <tr>
-                <td>Brightness: </td>
-                <td>73.9993</td>
-            </tr>
-            <tr>
-                <td>Sharpness: </td>
-                <td>97.466</td>
-            </tr>
-            <tr>
-                <td>Glasses: </td>
-                <td>No</td>
-            </tr>
-            <tr>
-                <td>Gender: </td>
-                <td>Male (99%)</td>
-            </tr>
-        </table>
-
-    </div>
-</div>
-
-
-
 
 
 
@@ -1125,7 +1067,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                             href="javascript{}:" onclick="document.getElementById('modal-link').submit(); return false;" disabled="disabled">Approve</button>
                     </div>
                     <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
-                        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a  href="#" onclick="closeOverlay()" class="cancel" id="modal_close2">Cancel</a></p>
+                        <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a  href="#" onclick="closeModal()" class="cancel" id="modal_close">Cancel</a></p>
                     </div>
             </form>
         </div>
@@ -1502,7 +1444,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                        href="supervisor-dashboard" disabled="disabled">Submit</button>
                 </div>
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
-                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="" id="modal_close">Cancel</a></p>
+                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="closeModal()" id="modal_close2">Cancel</a></p>
                 </div>
             </form> 
         </div>
@@ -1557,7 +1499,46 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 </div>
                 
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
-                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="closeOverlay()" id="modal_close3">Cancel</a></p>
+                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="closeModal()" id="modal_close3">Cancel</a></p>
+                </div>
+            </form> 
+        </div>
+
+                <!-- ID NOT GENUINE MOVE TO HOLD QUEUE MODALLLLL 
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ---------------->
+        <div class="first-item" id="id-not-genuine-modal" style="display:none"> 
+            
+            <form action="holding" method="POST" role="form">
+                <div class="nhsuk-form-group">
+
+                    <h4 class="nhs-heading-xs nhsuk-u-padding-top-2">Potential Fraud - ID Document</h4>
+
+                </div>
+
+                <div class="nhsuk-form-group" >
+                  
+                    <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
+              
+                        <div class="nhsuk-checkboxes">
+                
+                            <div class="nhsuk-checkboxes__item">
+                                <input class="nhsuk-checkboxes__input" onclick="setTimeout(conFirm, 500);" id="confirm" name="example" type="checkbox" value="">
+                                <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
+                                    Confirm you want to move this record to holding list
+                                </label>
+                            </div>
+                        </div>
+                    </fieldset>
+                </div> 
+
+                <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
+                    <button action="modal-link" method="POST" class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0"  id="modal-link" style="transition-duration: 500ms; transition-timing-function: ease;  width:100%;" 
+                        href="javascript{}:" onclick="document.getElementById('modal-link').submit(); return false;" disabled="disabled">Move to hold list</button>
+                </div>
+                
+                <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
+                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="closeModal()" id="modal_close4">Cancel</a></p>
                 </div>
             </form> 
         </div>
@@ -1620,7 +1601,6 @@ btn.innerHTML = 'my text'; #}
 
     setTimeout(function () {
         document.getElementById('trace').style.display = 'block'
-        // document.getElementById('retrybtn-1').style.display = 'block'
         if (state === 'noresult') {
             $('label[for="1"]').click()
         }
@@ -1695,6 +1675,7 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('decline-modal').style.display = 'block'
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('moveHold-modal').style.display = 'none'
+            document.getElementById('id-not-genuine-modal').style.display = 'none'
             console.log(target)
             if (target === 'decline-5') {
                 heading.innerText = 'Select the reason for rejection'
@@ -1714,6 +1695,7 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('approve-modal').style.display = 'block';
             document.getElementById('decline-modal').style.display = 'none';
             document.getElementById('moveHold-modal').style.display = 'none'
+            document.getElementById('id-not-genuine-modal').style.display = 'none'
 
         } else if (object.id === 'slideout__button') {
             heading.innerText = 'Move to holding list';
@@ -1721,11 +1703,24 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('moveHold-modal').style.display = 'block'
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('decline-modal').style.display = 'none';
+            document.getElementById('id-not-genuine-modal').style.display = 'none'
+            console.log(target)
+                
+            document.getElementById('modal_create').click()
+
+        } else if (object.id === 'moveBtn') {
+            heading.innerText = 'Move to holding list';
+            heading.classList.add('nhsuk-heading-l');
+            document.getElementById('id-not-genuine-modal').style.display = 'block'
+            document.getElementById('approve-modal').style.display = 'none'
+            document.getElementById('decline-modal').style.display = 'none';
+            document.getElementById('moveHold-modal').style.display = 'none'
             console.log(target)
                 
             document.getElementById('modal_create').click()
 
         }
+        
     }
 
   
@@ -1875,9 +1870,9 @@ btn.innerHTML = 'my text'; #}
     });
 
 
-  // Close modal on clicking overlay 
+  // Close modal on clicking overlay and reset checkbox
   var closeoverlay = document.getElementById('modal_window');
-    var overlay = document.getElementById('modal_holder');
+  var overlay = document.getElementById('modal_holder');
 
     overlay.addEventListener("click", function(e) {
     e.stopPropagation();
@@ -1887,8 +1882,19 @@ btn.innerHTML = 'my text'; #}
         closeOverlay( e );
     });
 
-    // Close approve modal and reset checkbox on clicking cancel 
     function closeOverlay() {
+        document.getElementById('modal_window').setAttribute('aria-hidden', 'true')
+        document.getElementById('modal_window').setAttribute('tabindex', '-1')
+        let inputs = document.getElementById('confirm');
+        inputs.checked = false;
+        document.getElementById('modal-link').setAttribute("disabled", '')
+        event.preventDefault()
+        modalOpen = false
+        lastFocus.focus()
+    }
+
+// Close modal and reset checkbox on clicking cancel 
+    function closeModal() {
         document.getElementById('modal_window').setAttribute('aria-hidden', 'true')
         document.getElementById('modal_window').setAttribute('tabindex', '-1')
         let inputs = document.getElementById('confirm');
@@ -2021,7 +2027,7 @@ btn.innerHTML = 'my text'; #}
             buttonClick(this, event);
         });
     }
-}
+    }
 
     function updateStorageFromElements() {
         var idCheck = []
@@ -2093,92 +2099,125 @@ btn.innerHTML = 'my text'; #}
     }
 
     function updateSolutions() {
-        // pull in the answer array
-        var idCheck = JSON.parse(localStorage['idchecker'])
+    // Retrieve the answer array from local storage and parse it from JSON format
+    var idCheck = JSON.parse(localStorage['idchecker']);
 
-        if (idCheck[11] === true ) {
-            document.getElementById('manual-pds-1').style.display = 'block'
-            document.getElementById('radio-inline-3').disabled = false
-            document.getElementById('radio-inline-4').disabled = false
-        }
-        else if (idCheck[10] === true ) {
-            document.getElementById('manual-pds-1').style.display = 'none'
-        }
+    // Check if the value at index 11 of the idCheck array is true
+    if (idCheck[11] === true) {
+        // Show the element with id 'manual-pds-1'
+        document.getElementById('manual-pds-1').style.display = 'block';
+        // Enable the radio buttons with ids 'radio-inline-3' and 'radio-inline-4'
+        document.getElementById('radio-inline-3').disabled = false;
+        document.getElementById('radio-inline-4').disabled = false;
+    } else if (idCheck[10] === true) {
+        // If the value at index 10 is true, hide the element with id 'manual-pds-1'
+        document.getElementById('manual-pds-1').style.display = 'none';
+    }
 
-        if (idCheck[13] === true ) {
-            document.getElementById('manual-pds-2').style.display = 'block'
-            document.getElementById('radio-inline-5').disabled = false
-            document.getElementById('radio-inline-6').disabled = false
-        }
-        else if (idCheck[12] === true ) {
-            document.getElementById('manual-pds-2').style.display = 'none'
-        }
+    // Check if the value at index 13 of the idCheck array is true
+    if (idCheck[13] === true) {
+        // Show the element with id 'manual-pds-2'
+        document.getElementById('manual-pds-2').style.display = 'block';
+        // Enable the radio buttons with ids 'radio-inline-5' and 'radio-inline-6'
+        document.getElementById('radio-inline-5').disabled = false;
+        document.getElementById('radio-inline-6').disabled = false;
+    } else if (idCheck[12] === true) {
+        // If the value at index 12 is true, hide the element with id 'manual-pds-2'
+        document.getElementById('manual-pds-2').style.display = 'none';
+    }
 
-        if (idCheck[1] === true || idCheck[3] === true || idCheck[5] === true || idCheck[9] === true || idCheck[15] === true || idCheck[17] === true || idCheck[20] === true ) {
+    // Check if any of the following indices in the idCheck array are true
+    if (idCheck[1] === true || idCheck[3] === true || idCheck[5] === true || idCheck[9] === true || idCheck[15] === true || idCheck[17] === true || idCheck[20] === true) {
+        console.log('something is off');
 
-            console.log('something is off')
-            if (document.getElementById('radio-inline-3') !== true ) {
+        // Check if the element with id 'radio-inline-3' is not checked
+        if (document.getElementById('radio-inline-3').checked !== true) {
+            // Hide the buttons with ids 'approveBtn' and 'moveBtn', and show the 'declineBtn'
+            document.getElementById('approveBtn').style.display = 'none';
+            document.getElementById('moveBtn').style.display = 'none';
+            document.getElementById('declineBtn').style.display = 'inline-block';
 
-                document.getElementById('approveBtn').style.display = 'none'
-                document.getElementById('declineBtn').style.display = 'inline-block'
+            // Determine which document the 'declineButton' should be moved after based on the idCheck array values
+            var declineButton = document.getElementById('id-decline');
+            var approveButton = document.getElementById('id-approve');
+            var moveButton = document.getElementById('moveBtn');
+            
 
-                // var declineButton = document.getElementById('id-decline')
-                // document.getElementById('#document-1').append(declineButton)
-
-                // document.getElementById('canttellBtn').style.display = 'none'
-
-                if (idCheck[1] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('document-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else if (idCheck[3] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('document-2').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else if (idCheck[5] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('document-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else if (idCheck[9] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('pds-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else if (idCheck[15] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('selfie-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else if (idCheck[17] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('selfie-2').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else if (idCheck[20] === true) {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('selfie-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                } else {
-                    var declineButton = document.getElementById('id-decline')
-                    document.getElementById('id-buttons').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton)
-                }
+            // Place the visible button after the correct fieldset and hide or show appropriate button
+            if (idCheck[1] === true) {
+                document.getElementById('document-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+            } else if (idCheck[3] === true) {
+                document.getElementById('document-2').getElementsByClassName("nhsuk-fieldset")[0].after(moveButton);
+                moveButton.style.display = 'inline-block';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'none';
+            } else if (idCheck[5] === true) {
+                document.getElementById('document-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+            } else if (idCheck[9] === true) {
+                document.getElementById('pds-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+            } else if (idCheck[15] === true) {
+                document.getElementById('selfie-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+            } else if (idCheck[17] === true) {
+                document.getElementById('selfie-2').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+            } else if (idCheck[20] === true) {
+                document.getElementById('selfie-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+            } else {
+                document.getElementById('id-buttons').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
             }
         }
+    } 
 
-        else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck[10] === true && idCheck[12] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
-
-            console.log('yay all yes')
-            document.getElementById('approveBtn').style.display = 'inline-block'
-            document.getElementById('declineBtn').style.display = 'none'
-            // document.getElementById('canttellBtn').style.display = 'none'
-           
-        }
-
-        else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck['radio-inline-3'] === true && idCheck['radio-inline-4'] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
-
-            console.log('yay all yesses')
-            document.getElementById('approveBtn').style.display = 'inline-block'
-            document.getElementById('declineBtn').style.display = 'none'
-            // document.getElementById('canttellBtn').style.display = 'none'
-        }
-
-        else {
-            document.getElementById('approveBtn').style.display = 'none'
-            document.getElementById('declineBtn').style.display = 'none'
-            // document.getElementById('canttellBtn').style.display = 'none'
-        }
-
+    // Check if all specified indices in the idCheck array are true
+    else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck[10] === true && idCheck[12] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
+        console.log('yay all yes');
+        // Show the 'approveBtn' and hide the 'declineBtn' and 'moveBtn'
+        document.getElementById('approveBtn').style.display = 'inline-block';
+        document.getElementById('declineBtn').style.display = 'none';
+        document.getElementById('moveBtn').style.display = 'none';
     }
+
+    // Check if a specific set of conditions are met for 'radio-inline-3' and 'radio-inline-4'
+    else if (idCheck[0] === true && idCheck[2] === true && idCheck[4] === true && idCheck[8] === true && idCheck['radio-inline-3'] === true && idCheck['radio-inline-4'] === true && idCheck[14] === true && idCheck[16] === true && idCheck[19] === true) {
+        console.log('yay all yesses');
+        // Show the 'approveBtn' and hide the 'declineBtn' and 'moveBtn'
+        document.getElementById('approveBtn').style.display = 'inline-block';
+        document.getElementById('declineBtn').style.display = 'none';
+        document.getElementById('moveBtn').style.display = 'none';
+    }
+
+    // If none of the above conditions are met
+    else {
+        // Hide all buttons
+        document.getElementById('approveBtn').style.display = 'none';
+        document.getElementById('declineBtn').style.display = 'none';
+        document.getElementById('moveBtn').style.display = 'none';
+    }
+}
+
+function openMoveToHoldModal() {
+    document.getElementById('moveHold-modal').style.display = 'block';
+}
 
     function unlockFirstQuestion() {
         // console.log("unlock")
@@ -2322,3 +2361,5 @@ btn.innerHTML = 'my text'; #}
 
 </script>
 {% endblock %}
+
+

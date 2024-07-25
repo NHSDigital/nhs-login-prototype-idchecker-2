@@ -649,9 +649,7 @@ textarea {
 
 // buttons
 
-.button--approve,
-.button--decline,
-.button--decline--clarity2 {
+.button--decline {
   padding-left: 2.5em;
   &::before,
   &::after {
@@ -680,8 +678,7 @@ textarea {
   
 }
 
-.button--decline,
-.button--decline--clarity2 {
+.button--decline{
   background-color: $color_nhsuk-red;
   &::before,
   &::after {
