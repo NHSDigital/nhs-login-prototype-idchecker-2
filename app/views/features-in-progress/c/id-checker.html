@@ -1,0 +1,337 @@
+{% extends 'layout.html' %}
+
+
+{% set service = "idchecker" %}
+{% set signedin = 'true' %}
+{% set params = "?demographics=" + demographics + "&role=" + role + "&result=" + result + "&failreason=" + failreason + "&devMode=" + devMode + "&automation=" + automation  %}
+{% set dataResult = 'data-result=' + result %}
+
+{% block extrastyles %}
+<script src='/panzoom.min.js'></script>
+{% endblock %}
+
+
+<!-- 
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ---------------------   ASSURANCE AUDIT VIEW HEADER OVERRIDE ------------------
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->
+
+{% block header %}
+<header class="nhsuk-header-audit-view nhsuk-header--organisation nhsuk-header--white" role="banner">
+    <div class="nhsuk-width-container nhsuk-header__container">
+        <div class="nhsuk-header__logo nhsuk-header__logo--only">
+            <a class="nhsuk-header__link nhsuk-header__link--service " href="/" aria-label="NHS login ID verification assurance audit">
+                
+                    <svg class="nhsuk-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 40 16" height="40" width="100">
+                        <path class="nhsuk-logo__background" fill="#005eb8" d="M0 0h40v16H0z"></path>
+                        <path class="nhsuk-logo__text" fill="#fff" d="M3.9 1.5h4.4l2.6 9h.1l1.8-9h3.3l-2.8 13H9l-2.7-9h-.1l-1.8 9H1.1M17.3 1.5h3.6l-1 4.9h4L25 1.5h3.5l-2.7 13h-3.5l1.1-5.6h-4.1l-1.2 5.6h-3.4M37.7 4.4c-.7-.3-1.6-.6-2.9-.6-1.4 0-2.5.2-2.5 1.3 0 1.8 5.1 1.2 5.1 5.1 0 3.6-3.3 4.5-6.4 4.5-1.3 0-2.9-.3-4-.7l.8-2.7c.7.4 2.1.7 3.2.7s2.8-.2 2.8-1.5c0-2.1-5.1-1.3-5.1-5 0-3.4 2.9-4.4 5.8-4.4 1.6 0 3.1.2 4 .6"></path>
+                    </svg>
+                    
+                    <span class="nhsuk-header__service-name">
+                        Assurance Audit
+                    </span>
+              
+            </a>
+        </div>      
+
+                   
+        </div>  
+                  
+</header>
+
+
+
+{% endblock %}
+
+<!-- Footer goes inside the footer block -->
+<!-- More info and code for the footer can be found at https://beta.nhs.uk/service-manual/styles-components-patterns/footer -->
+{% block footer %}
+<footer role="contentinfo">
+    <div class="nhsuk-footer" id="nhsuk-footer">
+        <div class="nhsuk-width-container">
+            <h2 class="nhsuk-u-visually-hidden">Support links</h2>
+            <ul class="nhsuk-footer__list">
+                <li class="nhsuk-footer__list-item">
+                    <a class="nhsuk-footer__list-item-link id-check_external-link" title="open sharepoint site in new tab" href="https://hscic365.sharepoint.com/sites/NHSloginIDVerify/SitePages/NHS-login-ID-Verification-Toolkit.aspx" target="_blank">ID checking guidance</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</footer>
+{% endblock %}
+
+
+{% block content %}
+
+<!-- 
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ------------------------          CSS STYLE OVERRIDES         --------------
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->
+
+<style>
+
+    .nhsuk-header {
+        display: none;  
+    }
+
+    .nhsuk-header-audit-view {
+        background-color: #ffff;
+        color: black;
+    }
+
+    .nhsuk-header__navigation {
+        background-color: transparent;
+    }
+
+    .tick {
+        vertical-align: middle;
+        margin-left: 2%;
+    }
+
+    .position-fixed {
+        position: fixed;
+    }
+
+    .sticky {
+        position: sticky;
+        z-index: 999; 
+        top: 0%;
+    }
+
+    .sticky-child {
+        position: sticky;
+        top: 64px;
+    }
+
+    .nhsuk-care-card__content-override {
+        padding-bottom: 0px;
+        padding-left: 24px;
+        padding-right: 24px;
+        background-color: transparent;
+        border-top: 0;
+        padding-top: 0px;
+    }
+
+    .nhsuk-care-card__content-override-2 {
+        padding-bottom: 0px;
+        padding-left: 0px;
+        padding-right: 24px;
+        background-color: #f0f4f5;
+        border-top: 0;
+        padding-top: 32px;
+    }
+
+    .nhsuk-care-card__content-override-3 {
+        padding-bottom: 0px;
+        padding-left: 24px;
+        padding-right: 24px;
+        background-color: #f0f4f5;
+        border-top: 0;
+        padding-top: 0px;
+    }
+
+    .border-line {
+        border-right: 1px solid #aeb7bd;
+    }
+
+    .top-margin-override {
+        margin-top: 64px;
+    }
+
+    .idcheck-image-rotate-button {
+        position: absolute;
+        display: block;
+        width: 30px;
+        height: 30px;
+        background-position: 50% 50%;
+        background-image: url('/assets/images/rotate-icon.png');
+        background-size: 20px;
+        background-repeat: no-repeat;
+        z-index: 5;
+        background-color: #fff;
+        bottom: 10px;
+        right: 10px;
+    }
+
+/* Zoom window styling */
+.idcheck-image-container {
+    position: relative;
+}
+
+.zoom-window {
+    position: absolute;
+    border: 2px solid #000;
+    width: 200px; /* Size of the zoom window */
+    height: 200px; /* Size of the zoom window */
+    top: -220px; /* Position above the image */
+    left: 0;
+    background: rgba(255, 255, 255, 0.7);
+    display: inline-block; /* Initially hidden */
+    overflow: hidden;
+}
+
+.zoom-window img {
+    position: absolute;
+    width: 100%;
+    height: 100%;
+}
+
+    .column-border-audit {
+        margin-bottom: 32px;
+        border-right: 1px solid #aeb7bd;
+    }
+</style>
+
+<!-- 
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+    ------------------------          JOURNEY TAGS         --------------
+    \\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->
+
+<div class="sticky">
+    <!-- is this automated? check for an absence of video file --> 
+    {% if data.manual === 'true' %}
+    <div class="id-check_uplift">Manual journey</div> 
+    {% else %}
+    <div class="id-check_automated">Automated journey</div>
+    {% endif %}
+</div> 
+
+<!--\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\    LEFT COLUMN   /////////////////////////////////////////////////////////
+            
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\\
+-->
+
+<div class="nhsuk-care-card__content nhsuk-u-margin-top-4">
+    <div class="nhsuk-grid-row">
+        <div class="nhsuk-grid-column-one-half column-border-audit sticky-column">
+            <h3>Photo ID</h3>
+            <p class="nhsuk-body-s idcheck-help">
+                To zoom in, hover over the picture. The zoomed-in part will be displayed in the window above. <a href="#" id="reset">Reset</a>
+            </p>
+            <div class="reading-width panzoom-parent idcheck-image-container">
+                <!-- Zoom window -->
+                <div class="zoom-window">hg</div>
+
+                <!-- Main ID image -->
+                <div class="idcheck-image zoomable1">
+                    <img src="/images/media/photos/DL-front.jpg" class="idcheck-image-img" style="width: 100%;" alt="Picture of identity document"/>
+                </div>
+                {% if data.photoid_back === 'true' %}
+                <div class="reading-width idcheck-image-container">
+                    <!-- Zoom window -->
+                    <div class="zoom-window"></div>
+
+                    <!-- Back ID image -->
+                    <div class="idcheck-image zoomable2">
+                        <img src="/images/media/photos/DL-back.jpg" class="idcheck-image-img" style="width: 100%;" alt="Image of a driving licence"/>
+                    </div>
+                </div>
+                {% endif %}
+            </div>
+        </div>
+        <div class="nhsuk-grid-column-one-half content-column">
+
+            <!--\\\\\\\\\\\\\\\\\\\\\\\\    USER SUBMITTED DATA   ////////////////////////////-->
+
+            <div class="nhsuk-form-group nhsuk-u-margin-bottom-7 nhsuk-u-padding-top-4">
+                <h3>Postcode</h3>
+                <p style="background-color: #fff9c4; padding: 16px 24px 16px 24px; font-size: 20px; font-weight: bold; width: fit-content;">LS16 8PE</p>
+            </div>
+            
+            <!--\\\\\\\\\\\\\\\\\\\\\\\\           PDS RECORD        ////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            -->
+            <div class="nhsuk-u-margin-top-9 nhsuk-care-card__content">
+                <h3>PDS record</h3>
+                <div class="idcheck-match">
+                    <table id="pds-result">
+                        <tr>
+                            <td>First name:</td>
+                            <td><b>Joe</b></td>
+                        </tr>
+                        <tr>
+                            <td>Middle name:</td>
+                            <td><b>William</b></td>
+                        </tr>
+                        <tr>
+                            <td>Last name:</td>
+                            <td><b>Bloggs</b></td>
+                        </tr>
+                        <tr>
+                            <td>Date of birth:</td>
+                            <td><b>1st November, 1991</b></td>
+                        </tr>
+                        <tr>
+                            <td>NHS number:</td>
+                            <td><b>9686883606</b></td>
+                        </tr>
+                    </table>
+                </div>
+            </div>
+            
+            <!--\\\\\\\\\\\\\\\\\\\\\\\\             VIDEO           ////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            ////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+            -->
+            <div class="nhsuk-u-margin-top-9 nhsuk-u-margin-bottom-9 nhsuk-care-card__content">
+                <h3>
+                    {% if data.manual === 'true' %}
+                    Video selfie
+                    {% else %}
+                    Image from face scan
+                    {% endif %}
+                </h3>
+                <div class="idcheck-media">
+                    {% if data.manual === 'true' %}
+                    <video id="uploaded-video" controls name="media" style="width:100%;height:auto;">
+                        <source src="/images/media/videos/challenge.mp4" type="video/mp4">
+                    </video>
+                    {% else %}
+                    <img src="/images/media/scans/iproov-scan.png" class="idcheck-image-img" style="width: 100%; height: 100%;"
+                    alt="Image of the user from iproov"/>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
+
+{% block pageScripts %}
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+    const imageContainers = document.querySelectorAll('.idcheck-image-container');
+
+    imageContainers.forEach(container => {
+        const img = container.querySelector('img');
+        const zoomWindow = container.querySelector('.zoom-window');
+
+        container.addEventListener('mousemove', function(event) {
+            const rect = img.getBoundingClientRect();
+            const x = event.clientX - rect.left;
+            const y = event.clientY - rect.top;
+
+            zoomWindow.style.display = 'block';
+            zoomWindow.style.backgroundImage = `url(${img.src})`;
+            zoomWindow.style.backgroundSize = `${img.width * 2}px ${img.height * 2}px`; // Adjust size based on scale
+            zoomWindow.style.backgroundPosition = `-${x * 2}px -${y * 2}px`; // Adjust based on scale
+
+            zoomWindow.querySelector('img').style.transform = `scale(2)`; // Adjust scale
+            zoomWindow.querySelector('img').style.transformOrigin = `${x}px ${y}px`; // Center zoom
+        });
+
+        container.addEventListener('mouseleave', function() {
+            zoomWindow.style.display = 'none';
+        });
+    });
+});
+
+</script>
+{% endblock %}
+
