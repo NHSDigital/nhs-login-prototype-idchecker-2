@@ -1227,12 +1227,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <select id="decline-2" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-030" data-question="">--- Please select ---</option>
-                            <option value="IDC-031" data-question="decline-text-4a">Driving licence - whole document is fake</option>
-                            <option value="IDC-032" data-question="decline-text-4b">Driving licence - photo or information has been tampered with</option>
-                            <option value="IDC-033" data-question="decline-text-4a">Passport - whole document is fake</option>
-                            <option value="IDC-033" data-question="decline-text-4b">Passport - photo or information has been tampered with</option>
-                            <option value="IDC-033" data-question="decline-text-4a">National identity card - whole document is fake</option>
-                            <option value="IDC-033" data-question="decline-text-4b">National identity card - photo or information has been tampered with</option>
+                            <option value="IDC-031" data-question="decline-text-4a">Potential fraud - ID document</option>
                         </select>
 
                         <select id="decline-3" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
@@ -1329,11 +1324,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <div id="decline-text-4a" style="display:none;">
-                        <label class="nhsuk-label" for="field3">How did you identify that it's a fake? (required)</label>
-                    </div>
-
-                    <div id="decline-text-4b" style="display:none;">
-                        <label class="nhsuk-label" for="field3">What has been tampered with, and how? (required)</label>
+                        <label class="nhsuk-label" for="field3">Provide details and the relevant ticket number (required)</label>
                     </div>
 
                     <div id="decline-text-6a" style="display:none;">
@@ -1512,29 +1503,26 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             <form action="holding" method="POST" role="form">
                 <div class="nhsuk-form-group">
 
-                    <h4 class="nhs-heading-xs nhsuk-u-padding-top-2">Potential Fraud - ID Document</h4>
+                    <h4 class="nhs-heading-xs nhsuk-u-padding-top-2">Select reason for moving this record to holding list</h4>
+
+                    <div id="rejection-reasons">
+                        <select class="nhsuk-select" id="potential-fraud" name="potential-fraud" style="margin-top:16px;width:100%;">
+                            <option>--- Please select ---</option>
+                            <option>Potential Fraud - ID Document</option>
+                        </select>
+                    </div>
 
                 </div>
 
-                <div class="nhsuk-form-group" >
-                  
-                    <fieldset class="nhsuk-fieldset" aria-describedby="example-hint">
-              
-                        <div class="nhsuk-checkboxes">
-                
-                            <div class="nhsuk-checkboxes__item">
-                                <input class="nhsuk-checkboxes__input" onclick="setTimeout(conFirm, 500);" id="confirm" name="example" type="checkbox" value="">
-                                <label class="nhsuk-label nhsuk-checkboxes__label" for="example-1">
-                                    Confirm you want to move this record to holding list
-                                </label>
-                            </div>
-                        </div>
-                    </fieldset>
-                </div> 
+                <div class="nhsuk-form-group" id="potential-fraud-optional" style="display:none;">
+                    <label>Reason for moving (optional)</label>
+                    <textarea class="nhsuk-textarea" id="move-textbox" name="move-textbox" type="text"style="margin-top: 16px;"></textarea>
+                </div>
 
-                <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0" >
-                    <button action="modal-link" method="POST" class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0"  id="modal-link" style="transition-duration: 500ms; transition-timing-function: ease;  width:100%;" 
-                        href="javascript{}:" onclick="document.getElementById('modal-link').submit(); return false;" disabled="disabled">Move to hold list</button>
+                <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
+                    <button class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="potential-fraud-holding" style="width:100%;"
+                        disabled="disabled">Move to hold list
+                    </button> 
                 </div>
                 
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
@@ -1870,6 +1858,30 @@ btn.innerHTML = 'my text'; #}
     });
 
 
+    // ID not genuine question - move to hold modal function
+    // move to hold CTA button enable/ disable
+    var selectElement = document.getElementById("potential-fraud");
+
+    // Select the submit button by its ID
+    var submitButton = document.getElementById("potential-fraud-holding");
+
+    // Add change event listener to the <select> element
+    selectElement.addEventListener("change", function() {
+    // Check the selected option
+    if (selectElement.value === "--- Please select ---") {
+        // Hide all the textarea
+        document.getElementById("potential-fraud-optional").style.display = "none";
+        // Disable the submit button
+        submitButton.setAttribute("disabled", "disabled");    
+    } else {
+        // Show the optional textarea
+        document.getElementById("potential-fraud-optional").style.display = "block";
+        // Enable the submit button
+        submitButton.removeAttribute("disabled");
+    }
+});
+
+
   // Close modal on clicking overlay and reset checkbox
   var closeoverlay = document.getElementById('modal_window');
   var overlay = document.getElementById('modal_holder');
@@ -2143,6 +2155,11 @@ btn.innerHTML = 'my text'; #}
             var moveButton = document.getElementById('moveBtn');
             
 
+            // Check if the record is opened from holding list or main queue uing URL parameter
+
+                var urlParams = new URLSearchParams(window.location.search);
+                var queueParam = urlParams.get('queue');
+
             // Place the visible button after the correct fieldset and hide or show appropriate button
             if (idCheck[1] === true) {
                 document.getElementById('document-1').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
@@ -2150,10 +2167,17 @@ btn.innerHTML = 'my text'; #}
                 approveButton.style.display = 'none';
                 declineButton.style.display = 'inline-block';
             } else if (idCheck[3] === true) {
+                if (queueParam === 'holding') {
+                document.getElementById('document-2').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
+                moveButton.style.display = 'none';
+                approveButton.style.display = 'none';
+                declineButton.style.display = 'inline-block';
+                } else {
                 document.getElementById('document-2').getElementsByClassName("nhsuk-fieldset")[0].after(moveButton);
                 moveButton.style.display = 'inline-block';
                 approveButton.style.display = 'none';
                 declineButton.style.display = 'none';
+                }
             } else if (idCheck[5] === true) {
                 document.getElementById('document-3').getElementsByClassName("nhsuk-fieldset")[0].after(declineButton);
                 moveButton.style.display = 'none';
