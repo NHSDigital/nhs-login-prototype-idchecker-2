@@ -109,23 +109,23 @@
     <div class="sticky">
         <div class="id-check_automated">Automated journey</div>
         {% if data.docChecks === 'passed'%}
-        <div style="margin-bottom: 24px; padding: 24px 32px 8px; color: #ffff; background-color: #005EB8;"> 
-            <span class="check-item">
-                <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                    <path stroke-width="4" stroke-linecap="round" stroke="#ffff" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                </svg>
-                <p>Photo ID passed automated checks</p>
-            </span>
-
-            {% if data.pdsMatch === 'true' %}
-            <span class="check-item">
-                <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                    <path stroke-width="4" stroke-linecap="round" stroke="#ffff" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                </svg>
-                <p>PDS match found at PYI</p>
-            </span>
-            {% endif %}
-        </div>
+            <div style="margin-bottom: 8px; padding: 24px 32px 8px; color: #212b32; background-color: #ffff; border: solid 1px 	#d8dde0;"> 
+                <span class="check-item">
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                        <path stroke-width="4" stroke-linecap="round" stroke="	#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                    </svg>
+                    <p>Photo ID passed automated checks</p>
+                </span>
+        
+                {% if data.pdsMatch === 'true' %}
+                <span class="check-item">
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                        <path stroke-width="4" stroke-linecap="round" stroke="	#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                    </svg>
+                    <p>PDS match found at PYI</p>
+                </span>
+                {% endif %}
+            </div>
         {% endif %}
     </div>
     
