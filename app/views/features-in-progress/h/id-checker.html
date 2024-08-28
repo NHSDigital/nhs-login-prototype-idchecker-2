@@ -108,15 +108,15 @@
 
     <div class="sticky">
         <div class="id-check_automated">Automated journey</div>
-        {% if data.docChecks === 'passed' %}
-        <div style="margin-bottom: 24px; padding: 24px 32px 8px; color: #ffff; background-color: #005EB8;">
-            
+        {% if data.docChecks === 'passed'%}
+        <div style="margin-bottom: 24px; padding: 24px 32px 8px; color: #ffff; background-color: #005EB8;"> 
             <span class="check-item">
                 <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
                     <path stroke-width="4" stroke-linecap="round" stroke="#ffff" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
                 </svg>
                 <p>Photo ID passed automated checks</p>
             </span>
+
             {% if data.pdsMatch === 'true' %}
             <span class="check-item">
                 <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
@@ -744,125 +744,122 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             </div>
             </div>
             <div class="nhsuk-grid-column-one-half column">
-                <div class="qa-questions-group" data-complete="false">
-                    <div class="qa-questions-question" id="selfie-1" data-answered="false" data-group="decline-5">
+                <div id="section4">
+                    <div class="qa-questions-group" data-complete="false">
+                        <div class="qa-questions-question" id="selfie-1" data-answered="false" data-group="decline-5">
 
-                        <fieldset class="nhsuk-fieldset">
+                            <fieldset class="nhsuk-fieldset">
 
-                                <legend class="nhsuk-fieldset__legend">
-                                    <p class="qa-questions-question-text">
-                                        Can you clearly see the face in the video?
-                                    </p>
-                                </legend>
+                                    <legend class="nhsuk-fieldset__legend">
+                                        <p class="qa-questions-question-text">
+                                            Can you clearly see the face in the video?
+                                        </p>
+                                    </legend>
 
-                            <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
+                                <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
-                                <div class="nhsuk-radios nhsuk-radios--inline">
+                                    <div class="nhsuk-radios nhsuk-radios--inline">
 
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="14" name="a-7" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="14">
-                                            Yes
-                                        </label>
-                                    </div>
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="14" name="a-7" type="radio" value="yes" aria-checked="false">
+                                            <label class="nhsuk-label nhsuk-radios__label" for="14">
+                                                Yes
+                                            </label>
+                                        </div>
 
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="15" name="a-7" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="15">
-                                            No
-                                        </label>
-                                    </div>
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="15" name="a-7" type="radio" value="yes" aria-checked="false">
+                                            <label class="nhsuk-label nhsuk-radios__label" for="15">
+                                                No
+                                            </label>
+                                        </div>
 
-                                </div>
-
-                            </div>
-
-                        </fieldset>
-
-                    </div>
-                </div>
-
-
-
-                <div class="qa-questions-group"  data-complete="true">
-                    <div class="qa-questions-question" id="selfie-2" data-answered="false"data-group="decline-6">
-
-                        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
-
-                                <legend class="nhsuk-fieldset__legend">
-                                    <p class="qa-questions-question-text">
-                                            Does the face in the photo ID match the face in the video?
-                                    </p>
-                                </legend>
-
-                            <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
-
-                                <div class="nhsuk-radios nhsuk-radios--inline">
-
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="16">
-                                            Yes
-                                        </label>
-                                    </div>
-
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="17" name="a-8" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="17">
-                                            No
-                                        </label>
                                     </div>
 
                                 </div>
 
-                            </div>
+                            </fieldset>
 
-                        </fieldset>
-
+                        </div>
                     </div>
 
-                </div>
+                    <div class="qa-questions-group"  data-complete="true">
+                        <div class="qa-questions-question" id="selfie-2" data-answered="false"data-group="decline-6">
 
+                            <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
 
+                                    <legend class="nhsuk-fieldset__legend">
+                                        <p class="qa-questions-question-text">
+                                                Does the face in the photo ID match the face in the video?
+                                        </p>
+                                    </legend>
 
-                <div class="qa-questions-group" data-complete="true"{>
-                    <div class="qa-questions-question" id="selfie-3"data-answered="false" data-group="decline-7">
+                                <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
-                        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
+                                    <div class="nhsuk-radios nhsuk-radios--inline">
 
-                                <legend class="nhsuk-fieldset__legend">
-                                    <p class="qa-questions-question-text">
-                                        Can you clearly see or hear 7 1 5 6?
-                                    </p>
-                                </legend>
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes" aria-checked="false">
+                                            <label class="nhsuk-label nhsuk-radios__label" for="16">
+                                                Yes
+                                            </label>
+                                        </div>
 
-                            <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="17" name="a-8" type="radio" value="yes" aria-checked="false">
+                                            <label class="nhsuk-label nhsuk-radios__label" for="17">
+                                                No
+                                            </label>
+                                        </div>
 
-                                <div class="nhsuk-radios nhsuk-radios--inline">
-
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="19" name="a-9" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="19">
-                                            Yes
-                                        </label>
-                                    </div>
-
-                                    <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                        <input class="nhsuk-radios__input qa-questions-answer" id="20" name="a-9" type="radio" value="yes" aria-checked="false">
-                                        <label class="nhsuk-label nhsuk-radios__label" for="20">
-                                            No
-                                        </label>
                                     </div>
 
                                 </div>
 
-                            </div>
+                            </fieldset>
 
-                        </fieldset>
+                        </div>
 
-                    </div> 
+                    </div>
+
+                    <div class="qa-questions-group" data-complete="true">
+                        <div class="qa-questions-question" id="selfie-3"data-answered="false" data-group="decline-7">
+
+                            <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
+
+                                    <legend class="nhsuk-fieldset__legend">
+                                        <p class="qa-questions-question-text">
+                                            Can you clearly see or hear 7 1 5 6?
+                                        </p>
+                                    </legend>
+
+                                <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
+
+                                    <div class="nhsuk-radios nhsuk-radios--inline">
+
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="19" name="a-9" type="radio" value="yes" aria-checked="false">
+                                            <label class="nhsuk-label nhsuk-radios__label" for="19">
+                                                Yes
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="20" name="a-9" type="radio" value="yes" aria-checked="false">
+                                            <label class="nhsuk-label nhsuk-radios__label" for="20">
+                                                No
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                </div>
+
+                            </fieldset>
+
+                        </div> 
+                    </div>
                 </div>
-
                 <div id="id-buttons"> 
                     <div id="id-approve">
                         <a href="dashboard" data-target="modal" id="approveBtn" class="nhsuk-button button---approve button--modal nhsuk-u-margin-top-3" style="display: none;">Continue to approve
@@ -880,7 +877,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     THERE IS A PROBLEM SIDE BUTTON TO OPEN MOVE TO HOLD MODAL 
 --------------->
 <div id="slideout" data-status="closed">
-    <a href="dashboard" data-target="modal" id="slideout__button" class="button--modal slideout">
+    <a href="dashboard" data-target="modal" id="slideout__button" class="button--modal">
         <img src="/images/problem.png" alt="Feedback" height="173" width="32" />
     </a>
 </div>
@@ -1368,50 +1365,138 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
 <script>
     // Function to get URL parameter value
-function getQueryParameter(name) {
-    const urlParams = new URLSearchParams(window.location.search);
-    return urlParams.get(name);
-}
-
-// Function to toggle sections based on conditions
-function toggleSections() {
-    const docChecks = getQueryParameter('docChecks')=== 'passed';
-    const pdsMatch = getQueryParameter('pdsMatch') === 'true'; // Assuming pdsMatch is a boolean string ('true' or 'false')
-
-    // Section 1: Enable or disable based on docChecks
-    const section1Questions = document.querySelectorAll('#section1 .qa-questions-group input[type="radio"]');
-    if (docChecks) {
-        section1Questions.forEach(input => {
-            input.disabled = true;
-            input.checked = (input.value === 'yes'); // Ensure 'Yes' is checked if disabled
-        });
-    } else {
-        section1Questions.forEach(input => {
-            input.disabled = false;
-            input.checked = false; // Ensure no option is checked if enabled
-        });
+    function getQueryParameter(name) {
+        const urlParams = new URLSearchParams(window.location.search);
+        return urlParams.get(name);
     }
-
-    // Section 3: Enable or disable based on pdsMatch
-    const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
-    if (pdsMatch) {
-        section3Questions.forEach(input => {
-            input.disabled = true;
-            input.checked = (input.value === 'yes'); // Ensure 'Yes' is checked if disabled
-        });
-    } else {
-        section3Questions.forEach(input => {
-            input.disabled = false;
-            input.checked = false; // Ensure no option is checked if enabled
-        });
+    
+    // Function to toggle sections based on conditions
+    function toggleSections() {
+        const docChecks = getQueryParameter('docChecks') === 'passed';
+        const pdsMatch = getQueryParameter('pdsMatch') === 'true'; // Assuming pdsMatch is a boolean string ('true' or 'false')
+        const queueHolding = getQueryParameter('queue') === 'holding'; // Check if queue is holding
+    
+        // Section 1: Handle based on conditions
+        const section1Questions = document.querySelectorAll('#section1 .qa-questions-group input[type="radio"]');
+        if (section1Questions.length) { // Ensure elements exist
+            if (queueHolding) {
+                // If queue is holding
+                section1Questions.forEach(input => {
+                    input.disabled = false; // Enable section 1
+                    input.checked = false; // No radio option selected
+                });
+            } else if (pdsMatch && !docChecks) {
+                // If pdsMatch is true and docChecks are not passed
+                section1Questions.forEach(input => {
+                    input.disabled = false; // Enable section 1
+                    input.checked = false; // No radio option selected
+                });
+            } else if (pdsMatch && docChecks) {
+                // If pdsMatch is true and docChecks are passed
+                section1Questions.forEach(input => {
+                    input.disabled = true; // Disable section 1
+                    input.checked = (input.value === 'yes'); // 'Yes' radio option selected
+                });
+            } else if (!pdsMatch && docChecks) {
+                // If pdsMatch is not true and docChecks are passed
+                section1Questions.forEach(input => {
+                    input.disabled = true; // Disable section 1
+                    input.checked = (input.value === 'yes'); // 'Yes' radio option selected
+                });
+            } else {
+                // If pdsMatch is not true and docChecks are not passed
+                section1Questions.forEach(input => {
+                    input.disabled = false; // Enable section 1
+                    input.checked = false; // No radio option selected
+                });
+            }
+        }
+    
+        // Section 2: Handle based on conditions
+        const section2Questions = document.querySelectorAll('#section2 .qa-questions-group input[type="radio"]');
+        if (section2Questions.length) { // Ensure elements exist
+            if (queueHolding) {
+                // If queue is holding
+                section2Questions.forEach(input => {
+                    input.disabled = true; // Disable section 2
+                    input.checked = false; // No radio option selected
+                });
+            } else if (pdsMatch && docChecks) {
+                // If pdsMatch is true and docChecks are passed
+                section2Questions.forEach(input => {
+                    input.disabled = true; // Disable section 2
+                    input.checked = (input.value === 'yes'); // 'Yes' radio option selected
+                });
+            } else if (!pdsMatch && docChecks) {
+                // If pdsMatch is not true and docChecks are passed
+                section2Questions.forEach(input => {
+                    input.disabled = false; // Enable section 2
+                    input.checked = false; // No radio option selected
+                });
+            } else {
+                // Other cases: Disable and clear selections
+                section2Questions.forEach(input => {
+                    input.disabled = true; // Disable section 2
+                    input.checked = false; // No radio option selected
+                });
+            }
+        }
+    
+        // Section 3: Handle based on conditions
+        const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
+        if (section3Questions.length) { // Ensure elements exist
+            if (queueHolding) {
+                // If queue is holding
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = false; // No radio option selected
+                });
+            } else if (pdsMatch && docChecks) {
+                // If pdsMatch is true and docChecks are passed
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = (input.value === 'yes'); // 'Yes' radio option selected
+                });
+            } else {
+                // Other cases: Disable and clear selections
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = false; // No radio option selected
+                });
+            }
+        }
+    
+        // Section 4: Handle based on conditions
+        const section4Questions = document.querySelectorAll('#section4 .qa-questions-group input[type="radio"]');
+        if (section4Questions.length) { // Ensure elements exist
+            if (queueHolding) {
+                // If queue is holding
+                section4Questions.forEach(input => {
+                    input.disabled = true; // Disable section 4
+                    input.checked = false; // No radio option selected
+                });
+            } else if (pdsMatch && docChecks) {
+                // If pdsMatch is true and docChecks are passed
+                section4Questions.forEach(input => {
+                    input.disabled = false; // Enable section 4
+                    input.checked = false; // No radio option selected
+                });
+            } else {
+                // Other cases: Disable and clear selections
+                section4Questions.forEach(input => {
+                    input.disabled = true; // Disable section 4
+                    input.checked = false; // No radio option selected
+                });
+            }
+        }
     }
-}
-
-// Call the function to apply the logic
-toggleSections();
-
+    
+    // Ensure the script runs after the DOM is fully loaded
+    document.addEventListener('DOMContentLoaded', toggleSections);
+    
 </script>
-
+    
+     
 
 <!-- PDS TRACE SCRIPTS TO SHOW OR HIDE PDS SPINNER/ QUESTIONS ANDPDS TRACE BUTTON --> 
 <script>
