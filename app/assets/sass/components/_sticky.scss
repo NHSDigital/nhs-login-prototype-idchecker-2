@@ -4,6 +4,5 @@
     padding-top: 32px; 
     background-color: #f0f4f5; 
     margin-bottom: 0px; 
-    z-index: 1;
-
+    z-index: 150; /* Below modal overlay but above image expand */
 }
