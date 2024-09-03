@@ -109,22 +109,26 @@
     <div class="sticky">
         <div class="id-check_automated">Automated journey</div>
         {% if data.docChecks === 'passed'%}
-            <div style="margin-bottom: 8px; padding: 24px 32px 8px; color: #212b32; background-color: #ffff; border: solid 1px 	#d8dde0;"> 
-                <span class="check-item">
-                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="	#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <p>Photo ID passed automated checks</p>
-                </span>
-        
-                {% if data.pdsMatch === 'true' %}
-                <span class="check-item">
-                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="	#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <p>PDS match found at PYI</p>
-                </span>
-                {% endif %}
+            <div id="auto4-details" style="margin-bottom: 8px; padding: 24px 32px 8px; color: #212b32; background-color: #ffff; border: solid 1px 	#d8dde0;"> 
+                <div id="passed-checks">
+                    <span class="check-item">
+                        <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                            <path stroke-width="4" stroke-linecap="round" stroke="	#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                        </svg>
+                        <p>Photo ID passed automated checks</p>
+                    </span>
+            
+                    {% if data.pdsMatch === 'true' %}
+                    <span class="check-item">
+                        <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                            <path stroke-width="4" stroke-linecap="round" stroke="	#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                        </svg>
+                        <p>PDS and photo ID comparison passed automated checks</p>
+                    </span>
+                    {% endif %}
+                </div>
+                <!-- Toggle Link -->
+                <p><a href="#" style="display: inline-block; margin: 16px 0 0;" id="toggle-link">Hide details</a></p>
             </div>
         {% endif %}
     </div>
@@ -294,7 +298,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
 
 <!-- ------------------   User information  ---------------------------
 -->
-                {% if data.pdsMatch === 'true' %}
+                {% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}
                 {% else %}
                 <details class="nhsuk-details nhsuk-expander nhsuk-u-margin-top-7">
                     <summary class="nhsuk-details__summary">
@@ -397,7 +401,7 @@ $$ |      $$$$$$$  |\$$$$$$  |         $$ |   $$ |  $$ |$$ |  $$ |\$$$$$$  |$$$$
                 <!-- PDS RESULT -->
                 <div id="trace" style="display:none;">
                     <!-- PDS MATCH TRUE -->
-                    {% if data.pdsMatch === 'true' %}
+                    {% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}
                         <div class="idcheck-match">
                             <div class="idcheck-result">
                                     Single record found
@@ -585,23 +589,23 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                     <table id="pds-result">
                         <tr>
                             <td>First name:</td>
-                            <td><b>{% if data.pdsMatch === 'true' %}Joe{% else %}-{% endif %}</b></td>
+                            <td><b>{% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}Joe{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>Middle name:</td>
-                            <td><b>{% if data.pdsMatch === 'true' %}William{% else %}-{% endif %}</b></td>
+                            <td><b>{% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}William{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>Last name:</td>
-                            <td><b>{% if data.pdsMatch === 'true' %}Boggs{% else %}-{% endif %}</b></td>
+                            <td><b>{% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}Boggs{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>Date of birth:</td>
-                            <td><b>{% if data.pdsMatch === 'true' %}26th September, 1991{% else %}-{% endif %}</b></td>
+                            <td><b>{% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}26th September, 1991{% else %}-{% endif %}</b></td>
                         </tr>
                         <tr>
                             <td>NHS number:</td>
-                            <td><b>{% if data.pdsMatch === 'true' %}9686883606{% else %}-{% endif %}</b></td>
+                            <td><b>{% if data.pdsMatch == 'true' or data.pdsMatch == 'onpageload' %}9686883606{% else %}-{% endif %}</b></td>
                         </tr>
                     </table>
 
@@ -1363,6 +1367,8 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     </div> <!-- end .modal-content -->
 </div> <!-- end .modal-overlay --> 
 
+
+<!-- AUTO4 SCRIPT TO ENABLE/ DISABLE SECTIONS ACCORDINGLY --> 
 <script>
     // Function to get URL parameter value
     function getQueryParameter(name) {
@@ -1373,35 +1379,23 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     // Function to toggle sections based on conditions
     function toggleSections() {
         const docChecks = getQueryParameter('docChecks') === 'passed';
-        const pdsMatch = getQueryParameter('pdsMatch') === 'true'; // Assuming pdsMatch is a boolean string ('true' or 'false')
+        const pdsMatch = getQueryParameter('pdsMatch'); // Get the actual value ('true', 'false', or 'onpageload')
         const queueHolding = getQueryParameter('queue') === 'holding'; // Check if queue is holding
     
         // Section 1: Handle based on conditions
         const section1Questions = document.querySelectorAll('#section1 .qa-questions-group input[type="radio"]');
         if (section1Questions.length) { // Ensure elements exist
-            if (queueHolding) {
+            if (docChecks && !queueHolding) {
+                // If pdsMatch is 'onpageload', disable section 1
+                section1Questions.forEach(input => {
+                    input.disabled = true; // Disable section 1
+                    input.checked = (input.value === 'yes'); // Yes radio option selected
+                });
+            } else if (queueHolding) {
                 // If queue is holding
                 section1Questions.forEach(input => {
                     input.disabled = false; // Enable section 1
                     input.checked = false; // No radio option selected
-                });
-            } else if (pdsMatch && !docChecks) {
-                // If pdsMatch is true and docChecks are not passed
-                section1Questions.forEach(input => {
-                    input.disabled = false; // Enable section 1
-                    input.checked = false; // No radio option selected
-                });
-            } else if (pdsMatch && docChecks) {
-                // If pdsMatch is true and docChecks are passed
-                section1Questions.forEach(input => {
-                    input.disabled = true; // Disable section 1
-                    input.checked = (input.value === 'yes'); // 'Yes' radio option selected
-                });
-            } else if (!pdsMatch && docChecks) {
-                // If pdsMatch is not true and docChecks are passed
-                section1Questions.forEach(input => {
-                    input.disabled = true; // Disable section 1
-                    input.checked = (input.value === 'yes'); // 'Yes' radio option selected
                 });
             } else {
                 // If pdsMatch is not true and docChecks are not passed
@@ -1415,19 +1409,25 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         // Section 2: Handle based on conditions
         const section2Questions = document.querySelectorAll('#section2 .qa-questions-group input[type="radio"]');
         if (section2Questions.length) { // Ensure elements exist
-            if (queueHolding) {
+            if (pdsMatch === 'onpageload') {
+                // If pdsMatch is 'onpageload', disable section 2
+                section2Questions.forEach(input => {
+                    input.disabled = true; // Disable section 2
+                    input.checked = false; // No radio option selected
+                });
+            } else if (queueHolding) {
                 // If queue is holding
                 section2Questions.forEach(input => {
                     input.disabled = true; // Disable section 2
                     input.checked = false; // No radio option selected
                 });
-            } else if (pdsMatch && docChecks) {
+            } else if (pdsMatch === 'true' && docChecks) {
                 // If pdsMatch is true and docChecks are passed
                 section2Questions.forEach(input => {
                     input.disabled = true; // Disable section 2
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
                 });
-            } else if (!pdsMatch && docChecks) {
+            } else if (pdsMatch !== 'true' && docChecks) {
                 // If pdsMatch is not true and docChecks are passed
                 section2Questions.forEach(input => {
                     input.disabled = false; // Enable section 2
@@ -1445,13 +1445,19 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         // Section 3: Handle based on conditions
         const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
         if (section3Questions.length) { // Ensure elements exist
-            if (queueHolding) {
+            if (pdsMatch === 'onpageload') {
+                // If pdsMatch is 'onpageload', enable section 3
+                section3Questions.forEach(input => {
+                    input.disabled = false; // Enable section 3
+                    input.checked = false; // No radio option selected
+                });
+            } else if (queueHolding) {
                 // If queue is holding
                 section3Questions.forEach(input => {
                     input.disabled = true; // Disable section 3
                     input.checked = false; // No radio option selected
                 });
-            } else if (pdsMatch && docChecks) {
+            } else if (pdsMatch === 'true' && docChecks) {
                 // If pdsMatch is true and docChecks are passed
                 section3Questions.forEach(input => {
                     input.disabled = true; // Disable section 3
@@ -1469,13 +1475,19 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         // Section 4: Handle based on conditions
         const section4Questions = document.querySelectorAll('#section4 .qa-questions-group input[type="radio"]');
         if (section4Questions.length) { // Ensure elements exist
-            if (queueHolding) {
+            if (pdsMatch === 'onpageload') {
+                // If pdsMatch is 'onpageload', enable section 4
+                section4Questions.forEach(input => {
+                    input.disabled = false; // Enable section 4
+                    input.checked = false; // No radio option selected
+                });
+            } else if (queueHolding) {
                 // If queue is holding
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
                     input.checked = false; // No radio option selected
                 });
-            } else if (pdsMatch && docChecks) {
+            } else if (pdsMatch === 'true' && docChecks) {
                 // If pdsMatch is true and docChecks are passed
                 section4Questions.forEach(input => {
                     input.disabled = false; // Enable section 4
@@ -1493,10 +1505,33 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
     // Ensure the script runs after the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', toggleSections);
-    
 </script>
-    
-     
+
+<!-- AUTO4 SCRIPT TO HIDE OR SHOW DETAILS TOGGLE --> 
+<script>
+    document.getElementById('toggle-link').addEventListener('click', function(event) {
+        event.preventDefault(); // Prevent the default link behavior
+
+        var content = document.getElementById('passed-checks');
+        var auto4Details = document.getElementById('auto4-details');
+        var linkText = document.getElementById('toggle-link');
+
+        if (content.style.display === 'none' || content.style.display === '') {
+            content.style.display = 'inline-block';
+            linkText.textContent = 'Hide details';
+            
+            // Reset margin and padding when showing details
+            auto4Details.style.marginBottom = '8px';
+            auto4Details.style.padding = '24px 32px 8px';
+        } else {
+            content.style.display = 'none';
+            linkText.textContent = 'Show details';
+            
+            // Set padding to 0 when hiding details
+            auto4Details.style.padding = '0 24px 0';
+        }
+    });
+</script>
 
 <!-- PDS TRACE SCRIPTS TO SHOW OR HIDE PDS SPINNER/ QUESTIONS ANDPDS TRACE BUTTON --> 
 <script>
