@@ -859,11 +859,12 @@ textarea {
 // footer overide
 
 .nhsuk-footer {
-  background-color: $color_nhsuk-blue;
+  background-color: 	#d8dde0;
+  color:	#005eb8;
   a, a:visited {
-    color: #fff;
+    color: 	#005eb8;
     &:hover {
-      color: #d4efff;
+      color: 	#7C2855;
       text-decoration: underline;
     }
   }
