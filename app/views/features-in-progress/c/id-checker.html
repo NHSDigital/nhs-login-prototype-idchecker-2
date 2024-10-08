@@ -1576,6 +1576,42 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             </form> 
         </div>
 
+                        <!-- SAFEGUARDING MOVE TO HOLD QUEUE MODALLLLL 
+        @@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@@
+        ---------------->
+        <div class="first-item" id="safeguarding-modal" style="display:none"> 
+            
+            <form action="holding" method="POST" role="form">
+                <div class="nhsuk-form-group">
+
+                    <h4 class="nhs-heading-xs nhsuk-u-padding-top-2">Select reason for moving this record to holding list</h4>
+
+                    <div id="rejection-reasons">
+                        <select class="nhsuk-select" id="potential-safeguarding" name="potential-safeguarding" style="margin-top:16px;width:100%;">
+                            <option>--- Please select ---</option>
+                            <option>Potential Safeguarding</option>
+                        </select>
+                    </div>
+
+                </div>
+
+                <div class="nhsuk-form-group" id="potential-safeguarding-optional" style="display:none;">
+                    <label class="nhsuk-body-m">Any additional information? (optional)</label>
+                    <textarea class="nhsuk-textarea" id="move-textbox" name="move-textbox" type="text"style="margin-top: 16px;"></textarea>
+                </div>
+
+                <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
+                    <button class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="potential-safeguarding-holding" style="width:100%;"
+                        disabled="disabled">Move to hold list
+                    </button> 
+                </div>
+                
+                <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
+                    <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="closeModal()" id="modal_close4">Cancel</a></p>
+                </div>
+            </form> 
+        </div>
+
     </div> <!-- end .modal-content -->
 </div> <!-- end .modal-overlay --> 
 
@@ -1709,6 +1745,7 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('moveHold-modal').style.display = 'none'
             document.getElementById('id-not-genuine-modal').style.display = 'none'
+            document.getElementById('safeguarding-modal').style.display = 'none'
             console.log(target)
             if (target === 'decline-6') {
                 heading.innerText = 'Select the reason for rejection'
@@ -1729,6 +1766,7 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('decline-modal').style.display = 'none';
             document.getElementById('moveHold-modal').style.display = 'none'
             document.getElementById('id-not-genuine-modal').style.display = 'none'
+            document.getElementById('safeguarding-modal').style.display = 'none'
 
         } else if (object.id === 'slideout__button') {
             heading.innerText = 'Move to holding list';
@@ -1737,6 +1775,7 @@ btn.innerHTML = 'my text'; #}
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('decline-modal').style.display = 'none';
             document.getElementById('id-not-genuine-modal').style.display = 'none'
+            document.getElementById('safeguarding-modal').style.display = 'none'
             console.log(target)
                 
             document.getElementById('modal_create').click()
@@ -1745,6 +1784,7 @@ btn.innerHTML = 'my text'; #}
             heading.innerText = 'Move to holding list';
             heading.classList.add('nhsuk-heading-l');
             document.getElementById('id-not-genuine-modal').style.display = 'block'
+            document.getElementById('safeguarding-modal').style.display = 'none'
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('decline-modal').style.display = 'none';
             document.getElementById('moveHold-modal').style.display = 'none'
@@ -1755,7 +1795,8 @@ btn.innerHTML = 'my text'; #}
         } else if (object.id === 'safeguardingmoveBtn') {
             heading.innerText = 'Move to holding list';
             heading.classList.add('nhsuk-heading-l');
-            document.getElementById('id-not-genuine-modal').style.display = 'block'
+            document.getElementById('id-not-genuine-modal').style.display = 'none'
+            document.getElementById('safeguarding-modal').style.display = 'block'
             document.getElementById('approve-modal').style.display = 'none'
             document.getElementById('decline-modal').style.display = 'none';
             document.getElementById('moveHold-modal').style.display = 'none'
@@ -1934,6 +1975,27 @@ btn.innerHTML = 'my text'; #}
         document.getElementById("potential-fraud-optional").style.display = "block";
         // Enable the submit button
         submitButton.removeAttribute("disabled");
+    }
+});
+
+
+    var selectElement2 = document.getElementById("potential-safeguarding");
+
+    var submitButton2 = document.getElementById("potential-safeguarding-holding");
+
+    // Add change event listener to the <select> element
+     selectElement2.addEventListener("change", function() {
+    // Check the selected option
+    if (selectElement2.value === "--- Please select ---") {
+        // Hide all the textarea
+        document.getElementById("potential-safeguarding-optional").style.display = "none";
+        // Disable the submit button
+        submitButton2.setAttribute("disabled", "disabled");    
+    } else {
+        // Show the optional textarea
+        document.getElementById("potential-safeguarding-optional").style.display = "block";
+        // Enable the submit button
+        submitButton2.removeAttribute("disabled");
     }
 });
 
