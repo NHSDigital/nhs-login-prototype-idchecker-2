@@ -885,6 +885,11 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
                 </div>
                 
+
+                <!-- show these question only for manual journeys -->
+
+                {% if data.journey === 'manual' %}
+
                 <div class="qa-questions-group" data-complete="false">
                     <div class="qa-questions-question" id="selfie-1" data-answered="false" data-group="decline-6">
 
@@ -892,27 +897,23 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                                 <legend class="nhsuk-fieldset__legend">
                                     <p class="qa-questions-question-text">
-                                        {% if data.journey === 'manual' %}
                                         Can you clearly see the face in the video?
-                                        {% else %}
-                                        Do the faces from the face scan and the photo ID match?
-                                        {% endif %}
                                     </p>
                                 </legend>
 
-                                <div class="qa-questions-answer-group multiple-choice__container" {% if data.journey === 'manual' %} data-answered="false"{% else %} data-answered="true" {% endif %}>
+                                <div class="qa-questions-answer-group multiple-choice__container" data-answered="false">
 
                                     <div class="nhsuk-radios nhsuk-radios--inline">
 
                                         <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                            <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes" {% if data.journey === 'manual' %} aria-checked="false" {% else %} aria-checked="true" checked="checked" disabled=disabled {% endif %}>
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="16" name="a-8" type="radio" value="yes"aria-checked="false">
                                             <label class="nhsuk-label nhsuk-radios__label" for="16">
                                                 Yes
                                             </label>
                                         </div>
 
                                         <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
-                                            <input class="nhsuk-radios__input qa-questions-answer" id="17" name="a-8" type="radio" value="no" aria-checked="false" {% if data.journey === 'manual' %} {% else %} disabled=disabled {% endif %}>
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="17" name="a-8" type="radio" value="no" aria-checked="false">
                                             <label class="nhsuk-label nhsuk-radios__label" for="17">
                                                 No
                                             </label>
@@ -927,9 +928,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
                 </div>
 
-                <!-- show these question only for manual journeys -->
-
-                {% if data.journey === 'manual' %}
                 <div class="qa-questions-group" data-complete="true">
                     <div class="qa-questions-question" id="selfie-2" data-answered="false" data-group="decline-7">
 
@@ -968,7 +966,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                 </div>
-
 
                 <div class="qa-questions-group" data-complete="true">
                     <div class="qa-questions-question" id="selfie-3"data-answered="false" data-group="decline-8">
@@ -1009,6 +1006,43 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 </div>
 
                 {% else %}
+                <div class="qa-questions-group" data-complete="false">
+                    <div class="qa-questions-question" id="scan" data-answered="false" data-group="decline-scan">
+
+                        <fieldset class="nhsuk-fieldset nhsuk-u-margin-top-6">
+
+                                <legend class="nhsuk-fieldset__legend">
+                                    <p class="qa-questions-question-text">
+                                        Do the faces from the face scan and the photo ID match?
+                                    </p>
+                                </legend>
+
+                                <div class="qa-questions-answer-group multiple-choice__container" {% if data.queue === 'holding' %} data-answered="false"{% else %} data-answered="true" {% endif %}>
+
+                                    <div class="nhsuk-radios nhsuk-radios--inline">
+
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="16b" name="a-8a" type="radio" value="yes" {% if data.queue === 'holding' %} aria-checked="false" {% else %} aria-checked="true" checked="checked" disabled=disabled {% endif %}>
+                                            <label class="nhsuk-label nhsuk-radios__label" for="16b">
+                                                Yes
+                                            </label>
+                                        </div>
+
+                                        <div class="nhsuk-radios__item nhsuk-u-margin-bottom-3">
+                                            <input class="nhsuk-radios__input qa-questions-answer" id="17b" name="a-8a" type="radio" value="no" aria-checked="false" {% if data.queue === 'holding' %} {% else %} disabled=disabled {% endif %}>
+                                            <label class="nhsuk-label nhsuk-radios__label" for="17b">
+                                                No
+                                            </label>
+                                        </div>
+
+                                    </div>
+
+                                 </div>
+
+                        </fieldset>
+
+                    </div>
+                </div>
                 {% endif %}
 
                 <div id="id-buttons"> 
@@ -1449,9 +1483,10 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3"
-                              style="margin-top: 16px;" onkeyup='checkText(this.value);'></textarea>
-                </div>
+                     style="margin-top: 16px;" onkeyup='checkText(this.value);'>
+                    </textarea>
 
+                </div>
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
                     <button class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link-decline" style="width:100%;"
                        href="supervisor-dashboard" disabled="disabled">Submit</button>
@@ -1916,6 +1951,14 @@ btn.innerHTML = 'my text'; #}
         }
     }
 
+    function resetText() {
+        var textarea = document.getElementById('field3')
+        textarea.value = ''
+        document.getElementById('modal-link-decline').setAttribute("disabled", '')
+    }
+
+
+
     function checkMoveHoldText(text) {
         if(text.length >= 1) {
             document.getElementById('id-holding').removeAttribute("disabled")
@@ -2045,12 +2088,6 @@ btn.innerHTML = 'my text'; #}
         lastFocus.focus()
     }  
 
-
-    function resetText() {
-        var textarea = document.getElementById('field3')
-        textarea.value = ''
-        document.getElementById('modal-link-decline').setAttribute("disabled", '')
-    }
 
     // run through all sections checking for completeness
     function resetAllSections() {
@@ -2378,7 +2415,7 @@ function openMoveToHoldModal() {
     document.getElementById('moveHold-modal').style.display = 'block';
 }
 
-    function unlockFirstQuestion() {
+function unlockFirstQuestion() {
         // console.log("unlock")
 
         // get an array of all the question groups
@@ -2431,7 +2468,7 @@ function openMoveToHoldModal() {
             }
         }
         // updateSolutions()
-    }
+}
 
 
 </script>
