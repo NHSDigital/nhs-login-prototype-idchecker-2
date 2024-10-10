@@ -3,8 +3,6 @@
 
 {% set service = "idchecker" %}
 {% set signedin = 'true' %}
-{% set params = "?demographics=" + demographics + "&role=" + role + "&result=" + result + "&failreason=" + failreason + "&devMode=" + devMode + "&automation=" + automation  %}
-{% set dataResult = 'data-result=' + result %}
 
 {% block extrastyles %}
 <script src='/panzoom.min.js'></script>
@@ -1287,7 +1285,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
 
                         <select id="decline-4a" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
                             <option value="IDC-050" data-question="">--- Please select ---</option>
-                            <option value="IDC-051" data-question="decline-text-15a">Dates of birth do not match</option>                        
+                            <option value="dob" data-question="decline-text-15a">Dates of birth do not match</option>                        
                         </select>
 
                         <select id="decline-4b" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
@@ -1483,13 +1481,13 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <textarea class="nhsuk-textarea" id="field3" name="field3" type="text" rows="3"
-                     style="margin-top: 16px;" onkeyup='checkText(this.value);'>
+                     style="margin-top: 16px;" >
                     </textarea>
 
                 </div>
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
                     <button class="nhsuk-button full-width nhsuk-u-margin-bottom-3 nhsuk-u-margin-top-0" id="modal-link-decline" style="width:100%;"
-                       href="supervisor-dashboard" disabled="disabled">Submit</button>
+                       href="supervisor-dashboard" >Submit</button>
                 </div>
                 <div class="form-group nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-0">
                     <p class="nhsuk-u-margin-bottom-0 nhsuk-u-margin-top-3 nhsuk-u-margin-left-3" style="display:inline-block;"><a href="#" onclick="closeModal()" id="modal_close2">Cancel</a></p>
@@ -1952,10 +1950,22 @@ btn.innerHTML = 'my text'; #}
     }
 
     function resetText() {
-        var textarea = document.getElementById('field3')
-        textarea.value = ''
-        document.getElementById('modal-link-decline').setAttribute("disabled", '')
+    // Handle dropdown change logic
+    var selectElement = document.getElementById('decline-4a');
+    var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+    var modalLinkDecline = document.getElementById('modal-link-decline');
+    var textarea = document.getElementById('field3'); // Assuming this is the correct textarea for reset
+
+    // Reset the textarea value
+    textarea.value = '';
+
+    // Check if the selected option is 'dob'
+    if (selectedOption === 'dob') {
+        modalLinkDecline.removeAttribute("disabled");
+    } else {
+        modalLinkDecline.setAttribute("disabled", '');
     }
+}
 
 
 
