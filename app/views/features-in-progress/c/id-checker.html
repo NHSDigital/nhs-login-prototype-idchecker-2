@@ -1304,11 +1304,11 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                         </select>
 
                         <select id="decline-5" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
-                            <option value="IDC-070" data-question="decline-text-safeguarding">--- Please select ---</option>
-                            <option value="IDC-071" data-question="decline-text-safeguarding">Refer to GP - block & POL details</option>
-                            <option value="IDC-072" data-question="decline-text-safeguarding">Refer to GP - POL details</option>
-                            <option value="IDC-073" data-question="decline-text-safeguarding">Problem with photo or video</option>
-                            <option value="IDC-074" data-question="decline-text-safeguarding">Someone is applying on their behalf</option>
+                            <option value="default" data-question="decline-text-safeguarding">--- Please select ---</option>
+                            <option value="safeguarding" data-question="decline-text-safeguarding">Refer to GP - block & POL details</option>
+                            <option value="safeguarding" data-question="decline-text-safeguarding">Refer to GP - POL details</option>
+                            <option value="safeguarding" data-question="decline-text-safeguarding">Problem with photo or video</option>
+                            <option value="safeguarding" data-question="decline-text-safeguarding">Someone is applying on their behalf</option>
                         </select>
 
                         <select id="decline-6" class="nhsuk-select decline-group" id="sort" name="sort" style="margin-top:16px;width:100%;display:none;">
@@ -1386,7 +1386,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     </div>
 
                     <div id="decline-text-safeguarding" style="display:none;">
-                        <label class="nhsuk-label" for="field3">Explain why you made this decision (optional)</label>
+                        <label class="nhsuk-label" for="field3">Any additional information (optional)</label>
                     </div>
 
                     <div id="decline-text-7" style="display:none;">
@@ -1950,22 +1950,28 @@ btn.innerHTML = 'my text'; #}
     }
 
     function resetText() {
-    // Handle dropdown change logic
-    var selectElement = document.getElementById('decline-4a');
+    // Try to get the select element with id 'decline-4a' or 'decline-5'
+    var selectElement = document.getElementById('decline-5');
+    var selectElement2 = document.getElementById('decline-4a');
     var selectedOption = selectElement.options[selectElement.selectedIndex].value;
+    var selectedOption2 = selectElement2.options[selectElement2.selectedIndex].value;
     var modalLinkDecline = document.getElementById('modal-link-decline');
     var textarea = document.getElementById('field3'); // Assuming this is the correct textarea for reset
+
 
     // Reset the textarea value
     textarea.value = '';
 
-    // Check if the selected option is 'dob'
-    if (selectedOption === 'dob') {
+    // Check if the selected option is 'dob' or 'safeguarding'
+    if (selectedOption === 'safeguarding') {
+        modalLinkDecline.removeAttribute("disabled");
+    } else if (selectedOption2 === 'dob') {
         modalLinkDecline.removeAttribute("disabled");
     } else {
         modalLinkDecline.setAttribute("disabled", '');
     }
 }
+
 
 
 
