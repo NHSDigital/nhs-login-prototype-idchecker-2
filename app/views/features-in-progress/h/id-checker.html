@@ -1511,8 +1511,8 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
         // Section 2: Handle based on conditions
         if (section2Questions.length) { // Ensure elements exist
-            if (queueHolding) {
-                // If queue is holding
+            if (queueHolding || !docChecks) {
+                // If queue is holding or doc checks fail
                 section2Questions.forEach(input => {
                     input.disabled = true; // Disable section 2
                     input.checked = false; // No radio option selected
