@@ -138,6 +138,16 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
         <div class="nhsuk-grid-row container">
             <div class="nhsuk-grid-column-one-half column">
             <h3>Photo ID</h3>
+            {% if data.docChecks == 'passed' %}
+            <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
+                <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                    <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                </svg>
+                <p>
+                   Photo ID passed automated checks
+                </p>
+            </div>
+            {% endif %}
                 <p class="nhsuk-body-s idcheck-help">To zoom in either double click on the picture, or position your cursor on the image, then hold 'Alt' + scroll with your mouse wheel. <a href="#" id="reset">Reset</a></p>
                 <div class="reading-width panzoom-parent idcheck-image-container">
 
@@ -162,16 +172,6 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                 </div>
             </div>
             <div class="nhsuk-grid-column-one-half column">
-                {% if data.docChecks == 'passed' %}
-                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
-                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <p>
-                       Photo ID passed automated checks
-                    </p>
-                </div>
-                {% endif %}
                 <div id="section1">
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="document-1" data-answered="false" data-group="decline-1">
@@ -553,6 +553,17 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                 <h3>Compare the photo ID and the PDS record</h3>
 
+                {% if data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
+                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                    </svg>
+                    <p>
+                        PDS and photo ID comparison passed automated checks
+                    </p>
+                </div>
+                {% endif %}
+
                 <div class="reading-width idcheck-image-container">
                     <div class="idcheck-image zoomable3">
 
@@ -577,17 +588,6 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
             </div>
             <div class="nhsuk-grid-column-one-half column">
                 <h3>PDS record</h3>
-
-                {% if data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
-                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
-                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <p>
-                        PDS and photo ID comparison passed automated checks
-                    </p>
-                </div>
-                {% endif %}
 
                 <div class="idcheck-match">
 
@@ -741,6 +741,16 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     {% endif %}
                 </h3>
                     
+                {% if data.livenessLikeness == 'passed' %}
+                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
+                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                    </svg>
+                    <p>
+                        Liveness & likeness passed automated checks
+                    </p>
+                </div>
+                {% endif %}
 
                     <div class="idcheck-media">
                         {% if data.auto4 === 'true' %}
@@ -764,16 +774,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     {% endif %}
             </div>
             <div class="nhsuk-grid-column-one-half column">
-                {% if data.livenessLikeness == 'passed' %}
-                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
-                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <p>
-                        Liveness & likeness passed automated checks
-                    </p>
-                </div>
-                {% endif %}
                 <div id="section4">
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="selfie-0" data-answered="false" data-group="decline-5">
