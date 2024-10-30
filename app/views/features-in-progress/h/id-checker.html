@@ -1484,6 +1484,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
         // Section 1: Handle based on conditions
         const section1Questions = document.querySelectorAll('#section1 .qa-questions-group input[type="radio"]');
+        const section2Questions = document.querySelectorAll('#section2 .qa-questions-group input[type="radio"]');
+        const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
+        const section4Questions = document.querySelectorAll('#section4 .qa-questions-group input[type="radio"]');
         if (section1Questions.length) { // Ensure elements exist
             if (queueHolding) {
              // If queue is holding
@@ -1507,7 +1510,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         }
     
         // Section 2: Handle based on conditions
-        const section2Questions = document.querySelectorAll('#section2 .qa-questions-group input[type="radio"]');
         if (section2Questions.length) { // Ensure elements exist
             if (queueHolding) {
                 // If queue is holding
@@ -1522,16 +1524,15 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
                 });
             } else {
-                // Other cases: Disable and clear selections
+                // Other cases: Enable and clear selections
                 section2Questions.forEach(input => {
-                    input.disabled = true; // Disable section 2
+                    input.disabled = false; // Enable section 2
                     input.checked = false; // No radio option selected
                 });
             }
         }
     
         // Section 3: Handle based on conditions
-        const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
         if (section3Questions.length) { // Ensure elements exist
             if (queueHolding) {
                 // If queue is holding
@@ -1545,22 +1546,33 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     input.disabled = true; // Disable section 3
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
                 });
+            } else if (!pdsMatch) {
+                // If pdsMatch is not true
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = false; // No radio option selected
+                });
             } else {
                 // Other cases: Disable and clear selections
                 section3Questions.forEach(input => {
-                    input.disabled = true; // Disable section 3
+                    input.disabled = false; // Enable section 3
                     input.checked = false; // No radio option selected
                 });
             }
         }
     
         // Section 4: Handle based on conditions
-        const section4Questions = document.querySelectorAll('#section4 .qa-questions-group input[type="radio"]');
         if (section4Questions.length) { // Ensure elements exist
             if (queueHolding) {
                 // If queue is holding
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
+                    input.checked = false; // No radio option selected
+                });
+            } else if (IDvsPDS && pdsMatch) {
+                // If pdsMatch is true and ID vs PDS are passed
+                section4Questions.forEach(input => {
+                    input.disabled = false; // Enable section 4
                     input.checked = false; // No radio option selected
                 });
             } else if (auto4) {
