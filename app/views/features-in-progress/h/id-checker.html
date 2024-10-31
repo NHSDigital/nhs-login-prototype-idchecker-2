@@ -1584,8 +1584,8 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             } else if (IDvsPDS && pdsMatch) {
                 // If pdsMatch is true and ID vs PDS are passed
                 section4Questions.forEach(input => {
-                    input.disabled = false; // Enable section 4
-                    input.checked = false; // No radio option selected
+                    input.disabled = true; // Disable section 4
+                    input.checked = (input.value === 'yes'); // Yes radio option selected
                 });
             } else if (auto4) {
                 // If auto4 with video selfie 

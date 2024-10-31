@@ -107,14 +107,13 @@
     -->
 
     <div class="sticky">
-        {% if data.docChecks == 'failed' and data.IDvsPDS == 'failed' and data.livenessLikeness == 'failed' %}
+        {% if data.auto4 == 'true' and data.docChecks == 'failed' %}
         <!-- Display Manual Journey if all conditions are failed -->
         <div class="id-check_uplift">Manual journey</div>
-    {% else %}
+        {% else %}
         <!-- Display Automated Journey and relevant info if any of the checks have passed -->
         <div class="id-check_automated">Automated journey</div>
-    {% endif %}
-    
+        {% endif %}
     </div>
     
 
@@ -553,7 +552,7 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                 <h3>Compare the photo ID and the PDS record</h3>
 
-                {% if data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
+                {% if data.docChecks == 'passed' and data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
                 <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
                     <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
                         <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
@@ -741,7 +740,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     {% endif %}
                 </h3>
                     
-                {% if data.livenessLikeness == 'passed' and data.auto4 != 'true' %}
+                {% if data.auto4 != 'true' %}
                 <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
                     <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
                         <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
@@ -1461,6 +1460,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
         // Section 1: Handle based on conditions
         const section1Questions = document.querySelectorAll('#section1 .qa-questions-group input[type="radio"]');
+        const section2Questions = document.querySelectorAll('#section2 .qa-questions-group input[type="radio"]');
+        const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
+        const section4Questions = document.querySelectorAll('#section4 .qa-questions-group input[type="radio"]');
         if (section1Questions.length) { // Ensure elements exist
             if (queueHolding) {
              // If queue is holding
@@ -1484,10 +1486,9 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
         }
     
         // Section 2: Handle based on conditions
-        const section2Questions = document.querySelectorAll('#section2 .qa-questions-group input[type="radio"]');
         if (section2Questions.length) { // Ensure elements exist
-            if (queueHolding) {
-                // If queue is holding
+            if (queueHolding || !docChecks) {
+                // If queue is holding or doc checks fail
                 section2Questions.forEach(input => {
                     input.disabled = true; // Disable section 2
                     input.checked = false; // No radio option selected
@@ -1499,16 +1500,15 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
                 });
             } else {
-                // Other cases: Disable and clear selections
+                // Other cases: Enable and clear selections
                 section2Questions.forEach(input => {
-                    input.disabled = true; // Disable section 2
+                    input.disabled = false; // Enable section 2
                     input.checked = false; // No radio option selected
                 });
             }
         }
     
         // Section 3: Handle based on conditions
-        const section3Questions = document.querySelectorAll('#section3 .qa-questions-group input[type="radio"]');
         if (section3Questions.length) { // Ensure elements exist
             if (queueHolding) {
                 // If queue is holding
@@ -1516,29 +1516,52 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     input.disabled = true; // Disable section 3
                     input.checked = false; // No radio option selected
                 });
-            } else if (IDvsPDS && pdsMatch) {
+            } else if (docChecks && IDvsPDS && pdsMatch) {
                 // If pdsMatch is true and ID vs PDS are passed
                 section3Questions.forEach(input => {
                     input.disabled = true; // Disable section 3
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
                 });
+            } else if (docChecks && IDvsPDS && !pdsMatch) {
+                // If pdsMatch is not true
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = false; // No radio option selected
+                });
+            } else if (!docChecks) {
+                // If docs failed
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = false; // No radio option selected
+                });
+            } else if (!pdsMatch) {
+                // If pdsMatch is not true and docs failed
+                section3Questions.forEach(input => {
+                    input.disabled = true; // Disable section 3
+                    input.checked = false; // No radio option selected
+                });
             } else {
                 // Other cases: Disable and clear selections
                 section3Questions.forEach(input => {
-                    input.disabled = true; // Disable section 3
+                    input.disabled = false; // Enable section 3
                     input.checked = false; // No radio option selected
                 });
             }
         }
     
         // Section 4: Handle based on conditions
-        const section4Questions = document.querySelectorAll('#section4 .qa-questions-group input[type="radio"]');
         if (section4Questions.length) { // Ensure elements exist
             if (queueHolding) {
                 // If queue is holding
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
                     input.checked = false; // No radio option selected
+                });
+            } else if (IDvsPDS && pdsMatch) {
+                // If pdsMatch is true and ID vs PDS are passed
+                section4Questions.forEach(input => {
+                    input.disabled = true; // Enable section 4
+                    input.checked = (input.value === 'yes'); // No radio option selected
                 });
             } else if (auto4) {
                 // If auto4 with video selfie 
