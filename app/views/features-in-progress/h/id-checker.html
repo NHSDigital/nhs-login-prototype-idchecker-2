@@ -1514,7 +1514,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
             if (queueHolding || !docChecks) {
                 // If queue is holding or doc checks fail
                 section2Questions.forEach(input => {
-                    input.disabled = true; // Disable section 2
+                    input.disabled = true; // Enable section 2
                     input.checked = false; // No radio option selected
                 });
             } else if (pdsMatch && IDvsPDS) {
@@ -1534,14 +1534,14 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
         // Section 3: Handle based on conditions
         if (section3Questions.length) { // Ensure elements exist
-            if (queueHolding) {
-                // If queue is holding
+            if (queueHolding || !docChecks) {
+                // If queue is holding or doc checks fail
                 section3Questions.forEach(input => {
                     input.disabled = true; // Disable section 3
                     input.checked = false; // No radio option selected
                 });
             } else if (docChecks && IDvsPDS && pdsMatch) {
-                // If pdsMatch is true and ID vs PDS are passed
+                // If pdsMatch is true and ID vs PDS are passed and doc checks passed
                 section3Questions.forEach(input => {
                     input.disabled = true; // Disable section 3
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
@@ -1575,26 +1575,20 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
         // Section 4: Handle based on conditions
         if (section4Questions.length) { // Ensure elements exist
-            if (queueHolding) {
+            if (auto4) {
+                // If auto4 is true
+                section4Questions.forEach(input => {
+                    input.disabled = true; // Disable section 4
+                    input.checked = false; // No radio option selected
+                });
+            } else if (queueHolding) {
                 // If queue is holding
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
                     input.checked = false; // No radio option selected
                 });
-            } else if (IDvsPDS && pdsMatch) {
-                // If pdsMatch is true and ID vs PDS are passed
-                section4Questions.forEach(input => {
-                    input.disabled = true; // Disable section 4
-                    input.checked = (input.value === 'yes'); // Yes radio option selected
-                });
-            } else if (auto4) {
-                // If auto4 with video selfie 
-                section4Questions.forEach(input => {
-                    input.disabled = true; // Disable section 4
-                    input.checked = false; // No radio option selected
-                });
             } else {
-                // Other cases: Disable and clear selections if main queue and face scan
+                // Other cases: if main queue and face scan
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
                     input.checked = (input.value === 'yes'); // 'Yes' radio option selected
