@@ -43,6 +43,15 @@
     border-left: 4px solid #d8dde0;
 }
 
+/* By default, show the tag in the right column */
+.auto-checks-tag {
+    display: block;
+}
+
+.auto-checks-tag-responsive {
+    display: none;
+}
+
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     .container {
@@ -69,13 +78,25 @@
     .section.last-section {
         border-bottom: none;
     }
+
+    /* Hide the right-tag class on small screens */
+    .check-item.right-tag {
+        display: none; /* Hide the right-tag element */
+    }
+
+    /* Ensure the left-tag class is visible on small screens */
+    .check-item.left-tag {
+        display: block; /* Show the left-tag element */
+    }
+
+
 }
 
 
     .check-item {
-    display: flex; /* Use flexbox layout for the span */
-    align-items: center; /* Center align items vertically */
-    margin-bottom: 10px; /* Add some space between the items */
+        display: flex;
+        align-items: center; /* Center align items vertically */
+        margin-bottom: 10px; /* Add some space between the items */
     }
 
     .check-item svg {
@@ -84,6 +105,16 @@
 
     .check-item p {
         margin: 0; /* Remove default margin from the paragraph */
+    }
+
+    /* Default (desktop and larger screens) behavior */
+    .left-tag {
+        display: none; /* Hide in left column by default */
+    }
+
+    /* Default (desktop and larger screens) behavior */
+    .right-tag {
+        display: block; /* Display in right column by default */
     }
 
     /* Style for the disabled state of the radio buttons */
@@ -140,17 +171,17 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
             {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
             <!-- show nothing if it is auto4 and docchecks failed-->
             {% elif data.docChecks == 'passed' %}
-            <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
-                <p>
-                   Photo ID passed automated checks
-                </p>
-            </div>
-            {% else %}
-            <div class="check-item nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-6">
-                <p>
-                   Photo ID failed automated checks
-                </p>
-            </div>
+                <div class="check-item left-tag nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
+                    <p>
+                    Photo ID passed automated checks
+                    </p>
+                </div>
+                {% else %}
+                <div class="check-item left-tag nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-6">
+                    <p>
+                    Photo ID failed automated checks
+                    </p>
+                </div>
             {% endif %}
                 <p class="nhsuk-body-s idcheck-help">To zoom in either double click on the picture, or position your cursor on the image, then hold 'Alt' + scroll with your mouse wheel. <a href="#" id="reset">Reset</a></p>
                 <div class="reading-width panzoom-parent idcheck-image-container">
@@ -176,6 +207,21 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                 </div>
             </div>
             <div class="nhsuk-grid-column-one-half column">
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed-->
+                {% elif data.docChecks == 'passed' %}
+                    <div class="check-item right-tag nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
+                        <p>
+                        Photo ID passed automated checks
+                        </p>
+                    </div>
+                    {% else %}
+                    <div class="check-item right-tag nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-6">
+                        <p>
+                        Photo ID failed automated checks
+                        </p>
+                    </div>
+                {% endif %}
                 <div id="section1">
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="document-1" data-answered="false" data-group="decline-1">
@@ -560,13 +606,13 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
                 {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
                 <!-- show nothing if it is auto4 and docchecks failed-->
                 {% elif data.docChecks == 'passed' and data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
-                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+                <div class="check-item left-tag nhsuk-tag nhsuk-tag--green nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
                     <p>
                         Photo ID and PDS comparison passed automated checks
                     </p>
                 </div>
                 {% else %}
-                <div class="check-item nhsuk-tag nhsuk-tag--red nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+                <div class="check-item left-tag nhsuk-tag nhsuk-tag--red nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
                     <p>
                         Photo ID and PDS comparison failed automated checks
                     </p>
@@ -597,6 +643,21 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
             </div>
             <div class="nhsuk-grid-column-one-half column">
                 <h3>PDS record</h3>
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed-->
+                {% elif data.docChecks == 'passed' and data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
+                <div class="check-item right-tag nhsuk-tag nhsuk-tag--green nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+                    <p>
+                        Photo ID and PDS comparison passed automated checks
+                    </p>
+                </div>
+                {% else %}
+                <div class="check-item right-tag nhsuk-tag nhsuk-tag--red nhsuk-u-margin-top-6 nhsuk-u-margin-bottom-6">
+                    <p>
+                        Photo ID and PDS comparison failed automated checks
+                    </p>
+                </div>
+                {% endif %}
 
                 <div class="idcheck-match">
 
@@ -752,13 +813,13 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                 {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
                 <!-- show nothing if it is auto4 and docchecks failed--> 
                 {% elif data.auto4 == 'true' %}
-                <div class="check-item nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-6">
+                <div class="check-item left-tag nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-6">
                     <p>
                         Video selfie failed automated checks
                     </p>
                 </div>
                 {% else %}
-                <div class="check-item nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
+                <div class="check-item left-tag nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
                     <p>
                         Face scan passed automated checks
                     </p>
@@ -787,6 +848,21 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     {% endif %}
             </div>
             <div class="nhsuk-grid-column-one-half column">
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed--> 
+                {% elif data.auto4 == 'true' %}
+                <div class="check-item right-tag nhsuk-tag nhsuk-tag--red nhsuk-u-margin-bottom-6">
+                    <p>
+                        Video selfie failed automated checks
+                    </p>
+                </div>
+                {% else %}
+                <div class="check-item right-tag nhsuk-tag nhsuk-tag--green nhsuk-u-margin-bottom-6">
+                    <p>
+                        Face scan passed automated checks
+                    </p>
+                </div>
+                {% endif %}
                 <div id="section4">
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="selfie-0" data-answered="false" data-group="decline-5">
