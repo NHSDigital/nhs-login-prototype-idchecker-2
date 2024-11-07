@@ -43,6 +43,7 @@
     border-left: 4px solid #d8dde0;
 }
 
+
 /* Responsive styles for smaller screens */
 @media (max-width: 768px) {
     .container {
@@ -69,21 +70,28 @@
     .section.last-section {
         border-bottom: none;
     }
+
+    /* Hide the right-tag class on small screens */
+    .nhsuk-u-margin-bottom-6.right-tag {
+        display: none; /* Hide the right-tag element */
+    }
+
+    /* Ensure the left-tag class is visible on small screens */
+    .nhsuk-u-margin-bottom-6.left-tag {
+        display: block; /* Show the left-tag element */
+    }
+
+
 }
 
-
-    .check-item {
-    display: flex; /* Use flexbox layout for the span */
-    align-items: center; /* Center align items vertically */
-    margin-bottom: 10px; /* Add some space between the items */
+    /* Default (desktop and larger screens) behavior */
+    .left-tag {
+        display: none; /* Hide in left column by default */
     }
 
-    .check-item svg {
-        margin-right: 10px; /* Space between the SVG icon and the text */
-    }
-
-    .check-item p {
-        margin: 0; /* Remove default margin from the paragraph */
+    /* Default (desktop and larger screens) behavior */
+    .right-tag {
+        display: block; /* Display in right column by default */
     }
 
     /* Style for the disabled state of the radio buttons */
@@ -107,69 +115,13 @@
     -->
 
     <div class="sticky">
-    {% if data.auto4 == 'true' and data.docChecks == 'failed' %}
+        {% if data.auto4 == 'true' and data.docChecks == 'failed' %}
         <!-- Display Manual Journey if all conditions are failed -->
         <div class="id-check_uplift">Manual journey</div>
-    {% else %}
+        {% else %}
         <!-- Display Automated Journey and relevant info if any of the checks have passed -->
         <div class="id-check_automated">Automated journey</div>
-        <div id="auto4-details" style="margin-bottom: 8px; padding: 24px 32px 8px; color: #212b32; background-color: #ffff; border: solid 1px #d8dde0;">
-            <div id="passed-checks">
-                <!-- Check for docChecks result -->
-                <span class="check-item">
-                    {% if data.docChecks == 'passed' %}
-                        <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                            <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                        </svg>
-                        <p>Photo ID passed automated checks</p>
-                    {% else %}
-                        <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
-                            <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
-                            <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
-                        </svg>
-                        <p>Photo ID failed automated checks</p>
-                    {% endif %}
-                </span>
-                
-                <!-- Check for IDvsPDS result -->
-                <span class="check-item">
-                    {% if data.docChecks == 'passed' and data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
-                    <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                        <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                    </svg>
-                    <p>PDS and photo ID comparison passed automated checks</p>
-                    {% else %}
-                    <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
-                        <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
-                        <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
-                    </svg>
-                    <p>PDS and photo ID comparison failed automated checks</p>
-                    {% endif %}
-            
-                </span>
-                
-                <!-- Check for livenessLikeness result -->
-                <span class="check-item">
-                    {% if data.auto4 == 'true' %}
-                        <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
-                            <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
-                            <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
-                        </svg>
-                        <p>Video selfie failed automated checks</p>
-                    {% else %}
-                        <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
-                            <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
-                        </svg>
-                        <p>Face scan passed automated checks</p>
-                    {% endif %}
-                </span>
-            </div>
-            
-            <!-- Toggle Link -->
-            <p><a href="#" style="display: inline-block; margin: 16px 0 0;" id="toggle-link">Hide details</a></p>
-        </div>
-      {% endif %}
-    
+        {% endif %}
     </div>
     
 
@@ -193,6 +145,32 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
         <div class="nhsuk-grid-row container">
             <div class="nhsuk-grid-column-one-half column">
             <h3>Photo ID</h3>
+            {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+            <!-- show nothing if it is auto4 and docchecks failed-->
+            {% elif data.docChecks == 'passed' %}
+            <div class="nhsuk-u-margin-bottom-6 left-tag">
+                <div class="auto-journey-tag pass">
+                    <div class="auto-journey-tag-content">
+                        <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                            <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                        </svg>
+                    </div>
+                    <div class="auto-journey-tag-content">Photo ID passed automated checks</div>
+                </div>
+            </div>
+                {% else %}
+                <div class="nhsuk-u-margin-bottom-6 left-tag">
+                    <div class="auto-journey-tag fail">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                                <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                                <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Photo ID failed automated checks</div>
+                    </div>
+                </div>
+            {% endif %}
                 <p class="nhsuk-body-s idcheck-help">To zoom in either double click on the picture, or position your cursor on the image, then hold 'Alt' + scroll with your mouse wheel. <a href="#" id="reset">Reset</a></p>
                 <div class="reading-width panzoom-parent idcheck-image-container">
 
@@ -217,6 +195,32 @@ $$ |      $$ |  $$ | $$$$$$  |  $$ |    $$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$
                 </div>
             </div>
             <div class="nhsuk-grid-column-one-half column">
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed-->
+                {% elif data.docChecks == 'passed' %}
+                <div class="nhsuk-u-margin-bottom-6 right-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                                <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Photo ID passed automated checks</div>
+                    </div>
+                </div>
+                    {% else %}
+                    <div class="nhsuk-u-margin-bottom-6 right-tag">
+                        <div class="auto-journey-tag fail">
+                            <div class="auto-journey-tag-content">
+                                <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                                    <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                                    <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                                </svg>
+                            </div>
+                            <div class="auto-journey-tag-content">Photo ID failed automated checks</div>
+                        </div>
+                    </div>
+                {% endif %}
                 <div id="section1">
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="document-1" data-answered="false" data-group="decline-1">
@@ -598,6 +602,33 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
 
                 <h3>Compare the photo ID and the PDS record</h3>
 
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed-->
+                {% elif data.docChecks == 'passed' and data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
+                <div class="nhsuk-u-margin-bottom-6 left-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                                <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Photo ID and PDS comparison passed automated checks</div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="nhsuk-u-margin-bottom-6 left-tag">
+                    <div class="auto-journey-tag fail">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                                <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                                <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Photo ID and PDS comparison failed automated checks</div>
+                    </div>
+                </div>
+                {% endif %}
+
                 <div class="reading-width idcheck-image-container">
                     <div class="idcheck-image zoomable3">
 
@@ -622,6 +653,32 @@ $$ |      $$$$$$$  |\$$$$$$  |      \$$$$$$  |$$ |  $$ |$$$$$$$$\ \$$$$$$  |$$ |
             </div>
             <div class="nhsuk-grid-column-one-half column">
                 <h3>PDS record</h3>
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed-->
+                {% elif data.docChecks == 'passed' and data.IDvsPDS == 'passed' and data.pdsMatch == 'true' %}
+                <div class="nhsuk-u-margin-bottom-6 right-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                                <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Photo ID and PDS comparison passed automated checks</div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="nhsuk-u-margin-bottom-6 right-tag">
+                    <div class="auto-journey-tag fail">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                                <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                                <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Photo ID and PDS comparison failed automated checks</div>
+                    </div>
+                </div>
+                {% endif %}
 
                 <div class="idcheck-match">
 
@@ -774,8 +831,33 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     Image from face scan
                     {% endif %}
                 </h3>
-                    
-    
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed--> 
+                {% elif data.auto4 == 'true' %}
+                <div class="nhsuk-u-margin-bottom-6 left-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                                <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                                <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Video selfie failed automated checks</div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="nhsuk-u-margin-bottom-6 left-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                                <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Face scan passed automated checks</div>
+                    </div>
+                </div>
+                {% endif %}
+
                     <div class="idcheck-media">
                         {% if data.auto4 === 'true' %}
                         <video id="uploaded-video" controls name="media" style="width:100%;height:auto;">
@@ -798,6 +880,32 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
                     {% endif %}
             </div>
             <div class="nhsuk-grid-column-one-half column">
+                {% if data.auto4 == 'true' and data.docChecks != 'passed' %}
+                <!-- show nothing if it is auto4 and docchecks failed--> 
+                {% elif data.auto4 == 'true' %}
+                <div class="nhsuk-u-margin-bottom-6 right-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__cross" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" height="34" width="34">
+                                <path d="M17 18.5c-.4 0-.8-.1-1.1-.4l-10-10c-.6-.6-.6-1.6 0-2.1.6-.6 1.5-.6 2.1 0l10 10c.6.6.6 1.5 0 2.1-.3.3-.6.4-1 .4z"></path>
+                                <path d="M7 18.5c-.4 0-.8-.1-1.1-.4-.6-.6-.6-1.5 0-2.1l10-10c.6-.6 1.5-.6 2.1 0 .6.6.6 1.5 0 2.1l-10 10c-.3.3-.6.4-1 .4z"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Video selfie failed automated checks</div>
+                    </div>
+                </div>
+                {% else %}
+                <div class="nhsuk-u-margin-bottom-6 right-tag">
+                    <div class="auto-journey-tag pass">
+                        <div class="auto-journey-tag-content">
+                            <svg class="nhsuk-icon nhsuk-icon__tick" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" aria-hidden="true" fill="none" height="34" width="34">
+                                <path stroke-width="4" stroke-linecap="round" stroke="#007f3b" d="M18.4 7.8l-8.5 8.4L5.6 12"></path>
+                            </svg>
+                        </div>
+                        <div class="auto-journey-tag-content">Face scan passed automated checks</div>
+                    </div>
+                </div>
+                {% endif %}
                 <div id="section4">
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="selfie-0" data-answered="false" data-group="decline-5">
@@ -840,6 +948,7 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
                         </div>
                     </div>
+
                     <div class="qa-questions-group" data-complete="false">
                         <div class="qa-questions-question" id="selfie-1" data-answered="false" data-group="decline-5">
 
@@ -1599,32 +1708,6 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
     // Ensure the script runs after the DOM is fully loaded
     document.addEventListener('DOMContentLoaded', toggleSections);
-</script>
-
-<!-- AUTO4 SCRIPT TO HIDE OR SHOW DETAILS TOGGLE --> 
-<script>
-    document.getElementById('toggle-link').addEventListener('click', function(event) {
-        event.preventDefault(); // Prevent the default link behavior
-
-        var content = document.getElementById('passed-checks');
-        var auto4Details = document.getElementById('auto4-details');
-        var linkText = document.getElementById('toggle-link');
-
-        if (content.style.display === 'none' || content.style.display === '') {
-            content.style.display = 'inline-block';
-            linkText.textContent = 'Hide details';
-            
-            // Reset margin and padding when showing details
-            auto4Details.style.marginBottom = '8px';
-            auto4Details.style.padding = '24px 32px 8px';
-        } else {
-            content.style.display = 'none';
-            linkText.textContent = 'Show details';
-            
-            // Set padding to 0 when hiding details
-            auto4Details.style.padding = '0 24px 0';
-        }
-    });
 </script>
 
 <!-- PDS TRACE SCRIPTS TO SHOW OR HIDE PDS SPINNER/ QUESTIONS ANDPDS TRACE BUTTON --> 
