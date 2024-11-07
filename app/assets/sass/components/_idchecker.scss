@@ -366,6 +366,34 @@
   }
 }
 
+// automated journey checks tags
+
+.auto-journey-tag {
+   display: flex; /* Flex layout to align items side-by-side */
+   font-size:22px;
+   font-weight: bold;
+   align-items: center; /* Vertically align items in the center */
+   padding: 8px; /* Equal padding around the element */
+   margin: 0; /* Remove default margin from the paragraph */
+   gap: 10px; /* Optional: Adds space between the child divs */
+}
+ 
+.auto-journey-tag.fail{
+  background-color:   #f5e6e4;
+  color: shade($color_nhsuk-red, 50%);
+}
+
+.auto-journey-tag.pass{
+  background-color: tint($color_nhsuk-green, 80%);
+  color: shade($color_nhsuk-green, 40%);
+}
+
+.auto-journey-tag-content {
+  padding: 0px;
+  display: flex; /* Add flex to ensure vertical centering */
+  align-items: center; /* Vertically center content in this div */
+}
+
 .idcheck-pickedup {
   background-color: $color_nhsuk-pale-yellow;
 }
