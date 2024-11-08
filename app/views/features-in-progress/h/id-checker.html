@@ -1684,14 +1684,20 @@ $$$$$$$$\ $$$$$$\ $$ | \$$\ $$$$$$$$\ $$ | \$$ |$$$$$$$$\ \$$$$$$  |\$$$$$$  |  
     
         // Section 4: Handle based on conditions
         if (section4Questions.length) { // Ensure elements exist
-            if (auto4) {
+            if (queueHolding) {
                 // If auto4 is true
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
                     input.checked = false; // No radio option selected
                 });
-            } else if (queueHolding) {
-                // If queue is holding
+            } else if (auto4 && docChecks && IDvsPDS && pdsMatch) {
+                // If queue is not holding
+                section4Questions.forEach(input => {
+                    input.disabled = false; // Disable section 4
+                    input.checked = false; // No radio option selected
+                });
+            } else if (auto4) {
+                // If queue is main and auto4 true but all else false
                 section4Questions.forEach(input => {
                     input.disabled = true; // Disable section 4
                     input.checked = false; // No radio option selected
